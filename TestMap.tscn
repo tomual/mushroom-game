@@ -1,34 +1,38 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://assets/concept2.png" type="Texture" id=1]
+[ext_resource path="res://assets/house002.png" type="Texture" id=2]
+[ext_resource path="res://assets/house004.png" type="Texture" id=3]
+[ext_resource path="res://assets/plant005.png" type="Texture" id=4]
+[ext_resource path="res://assets/plant002.png" type="Texture" id=5]
+[ext_resource path="res://assets/plant001.png" type="Texture" id=6]
+[ext_resource path="res://assets/house003.png" type="Texture" id=7]
+[ext_resource path="res://assets/house001.png" type="Texture" id=8]
+[ext_resource path="res://assets/plant004.png" type="Texture" id=9]
+[ext_resource path="res://assets/plant006.png" type="Texture" id=10]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=11]
 
 [sub_resource type="AtlasTexture" id=1]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 1024, 600 )
 
 [sub_resource type="AtlasTexture" id=2]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 0, 600, 1024, 600 )
 
 [sub_resource type="AtlasTexture" id=3]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 0, 1200, 1024, 600 )
 
 [sub_resource type="AtlasTexture" id=4]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 0, 1800, 1024, 600 )
 
 [sub_resource type="AtlasTexture" id=5]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 0, 2400, 1024, 600 )
 
 [sub_resource type="AtlasTexture" id=6]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 0, 3000, 1024, 600 )
 
@@ -40,76 +44,106 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="AtlasTexture" id=8]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 0, 600, 1024, 600 )
-
-[sub_resource type="SpriteFrames" id=9]
-animations = [ {
-"frames": [ SubResource( 8 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
-
-[sub_resource type="AtlasTexture" id=10]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 0, 1200, 1024, 600 )
-
-[sub_resource type="SpriteFrames" id=11]
-animations = [ {
-"frames": [ SubResource( 10 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
-
-[sub_resource type="AtlasTexture" id=12]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 0, 1800, 1024, 600 )
-
-[sub_resource type="SpriteFrames" id=13]
-animations = [ {
-"frames": [ SubResource( 12 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
-
-[sub_resource type="AtlasTexture" id=14]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 0, 3000, 1024, 600 )
-
-[sub_resource type="SpriteFrames" id=15]
-animations = [ {
-"frames": [ SubResource( 14 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
-
 [node name="TestMap" type="Node2D"]
 
 [node name="Ground" type="AnimatedSprite" parent="."]
 position = Vector2( 512, 300 )
 frames = SubResource( 7 )
 
-[node name="Trees" type="AnimatedSprite" parent="."]
-position = Vector2( 512, 300 )
-frames = SubResource( 9 )
+[node name="YSort" type="YSort" parent="."]
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 512, 300 )
-frames = SubResource( 11 )
+[node name="plant013" type="Sprite" parent="YSort"]
+position = Vector2( 476.008, 86.7536 )
+texture = ExtResource( 6 )
 
-[node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
-position = Vector2( 512, 300 )
-frames = SubResource( 13 )
+[node name="house003" type="Sprite" parent="YSort"]
+position = Vector2( 254.186, 202.042 )
+texture = ExtResource( 7 )
 
-[node name="AnimatedSprite3" type="AnimatedSprite" parent="."]
-position = Vector2( 512, 300 )
-frames = SubResource( 15 )
+[node name="house002" type="Sprite" parent="YSort"]
+position = Vector2( 682, 177 )
+texture = ExtResource( 2 )
+offset = Vector2( -15.504, -34.6874 )
+
+[node name="plant005" type="Sprite" parent="YSort"]
+position = Vector2( 332.261, -6.10941 )
+texture = ExtResource( 9 )
+
+[node name="plant006" type="Sprite" parent="YSort"]
+position = Vector2( 202, 126 )
+texture = ExtResource( 9 )
+offset = Vector2( -7.04877, -84.4874 )
+
+[node name="plant007" type="Sprite" parent="YSort"]
+position = Vector2( 62.4033, 285.972 )
+texture = ExtResource( 9 )
+
+[node name="plant010" type="Sprite" parent="YSort"]
+position = Vector2( 944.204, 47.0685 )
+texture = ExtResource( 4 )
+
+[node name="plant011" type="Sprite" parent="YSort"]
+position = Vector2( 51.2914, 54.2119 )
+texture = ExtResource( 10 )
+
+[node name="plant002" type="Sprite" parent="YSort"]
+position = Vector2( 447.348, 520.908 )
+texture = ExtResource( 5 )
+
+[node name="plant003" type="Sprite" parent="YSort"]
+position = Vector2( 410.838, 546.306 )
+texture = ExtResource( 5 )
+
+[node name="plant012" type="Sprite" parent="YSort"]
+position = Vector2( 484.652, 566.149 )
+texture = ExtResource( 5 )
+
+[node name="plant014" type="Sprite" parent="YSort"]
+position = Vector2( 682.283, 524.876 )
+texture = ExtResource( 5 )
+
+[node name="plant015" type="Sprite" parent="YSort"]
+position = Vector2( 565.609, 335.976 )
+texture = ExtResource( 5 )
+
+[node name="plant016" type="Sprite" parent="YSort"]
+position = Vector2( 645.773, 378.042 )
+texture = ExtResource( 5 )
+
+[node name="plant001" type="Sprite" parent="YSort"]
+position = Vector2( 834.674, 183.585 )
+texture = ExtResource( 6 )
+
+[node name="plant017" type="Sprite" parent="YSort"]
+position = Vector2( 1017.22, 212.952 )
+texture = ExtResource( 6 )
+
+[node name="plant018" type="Sprite" parent="YSort"]
+position = Vector2( 10.8127, 503.446 )
+texture = ExtResource( 6 )
+
+[node name="plant008" type="Sprite" parent="YSort"]
+position = Vector2( 234.636, 394.709 )
+texture = ExtResource( 9 )
+
+[node name="plant009" type="Sprite" parent="YSort"]
+position = Vector2( 342.579, 431.22 )
+texture = ExtResource( 9 )
+
+[node name="plant019" type="Sprite" parent="YSort"]
+position = Vector2( 218.762, 489.953 )
+texture = ExtResource( 9 )
+
+[node name="plant004" type="Sprite" parent="YSort"]
+position = Vector2( 760.86, 299.465 )
+texture = ExtResource( 9 )
+
+[node name="house001" type="Sprite" parent="YSort"]
+position = Vector2( 252.443, 193.91 )
+texture = ExtResource( 8 )
+
+[node name="house004" type="Sprite" parent="YSort"]
+position = Vector2( 349.809, 176.442 )
+texture = ExtResource( 3 )
+
+[node name="Player" parent="YSort" instance=ExtResource( 11 )]

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/concept.png-cfaffc25af1df45805fcbadbf2c9664e.stex"
+path="res://.import/house001.png-da22abf52b24ca149d13fc49ccb16d4b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/concept.png"
-dest_files=[ "res://.import/concept.png-cfaffc25af1df45805fcbadbf2c9664e.stex" ]
+source_file="res://assets/house001.png"
+dest_files=[ "res://.import/house001.png-da22abf52b24ca149d13fc49ccb16d4b.stex" ]
 
 [params]
 

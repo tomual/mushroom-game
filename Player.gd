@@ -20,10 +20,8 @@ func _process(delta):
 		var velocity = Vector2()
 		if Input.is_action_pressed("ui_right"):
 			velocity.x += 1
-			facing = DIR_R
 		if Input.is_action_pressed("ui_left"):
 			velocity.x -= 1
-			facing = DIR_L
 		if Input.is_action_pressed("ui_down"):
 			velocity.y += 1
 			facing = DIR_B
@@ -33,6 +31,7 @@ func _process(delta):
 		if velocity.length() > 0:
 			velocity = velocity.normalized() * speed
 			$AnimatedSprite.animation = str(facing, "_idle")
+			$AnimatedSprite.flip_h = velocity.x < 0
 		else:
 			$AnimatedSprite.animation = str(facing, "_idle")
 	
