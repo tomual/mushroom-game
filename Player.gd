@@ -30,7 +30,7 @@ func _process(delta):
 			facing = DIR_T
 		if velocity.length() > 0:
 			velocity = velocity.normalized() * speed
-			$AnimatedSprite.animation = str(facing, "_idle")
+			$AnimatedSprite.animation = str(facing, "_walk")
 			$AnimatedSprite.flip_h = velocity.x < 0
 		else:
 			$AnimatedSprite.animation = str(facing, "_idle")
