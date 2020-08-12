@@ -17,3 +17,16 @@ align = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="LabelPickUp" type="Label" parent="."]
+margin_right = 48.0
+margin_bottom = 14.0
+rect_pivot_offset = Vector2( 24.3302, 6.44544 )
+text = "Pick Up"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="."]
