@@ -56,6 +56,8 @@ frames = SubResource( 7 )
 [node name="Interactable" parent="YSort" instance=ExtResource( 12 )]
 position = Vector2( 460.008, 174.754 )
 
+[node name="Player" parent="YSort" instance=ExtResource( 11 )]
+
 [node name="plant013" type="Sprite" parent="YSort"]
 position = Vector2( 476.008, 86.7536 )
 texture = ExtResource( 6 )
@@ -149,5 +151,3 @@ texture = ExtResource( 8 )
 [node name="house004" type="Sprite" parent="YSort"]
 position = Vector2( 349.809, 176.442 )
 texture = ExtResource( 3 )
-
-[node name="Player" parent="YSort" instance=ExtResource( 11 )]

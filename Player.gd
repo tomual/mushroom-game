@@ -8,11 +8,16 @@ const DIR_R = "r"
 var speed = 200
 var hp = 10
 var screen_size
-var facing
+export var facing = DIR_T
+export var flipped = false
 
 func _ready():
 	screen_size = get_viewport_rect().size
 	$AnimatedSprite.play()
+	
+	for member in get_tree().get_nodes_in_group("interactable"):
+		member.connect("pickup", self, "pickup")
+		member.connect("drop", self, "drop")
 
 
 func _process(delta):
@@ -32,9 +37,10 @@ func _process(delta):
 			velocity = velocity.normalized() * speed
 			$AnimatedSprite.animation = str(facing, "_walk")
 			$AnimatedSprite.flip_h = velocity.x < 0
+			flipped = $AnimatedSprite.flip_h
 		else:
 			$AnimatedSprite.animation = str(facing, "_idle")
-	
+
 		position += velocity * delta
 		position.x = clamp(position.x, 30, screen_size.x - 30)
 		position.y = clamp(position.y, 75, screen_size.y - 45)
@@ -42,3 +48,11 @@ func _process(delta):
 
 func can_move():
 	return hp > 0
+
+
+func pickup(node):
+	print_debug("pickup")
+
+
+func drop(node):
+	print_debug("drop")
