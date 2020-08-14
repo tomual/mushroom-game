@@ -1,35 +1,58 @@
 extends Area2D
 
-
-signal interactable_available(position)
+signal interactable_available(position, type)
 signal interactable_unavailable()
 signal pickup(node)
 
+enum {
+	PICKUP,
+	HOLD,
+	TALK,
+	LOOK,
+	MOVE
+}
+
+var labels = {
+	PICKUP: "Pick Up",
+	HOLD: "Hold",
+	TALK: "Move",
+	LOOK: "Look",
+	MOVE: "Move"
+}
 
 var in_range = false
-var being_held = false
+var active = false
 var player
+
+var label_offset_x
+var label_offset_y
+var type
 
 
 func _ready():
 	player = get_tree().get_nodes_in_group("player")[0]
+	self.connect("area_entered", self, "_on_Interactable_area_entered")
+	self.connect("area_exited", self, "_on_Interactable_area_exited")
 
 
 func _process(delta):
-	if in_range and !being_held:
+	if in_range and !active:
 		if Input.is_action_pressed("ui_accept"):
-			emit_signal("pickup", get_parent())
-			in_range = false
-			being_held = true
-			$CollisionShape2D.disabled = true
-			emit_signal("interactable_unavailable")
-	if being_held:
+			if type == HOLD:
+				emit_signal("pickup", self)
+				in_range = false
+				active = true
+				$CollisionShape2D.disabled = true
+				emit_signal("interactable_unavailable")
+			elif type == MOVE:
+				print_debug("Let's mooooooooooove")
+	if active and type == HOLD:
 		if Input.is_action_pressed("ui_cancel"):
-			emit_signal("drop", get_parent())
+			emit_signal("drop", self)
 			in_range = true
-			being_held = false
+			active = false
 			$CollisionShape2D.disabled = false
-			emit_signal("interactable_available", get_parent().position)
+			emit_signal("interactable_available", position)
 		var offset_x = 0
 		var offset_y = 0
 		if (player.flipped):
@@ -40,17 +63,18 @@ func _process(delta):
 			offset_y = -6
 		else:
 			offset_y = 3
-		get_parent().position = Vector2(player.position.x + offset_x, player.position.y + offset_y)
-		get_parent().flip_h = player.flipped
+		position = Vector2(player.position.x + offset_x, player.position.y + offset_y)
+		$AnimatedSprite.flip_h = player.flipped
 
 
 func _on_Interactable_area_entered(area):
-	if (!being_held):
-		emit_signal("interactable_available", get_parent().position)
+	if (!active):
+		var label_position = Vector2(position.x - label_offset_x, position.y - label_offset_y)
+		emit_signal("interactable_available", label_position, labels[type])
 		in_range = true
 
 
 func _on_Interactable_area_exited(area):
-	if (!being_held):
+	if (!active):
 		emit_signal("interactable_unavailable")
 		in_range = false

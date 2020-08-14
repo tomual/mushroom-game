@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://assets/concept2.png" type="Texture" id=1]
 [ext_resource path="res://assets/house002.png" type="Texture" id=2]
@@ -11,7 +11,8 @@
 [ext_resource path="res://assets/plant004.png" type="Texture" id=9]
 [ext_resource path="res://assets/plant006.png" type="Texture" id=10]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Interactable.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Jouro.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Teleport.tscn" type="PackedScene" id=13]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -52,9 +53,6 @@ position = Vector2( 512, 300 )
 frames = SubResource( 7 )
 
 [node name="YSort" type="YSort" parent="."]
-
-[node name="Interactable" parent="YSort" instance=ExtResource( 12 )]
-position = Vector2( 460.008, 174.754 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 11 )]
 
@@ -151,3 +149,9 @@ texture = ExtResource( 8 )
 [node name="house004" type="Sprite" parent="YSort"]
 position = Vector2( 349.809, 176.442 )
 texture = ExtResource( 3 )
+
+[node name="Teleport" parent="YSort" instance=ExtResource( 13 )]
+position = Vector2( 570.649, 198.531 )
+
+[node name="Jouro" parent="YSort" instance=ExtResource( 12 )]
+position = Vector2( 463.862, 183.848 )

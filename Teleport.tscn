@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/teleporter.png" type="Texture" id=1]
+[ext_resource path="res://Teleport.gd" type="Script" id=2]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 40, 18 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ SubResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 4.38487
+height = 0.0
+
+[node name="Teleport" type="Area2D" groups=[
+"interactable",
+]]
+script = ExtResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0.0998306, -0.893589 )
+frames = SubResource( 2 )
+offset = Vector2( -0.0998306, 8.89359 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -21.0231 )
+rotation = 1.5708
+shape = SubResource( 3 )
+
+[node name="Tween" type="Tween" parent="."]
+[connection signal="area_entered" from="." to="AnimatedSprite" method="_on_Teleport_area_entered"]
+[connection signal="area_exited" from="." to="AnimatedSprite" method="_on_Teleport_area_exited"]
