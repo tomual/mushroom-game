@@ -28,9 +28,11 @@ var label_offset_x
 var label_offset_y
 var type
 
+func set_player():
+	player = get_tree().get_nodes_in_group("player")[0]
+
 
 func _ready():
-	player = get_tree().get_nodes_in_group("player")[0]
 	self.connect("area_entered", self, "_on_Interactable_area_entered")
 	self.connect("area_exited", self, "_on_Interactable_area_exited")
 
@@ -46,6 +48,7 @@ func _process(delta):
 			in_range = true
 			active = false
 			$CollisionShape2D.disabled = false
+			$Shadow.visible = true
 			emit_signal("interactable_available", position)
 		var offset_x = 0
 		var offset_y = 0
@@ -85,4 +88,5 @@ func activate():
 		in_range = false
 		active = true
 		$CollisionShape2D.disabled = true
+		$Shadow.visible = false
 		emit_signal("interactable_unavailable")

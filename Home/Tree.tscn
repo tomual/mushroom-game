@@ -6,20 +6,13 @@
 radius = 17.5077
 height = 57.8229
 
-[node name="Tree" type="Area2D"]
+[node name="Tree" type="KinematicBody2D"]
 
 [node name="tree" type="Sprite" parent="."]
 position = Vector2( 0, -210 )
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -8 )
-rotation = 1.5708
-shape = SubResource( 1 )
-
-[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
 position = Vector2( 0, -8 )
 rotation = 1.5708
 shape = SubResource( 1 )

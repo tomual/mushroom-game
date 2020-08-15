@@ -1,13 +1,22 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=18 format=2]
 
-[ext_resource path="res://assets/rainforest/bush.png" type="Texture" id=1]
-[ext_resource path="res://assets/rainforest/house.png" type="Texture" id=2]
+[ext_resource path="res://Home/Bush.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Home/House.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/rainforest/shrub flat big.png" type="Texture" id=3]
 [ext_resource path="res://assets/rainforest/shrub flat small.png" type="Texture" id=4]
 [ext_resource path="res://Home/Tree.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/rainforest/stick.png" type="Texture" id=6]
-[ext_resource path="res://assets/rainforest/stump.png" type="Texture" id=7]
+[ext_resource path="res://Home/Stick.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Home/Stump.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Map.gd" type="Script" id=8]
+[ext_resource path="res://Jouro.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/rainforest/path/8.png" type="Texture" id=10]
+[ext_resource path="res://assets/rainforest/path/5.png" type="Texture" id=11]
+[ext_resource path="res://assets/rainforest/path/6.png" type="Texture" id=12]
+[ext_resource path="res://assets/rainforest/path/4.png" type="Texture" id=13]
+[ext_resource path="res://assets/rainforest/path/1.png" type="Texture" id=14]
+[ext_resource path="res://assets/rainforest/path/2.png" type="Texture" id=15]
+[ext_resource path="res://assets/rainforest/path/3.png" type="Texture" id=16]
+[ext_resource path="res://assets/rainforest/path/7.png" type="Texture" id=17]
 
 [node name="Home" type="Node2D"]
 script = ExtResource( 8 )
@@ -22,31 +31,117 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Background" type="Node2D" parent="."]
+
+[node name="shrub flat small" type="Sprite" parent="Background"]
+position = Vector2( 73.3821, 363.781 )
+texture = ExtResource( 4 )
+
+[node name="shrub flat big" type="Sprite" parent="Background"]
+position = Vector2( -30.889, 326.782 )
+texture = ExtResource( 3 )
+
+[node name="1" type="Sprite" parent="Background"]
+position = Vector2( 259.477, 187.192 )
+texture = ExtResource( 14 )
+
+[node name="2" type="Sprite" parent="Background"]
+position = Vector2( 553.039, 167.034 )
+texture = ExtResource( 15 )
+
+[node name="3" type="Sprite" parent="Background"]
+position = Vector2( 272.076, 78.8391 )
+texture = ExtResource( 16 )
+
+[node name="4" type="Sprite" parent="Background"]
+position = Vector2( 404.368, 259.008 )
+texture = ExtResource( 13 )
+
+[node name="5" type="Sprite" parent="Background"]
+position = Vector2( 279.636, 395.079 )
+texture = ExtResource( 11 )
+
+[node name="7" type="Sprite" parent="Background"]
+position = Vector2( 254.437, 310.665 )
+texture = ExtResource( 17 )
+
+[node name="8" type="Sprite" parent="Background"]
+position = Vector2( 866.759, 284.206 )
+texture = ExtResource( 10 )
+
+[node name="9" type="Sprite" parent="Background"]
+position = Vector2( 826.441, 456.815 )
+texture = ExtResource( 14 )
+
+[node name="6" type="Sprite" parent="Background"]
+position = Vector2( 605.955, 354.762 )
+texture = ExtResource( 12 )
+
+[node name="shrub flat small2" type="Sprite" parent="Background"]
+position = Vector2( 967.491, 428.093 )
+texture = ExtResource( 4 )
+
+[node name="shrub flat small3" type="Sprite" parent="Background"]
+position = Vector2( 596.679, 472.591 )
+texture = ExtResource( 4 )
+
+[node name="shrub flat big2" type="Sprite" parent="Background"]
+position = Vector2( 1132.77, 364.525 )
+texture = ExtResource( 3 )
+
+[node name="shrub flat big3" type="Sprite" parent="Background"]
+position = Vector2( 437.759, -184.277 )
+texture = ExtResource( 3 )
+
 [node name="YSort" type="YSort" parent="."]
+
+[node name="House" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( 732.769, 63.5486 )
+
+[node name="Tree2" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( 215.38, 571.468 )
 
 [node name="Tree" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 153.234, 21.3815 )
 
-[node name="bush" type="Sprite" parent="YSort"]
-position = Vector2( 52.6342, 136.199 )
-texture = ExtResource( 1 )
+[node name="Bush" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 62.2263, 220.315 )
 
-[node name="house" type="Sprite" parent="YSort"]
-position = Vector2( 572.297, 113.546 )
-texture = ExtResource( 2 )
+[node name="Jouro" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 391.018, 139.752 )
 
-[node name="shrub flat big" type="Sprite" parent="YSort"]
-position = Vector2( -62.9304, 361.785 )
-texture = ExtResource( 3 )
+[node name="Stump" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 865.499, 274.127 )
 
-[node name="shrub flat small" type="Sprite" parent="YSort"]
-position = Vector2( 26.7377, 386.326 )
-texture = ExtResource( 4 )
+[node name="Stick" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( -103.38, 52.3807 )
 
-[node name="stick" type="Sprite" parent="YSort"]
-position = Vector2( 894.158, 375 )
-texture = ExtResource( 6 )
+[node name="Bush2" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 1031.81, 119.157 )
 
-[node name="stump" type="Sprite" parent="YSort"]
-position = Vector2( 697.832, 484.489 )
-texture = ExtResource( 7 )
+[node name="Bush3" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( -214.253, 262.788 )
+
+[node name="Tree3" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( 1535.36, -247.844 )
+
+[node name="Tree4" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( -861.142, -144.017 )
+
+[node name="Tree5" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( -628.061, -364.385 )
+
+[node name="Tree6" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( -327.173, -398.288 )
+
+[node name="Tree7" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( 1412.47, 343.336 )
+
+[node name="Tree8" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( -882.332, 521.326 )
+
+[node name="Tree9" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( -685.271, 432.331 )
+
+[node name="Tree10" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( -596.277, 534.039 )

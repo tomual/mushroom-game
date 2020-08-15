@@ -4,8 +4,6 @@
 [ext_resource path="res://Player.gd" type="Script" id=2]
 [ext_resource path="res://assets/player/idle b.png" type="Texture" id=3]
 
-[sub_resource type="CapsuleShape2D" id=1]
-
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 100, 100 )
@@ -125,23 +123,26 @@ animations = [ {
 "speed": 15.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=27]
-radius = 4.84104
-height = 18.915
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 3.99664
+height = 19.8826
 
-[node name="Player" type="Area2D" groups=[
+[sub_resource type="CircleShape2D" id=27]
+
+[node name="Player" type="KinematicBody2D" groups=[
 "player",
 ]]
 script = ExtResource( 2 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -23 )
-shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -43 )
 frames = SubResource( 26 )
 animation = "b_idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -4 )
+rotation = 1.5708
+shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="." groups=[
 "camera",
@@ -150,9 +151,8 @@ current = true
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
 
-[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
-position = Vector2( 0, -5 )
-rotation = 1.5708
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 0, -16 )
 shape = SubResource( 27 )
