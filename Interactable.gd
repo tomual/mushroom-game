@@ -37,15 +37,9 @@ func _ready():
 
 func _process(delta):
 	if in_range and !active:
+		show_label()
 		if Input.is_action_pressed("ui_accept"):
-			if type == HOLD:
-				emit_signal("pickup", self)
-				in_range = false
-				active = true
-				$CollisionShape2D.disabled = true
-				emit_signal("interactable_unavailable")
-			elif type == MOVE:
-				print_debug("Let's mooooooooooove")
+			activate()
 	if active and type == HOLD:
 		if Input.is_action_pressed("ui_cancel"):
 			emit_signal("drop", self)
@@ -69,8 +63,7 @@ func _process(delta):
 
 func _on_Interactable_area_entered(area):
 	if (!active):
-		var label_position = Vector2(position.x - label_offset_x, position.y - label_offset_y)
-		emit_signal("interactable_available", label_position, labels[type])
+		show_label()
 		in_range = true
 
 
@@ -78,3 +71,18 @@ func _on_Interactable_area_exited(area):
 	if (!active):
 		emit_signal("interactable_unavailable")
 		in_range = false
+
+
+func show_label():
+	var position_on_screen = get_global_transform_with_canvas()
+	var label_position = Vector2(position_on_screen[2][0] - label_offset_x, position_on_screen[2][1] - label_offset_y)
+	emit_signal("interactable_available", label_position, labels[type])
+
+
+func activate():
+	if type == HOLD:
+		emit_signal("pickup", self)
+		in_range = false
+		active = true
+		$CollisionShape2D.disabled = true
+		emit_signal("interactable_unavailable")

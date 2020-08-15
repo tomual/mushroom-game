@@ -5,7 +5,7 @@ const DIR_T = "t"
 const DIR_L = "l"
 const DIR_R = "r"
 
-var speed = 200
+var speed = 300
 var hp = 10
 var screen_size
 export var facing = DIR_T
@@ -42,8 +42,8 @@ func _process(delta):
 			$AnimatedSprite.animation = str(facing, "_idle")
 
 		position += velocity * delta
-		position.x = clamp(position.x, 30, screen_size.x - 30)
-		position.y = clamp(position.y, 75, screen_size.y - 45)
+#		position.x = clamp(position.x, 30, screen_size.x - 30)
+#		position.y = clamp(position.y, 75, screen_size.y - 45)
 
 
 func can_move():
