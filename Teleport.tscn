@@ -16,7 +16,7 @@ animations = [ {
 } ]
 
 [sub_resource type="CapsuleShape2D" id=3]
-radius = 4.38487
+radius = 10.6621
 height = 0.0
 
 [node name="Teleport" type="Area2D" groups=[
@@ -30,10 +30,15 @@ frames = SubResource( 2 )
 offset = Vector2( -0.0998306, 8.89359 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -21.0231 )
+position = Vector2( -0.396851, 6.35959 )
 rotation = 1.5708
 shape = SubResource( 3 )
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
 [connection signal="area_entered" from="." to="AnimatedSprite" method="_on_Teleport_area_entered"]
 [connection signal="area_exited" from="." to="AnimatedSprite" method="_on_Teleport_area_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

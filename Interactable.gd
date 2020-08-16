@@ -56,10 +56,7 @@ func _process(delta):
 			offset_x = -20
 		else:
 			offset_x = 20
-		if player.facing == "t":
-			offset_y = -6
-		else:
-			offset_y = 3
+		offset_y = -10
 		position = Vector2(player.position.x + offset_x, player.position.y + offset_y)
 		$AnimatedSprite.flip_h = player.flipped
 
