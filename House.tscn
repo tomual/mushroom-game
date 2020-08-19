@@ -1,12 +1,53 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://assets/house/bed.png" type="Texture" id=1]
+[ext_resource path="res://Map.gd" type="Script" id=2]
+[ext_resource path="res://assets/house/wall.png" type="Texture" id=3]
+[ext_resource path="res://assets/house/floor.png" type="Texture" id=4]
+[ext_resource path="res://assets/house/bin.png" type="Texture" id=5]
+[ext_resource path="res://assets/house/closet.png" type="Texture" id=6]
+[ext_resource path="res://assets/house/chest.png" type="Texture" id=7]
+[ext_resource path="res://assets/house/firepit.png" type="Texture" id=8]
+[ext_resource path="res://assets/house/window.png" type="Texture" id=9]
+[ext_resource path="res://assets/house/chair2.png" type="Texture" id=10]
+[ext_resource path="res://assets/house/mat.png" type="Texture" id=11]
+[ext_resource path="res://assets/house/vent.png" type="Texture" id=12]
+[ext_resource path="res://assets/house/table.png" type="Texture" id=13]
+[ext_resource path="res://assets/house/chair1.png" type="Texture" id=14]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 35.6507
+height = 102.225
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 27.3984
+height = 60.2638
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 27.3984
+height = 28.3046
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 37.7637
+height = 0.0
+
+[sub_resource type="CapsuleShape2D" id=5]
+radius = 30.7892
+height = 51.6645
+
+[sub_resource type="CapsuleShape2D" id=6]
+radius = 18.9771
+height = 0.0
 
 [node name="House" type="Node2D"]
+script = ExtResource( 2 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_left = -616.607
+margin_top = -438.618
+margin_right = 1127.39
+margin_bottom = 709.382
+color = Color( 0.145098, 0.145098, 0.278431, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -15,6 +56,112 @@ __meta__ = {
 
 [node name="YSort" type="YSort" parent="."]
 
+[node name="bin" type="Sprite" parent="YSort"]
+position = Vector2( 90.3284, 19.3816 )
+texture = ExtResource( 5 )
+
+[node name="wall" type="Sprite" parent="YSort"]
+position = Vector2( 200.354, -279.879 )
+texture = ExtResource( 3 )
+offset = Vector2( 37.6702, 152.005 )
+
+[node name="floor" type="Sprite" parent="YSort"]
+position = Vector2( 202.878, -144.309 )
+texture = ExtResource( 4 )
+offset = Vector2( 36.3504, 150.494 )
+
+[node name="chest" type="Sprite" parent="YSort"]
+position = Vector2( 326.687, 99.8379 )
+texture = ExtResource( 7 )
+offset = Vector2( -9.79108, -37.8195 )
+
+[node name="mat" type="Sprite" parent="YSort"]
+position = Vector2( 183.192, 45.7769 )
+texture = ExtResource( 11 )
+offset = Vector2( 2.96426, 30.512 )
+
+[node name="table" type="Sprite" parent="YSort"]
+position = Vector2( 217, -43.5 )
+texture = ExtResource( 13 )
+offset = Vector2( 42.665, -25.1458 )
+
+[node name="chair1" type="Sprite" parent="YSort"]
+position = Vector2( 310.669, -18.9628 )
+texture = ExtResource( 14 )
+offset = Vector2( 5.10516, -34.3988 )
+
+[node name="chair2" type="Sprite" parent="YSort"]
+position = Vector2( 196.296, -69.388 )
+texture = ExtResource( 10 )
+offset = Vector2( 21.6525, -27.6365 )
+
+[node name="window" type="Sprite" parent="YSort"]
+position = Vector2( 161.704, -185.931 )
+texture = ExtResource( 9 )
+
+[node name="vent" type="Sprite" parent="YSort"]
+position = Vector2( 30.8916, -156.201 )
+texture = ExtResource( 12 )
+
+[node name="firepit" type="Sprite" parent="YSort"]
+position = Vector2( 68.335, -60.4083 )
+texture = ExtResource( 8 )
+offset = Vector2( -15.4431, 15.9927 )
+
 [node name="bed" type="Sprite" parent="YSort"]
-position = Vector2( 372.555, -7.05176 )
+position = Vector2( 419.458, 73.1411 )
 texture = ExtResource( 1 )
+offset = Vector2( -12.4164, -65.9224 )
+
+[node name="closet" type="Sprite" parent="YSort"]
+position = Vector2( 141.856, -100.256 )
+texture = ExtResource( 6 )
+offset = Vector2( -25.9364, -6.59325 )
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="KinematicBody2D"]
+polygon = PoolVector2Array( -28.0712, -10.2303, 273.293, 141.885, 511.806, 23.3369, 201.271, -131.459, -27.7906, -13.3171, -186.661, -38.9589, 213.542, -242.836, 695.861, 11.0665, 313.124, 218.7, -178.514, -31.6094 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="KinematicBody2D"]
+position = Vector2( 396.537, 39.3319 )
+rotation = 1.06563
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
+position = Vector2( 61.9732, -43.6389 )
+rotation = 1.06563
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="KinematicBody2D"]
+position = Vector2( 116.352, -83.3253 )
+rotation = 1.06563
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="KinematicBody2D"]
+position = Vector2( 254.801, -57.211 )
+rotation = 0.934545
+shape = SubResource( 4 )
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="KinematicBody2D"]
+position = Vector2( 325.59, 82.0139 )
+rotation = 2.00657
+shape = SubResource( 5 )
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="KinematicBody2D"]
+position = Vector2( 74.692, 48.2055 )
+rotation = 1.06563
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="KinematicBody2D"]
+position = Vector2( 317.309, -31.8417 )
+rotation = 1.06563
+shape = SubResource( 6 )
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="KinematicBody2D"]
+position = Vector2( 218.674, -80.9232 )
+rotation = 1.06563
+shape = SubResource( 6 )
+
+[node name="Spawn" type="Node2D" parent="."]
+position = Vector2( 185.838, 74.9653 )
