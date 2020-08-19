@@ -20,4 +20,8 @@ func activate():
 
 
 func _on_Timer_timeout():
-	get_tree().change_scene("res://Home.tscn")
+	for member in get_tree().get_nodes_in_group("map"):
+		member.queue_free()
+	var scene = load("res://Home.tscn")
+	var player = scene.instance()
+	get_tree().root.get_node("Main").add_child(player)

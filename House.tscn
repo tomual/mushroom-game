@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/house/bed.png" type="Texture" id=1]
+
+[node name="House" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="Node" parent="."]
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="bed" type="Sprite" parent="YSort"]
+position = Vector2( 372.555, -7.05176 )
+texture = ExtResource( 1 )
