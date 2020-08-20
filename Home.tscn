@@ -24,17 +24,19 @@
 ]]
 script = ExtResource( 8 )
 
-[node name="ColorRect" type="ColorRect" parent="."]
-margin_left = -2095.06
-margin_top = -1215.76
-margin_right = 1836.94
-margin_bottom = 1008.25
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -10
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 color = Color( 0.403922, 0.576471, 0.639216, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Background" type="Node2D" parent="."]
+position = Vector2( 0.723022, -0.212341 )
 
 [node name="shrub flat small" type="Sprite" parent="Background"]
 position = Vector2( -410.974, 209.056 )
@@ -97,6 +99,7 @@ position = Vector2( -46.5972, -339.002 )
 texture = ExtResource( 3 )
 
 [node name="YSort" type="YSort" parent="."]
+position = Vector2( -3.05286, -0.212341 )
 
 [node name="House" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 216.984, -57.5024 )
@@ -149,5 +152,11 @@ position = Vector2( -1201.06, 311.28 )
 [node name="Tree10" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( -1112.06, 412.988 )
 
-[node name="Teleport" parent="YSort" instance=ExtResource( 18 )]
-position = Vector2( 125.107, 1.65305 )
+[node name="Teleport" parent="." instance=ExtResource( 18 )]
+position = Vector2( 134.782, -33.9146 )
+target = "House"
+
+[node name="Spawn" type="Polygon2D" parent="." groups=[
+"spawn",
+]]
+position = Vector2( 83.9288, -5.44949 )

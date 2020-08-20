@@ -29,6 +29,7 @@ var label_offset_y
 var type
 
 func set_player():
+	print_debug(get_tree().get_nodes_in_group("player"))
 	player = get_tree().get_nodes_in_group("player")[0]
 
 

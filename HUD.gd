@@ -5,7 +5,6 @@ func _ready():
 
 
 func init():
-	print_debug("HUD ready")
 	fade_in()
 	init_label_interactive()
 	init_listeners()
@@ -23,7 +22,6 @@ func interactable_unavailable():
 
 
 func fade_out():
-	print_debug("We fade")
 	$TweenFade.stop_all()
 	$TweenFade.interpolate_property($ColorRectFade, "color", Color(0.37, 0.37, 0.71, 0), Color(0.37, 0.37, 0.71, 1), 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$TweenFade.start()

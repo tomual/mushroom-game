@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://assets/house/bed.png" type="Texture" id=1]
 [ext_resource path="res://Map.gd" type="Script" id=2]
@@ -14,16 +14,17 @@
 [ext_resource path="res://assets/house/vent.png" type="Texture" id=12]
 [ext_resource path="res://assets/house/table.png" type="Texture" id=13]
 [ext_resource path="res://assets/house/chair1.png" type="Texture" id=14]
+[ext_resource path="res://Teleport.tscn" type="PackedScene" id=15]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 35.6507
 height = 102.225
 
-[sub_resource type="CapsuleShape2D" id=3]
+[sub_resource type="CapsuleShape2D" id=2]
 radius = 27.3984
 height = 60.2638
 
-[sub_resource type="CapsuleShape2D" id=2]
+[sub_resource type="CapsuleShape2D" id=3]
 radius = 27.3984
 height = 28.3046
 
@@ -39,14 +40,17 @@ height = 51.6645
 radius = 18.9771
 height = 0.0
 
-[node name="House" type="Node2D"]
+[node name="House" type="Node2D" groups=[
+"map",
+]]
 script = ExtResource( 2 )
 
-[node name="ColorRect" type="ColorRect" parent="."]
-margin_left = -616.607
-margin_top = -438.618
-margin_right = 1127.39
-margin_bottom = 709.382
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -10
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 color = Color( 0.145098, 0.145098, 0.278431, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -55,6 +59,7 @@ __meta__ = {
 [node name="Background" type="Node" parent="."]
 
 [node name="YSort" type="YSort" parent="."]
+position = Vector2( 1.17308, -0.415985 )
 
 [node name="bin" type="Sprite" parent="YSort"]
 position = Vector2( 90.3284, 19.3816 )
@@ -119,6 +124,7 @@ texture = ExtResource( 6 )
 offset = Vector2( -25.9364, -6.59325 )
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+position = Vector2( 1.17308, -0.415985 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="KinematicBody2D"]
 polygon = PoolVector2Array( -28.0712, -10.2303, 273.293, 141.885, 511.806, 23.3369, 201.271, -131.459, -27.7906, -13.3171, -186.661, -38.9589, 213.542, -242.836, 695.861, 11.0665, 313.124, 218.7, -178.514, -31.6094 )
@@ -131,12 +137,12 @@ shape = SubResource( 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
 position = Vector2( 61.9732, -43.6389 )
 rotation = 1.06563
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="KinematicBody2D"]
 position = Vector2( 116.352, -83.3253 )
 rotation = 1.06563
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="KinematicBody2D"]
 position = Vector2( 254.801, -57.211 )
@@ -151,7 +157,7 @@ shape = SubResource( 5 )
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="KinematicBody2D"]
 position = Vector2( 74.692, 48.2055 )
 rotation = 1.06563
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="KinematicBody2D"]
 position = Vector2( 317.309, -31.8417 )
@@ -163,5 +169,10 @@ position = Vector2( 218.674, -80.9232 )
 rotation = 1.06563
 shape = SubResource( 6 )
 
-[node name="Spawn" type="Node2D" parent="."]
-position = Vector2( 185.838, 74.9653 )
+[node name="Teleport" parent="." instance=ExtResource( 15 )]
+position = Vector2( 186.136, 74.5897 )
+
+[node name="Spawn" type="Polygon2D" parent="." groups=[
+"spawn",
+]]
+position = Vector2( 186.136, 74.5897 )

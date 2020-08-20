@@ -2,6 +2,8 @@ extends "Interactable.gd"
 
 signal fade_out()
 
+export var target = "Home"
+
 func _ready():
 	type = MOVE
 	label_offset_x = 24
@@ -15,13 +17,12 @@ func _ready():
 func activate():
 	active = true
 	$Timer.start()
-	print_debug("We move")
 	emit_signal("fade_out")
 
 
 func _on_Timer_timeout():
 	for member in get_tree().get_nodes_in_group("map"):
-		member.queue_free()
-	var scene = load("res://House.tscn")
-	var player = scene.instance()
-	get_tree().root.get_node("Main").add_child(player)
+		member.delete()
+	var scene = load("res://" + target + ".tscn")
+	var map = scene.instance()
+	get_tree().root.get_node("Main").add_child(map)

@@ -20,6 +20,10 @@ func _ready():
 		member.connect("pickup", self, "pickup")
 		member.connect("drop", self, "drop")
 		member.set_player()
+	
+	
+	for member in get_tree().get_nodes_in_group("spawn"):
+		position = member.position
 
 #
 #func _physics_process(delta):

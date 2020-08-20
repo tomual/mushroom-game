@@ -16,7 +16,7 @@ animations = [ {
 } ]
 
 [sub_resource type="CapsuleShape2D" id=3]
-radius = 10.6621
+radius = 17.4394
 height = 0.0
 
 [node name="Teleport" type="Area2D" groups=[
@@ -25,13 +25,11 @@ height = 0.0
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 0.0998306, -0.893589 )
+visible = false
 frames = SubResource( 2 )
 offset = Vector2( -0.0998306, 8.89359 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -0.396851, 6.35959 )
-rotation = 1.5708
 shape = SubResource( 3 )
 
 [node name="Tween" type="Tween" parent="."]
