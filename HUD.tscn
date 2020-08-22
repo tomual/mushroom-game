@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://HUD.gd" type="Script" id=1]
 [ext_resource path="res://assets/EpilepsySansBold.ttf" type="DynamicFontData" id=2]
@@ -7,6 +7,13 @@
 size = 22
 use_mipmaps = true
 font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 25
+font_data = ExtResource( 2 )
+
+[sub_resource type="StreamTexture" id=3]
+load_path = "res://.import/bed.png-9063465f74af0a52bd03cbc80494b856.stex"
 
 [node name="HUD" type="CanvasLayer" groups=[
 "hud",
@@ -55,3 +62,37 @@ __meta__ = {
 [node name="TimerFade" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="Dialogue" type="ColorRect" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -301.5
+margin_top = -166.0
+margin_right = 301.5
+color = Color( 0.145098, 0.145098, 0.278431, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelDialogue" type="Label" parent="Dialogue"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 26.0
+margin_top = 24.0
+margin_right = -23.0
+margin_bottom = 53.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.764706, 0.784314, 0.607843, 1 )
+text = "Hello is this text easy to read? I'm hoping it's easy to read so that I don't have to work anymore on this custom font garbage."
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 913, 426 )
+texture = SubResource( 3 )
