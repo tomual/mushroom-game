@@ -6,6 +6,7 @@ signal talk_complete_line()
 
 var talking = false
 var lines_index = 0
+var line_complete = false
 var lines = [
 	{"line": "Line 1"},
 	{"line": "Line 2", "callback": "callback_choose", "param": "5"},
@@ -24,7 +25,6 @@ var lines2 = [
 	{"line": "Good job."},
 ]
 
-var line_complete = false
 
 func _ready():
 	type = TALK
@@ -33,7 +33,7 @@ func _ready():
 	self.connect("talk", self, "receive_signal")
 	
 	for member in get_tree().get_nodes_in_group("hud"):
-		member.connect("talk_complete_line", self, "finish_page")
+		member.connect("hud_line_complete", self, "hud_line_complete")
 
 
 func _process(delta):
@@ -58,11 +58,15 @@ func callback_test(number):
 
 
 func start():
+	print_debug("start")
 	talking = true
 	lines_index = 0
+	$TimerTalkCooldown.start()
+	next_page()
 
 
 func next_page():
+	print_debug("next_page")
 	line_complete = false
 	if lines_index >= lines.size():
 		end()
@@ -80,3 +84,8 @@ func end():
 
 func finish_page():
 	emit_signal("talk_complete_line")
+
+
+func hud_line_complete():
+	print_debug("hud_line_complete")
+	line_complete = true

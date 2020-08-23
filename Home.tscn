@@ -154,7 +154,7 @@ position = Vector2( -1201.06, 311.28 )
 position = Vector2( -1112.06, 412.988 )
 
 [node name="Conquerer" parent="YSort" instance=ExtResource( 19 )]
-position = Vector2( 89.4544, 76.8552 )
+position = Vector2( 439.477, 213.372 )
 
 [node name="Teleport" parent="." instance=ExtResource( 18 )]
 position = Vector2( 134.782, -33.9146 )

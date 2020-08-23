@@ -94,5 +94,9 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="."]
+visible = false
 position = Vector2( 913, 426 )
 texture = SubResource( 3 )
+
+[node name="TimerDialogueLetter" type="Timer" parent="."]
+wait_time = 0.02

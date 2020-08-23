@@ -35,7 +35,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=9]
+[sub_resource type="CapsuleShape2D" id=8]
 radius = 32.6559
 height = 99.9675
 
@@ -47,13 +47,13 @@ script = ExtResource( 2 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -5.33937, -38.3766 )
 frames = SubResource( 7 )
-frame = 1
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -2.3558, -32.9797 )
 rotation = 1.5708
-shape = SubResource( 9 )
+shape = SubResource( 8 )
 
 [node name="TimerTalkCooldown" type="Timer" parent="."]
 wait_time = 0.2

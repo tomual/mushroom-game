@@ -1,14 +1,28 @@
 extends CanvasLayer
 
+signal hud_line_complete()
+
+var talking = false
+var talk_line_cursor = 0
+var talk_line = ""
+
 func _ready():
 	init()
+
+
+func _process(delta):
+	if talking and talk_line.length() >= talk_line_cursor + 1:
+		$Dialogue/LabelDialogue.text = $Dialogue/LabelDialogue.text + talk_line[talk_line_cursor]
+		talk_line_cursor = talk_line_cursor + 1
+		if talk_line.length() <= talk_line_cursor + 1:
+			talk_complete_line()
 
 
 func init():
 	fade_in()
 	init_label_interactive()
 	init_listeners()
-	dialogue_hide()
+	talk_hide()
 
 
 func interactable_available(position, label):
@@ -39,9 +53,9 @@ func init_listeners():
 		member.connect("interactable_available", self, "interactable_available")
 		member.connect("interactable_unavailable", self, "interactable_unavailable")
 		member.connect("fade_out", self, "fade_out")
-		member.connect("dialogue_show", self, "dialogue_show")
-		member.connect("dialogue_hide", self, "dialogue_hide")
-		member.connect("dialogue_complete_line", self, "dialogue_complete_line")
+		member.connect("talk_show", self, "talk_show")
+		member.connect("talk_hide", self, "talk_hide")
+		member.connect("talk_complete_line", self, "talk_complete_line")
 
 
 func init_label_interactive():
@@ -52,14 +66,24 @@ func init_label_interactive():
 	$TweenInteractable.interpolate_property($LabelInteractable, "rect_rotation", 5, -5, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 0.5)
 
 
-func dialogue_show(line):
+func talk_show(line):
+	print_debug("talk_show")
+	$Dialogue/LabelDialogue.text = ""
 	$Dialogue.show()
-	$Dialogue/LabelDialogue.text = line
+	talking = true
+	talk_line_cursor = 0
+	talk_line = line
+	
 
 
-func dialogue_hide():
+func talk_hide():
 	$Dialogue.hide()
 
 
-func dialogue_complete_line():
-	$Dialogue.hide()
+func talk_complete_line():
+	$Dialogue/LabelDialogue.text = talk_line
+	emit_signal("hud_line_complete")
+
+
+func talk_next_letter():
+	return
