@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://HUD.gd" type="Script" id=1]
 [ext_resource path="res://assets/EpilepsySansBold.ttf" type="DynamicFontData" id=2]
@@ -15,6 +15,10 @@ font_data = ExtResource( 2 )
 [sub_resource type="StreamTexture" id=3]
 load_path = "res://.import/bed.png-9063465f74af0a52bd03cbc80494b856.stex"
 
+[sub_resource type="DynamicFont" id=4]
+size = 25
+font_data = ExtResource( 2 )
+
 [node name="HUD" type="CanvasLayer" groups=[
 "hud",
 ]]
@@ -27,7 +31,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -40.0
 margin_top = -14.0
-text = "v0.2"
+text = "v0.3"
 align = 2
 __meta__ = {
 "_edit_use_anchors_": false
@@ -54,6 +58,8 @@ playback/repeat = true
 [node name="ColorRectFade" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 0.560547
+margin_right = 0.560547
 color = Color( 0.145098, 0.145098, 0.278431, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -100,3 +106,43 @@ texture = SubResource( 3 )
 
 [node name="TimerDialogueLetter" type="Timer" parent="."]
 wait_time = 0.02
+
+[node name="Options" type="ColorRect" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 61.0731
+margin_top = -282.467
+margin_right = 301.073
+margin_bottom = -175.467
+color = Color( 0.145098, 0.145098, 0.278431, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonOption1" type="Button" parent="Options"]
+margin_left = 10.0
+margin_top = 10.7197
+margin_right = 230.0
+margin_bottom = 53.7197
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.764706, 0.784314, 0.607843, 1 )
+text = "Option 1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonOption2" type="Button" parent="Options"]
+margin_left = 10.0
+margin_top = 54.7197
+margin_right = 230.0
+margin_bottom = 97.7197
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.764706, 0.784314, 0.607843, 1 )
+text = "Option 2"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Options/ButtonOption1" to="." method="_on_Option1_pressed"]
+[connection signal="pressed" from="Options/ButtonOption2" to="." method="_on_Option2_pressed"]

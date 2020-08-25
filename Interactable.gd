@@ -105,4 +105,4 @@ func deactivate():
 	active = false
 	show_label()
 	cooldown.start()
-#	emit_signal("interactable_available", position)
+	#	emit_signal("interactable_available", position)

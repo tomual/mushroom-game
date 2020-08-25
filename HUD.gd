@@ -1,6 +1,9 @@
 extends CanvasLayer
 
 signal hud_line_complete()
+signal option_1_pressed()
+signal option_2_pressed()
+
 
 var talking = false
 var talk_line_cursor = 0
@@ -23,6 +26,7 @@ func init():
 	init_label_interactive()
 	init_listeners()
 	talk_hide()
+	options_hide()
 
 
 func interactable_available(position, label):
@@ -56,6 +60,8 @@ func init_listeners():
 		member.connect("talk_show", self, "talk_show")
 		member.connect("talk_hide", self, "talk_hide")
 		member.connect("talk_complete_line", self, "talk_complete_line")
+		member.connect("options_show", self, "options_show")
+		member.connect("options_hide", self, "options_hide")
 
 
 func init_label_interactive():
@@ -73,17 +79,42 @@ func talk_show(line):
 	talking = true
 	talk_line_cursor = 0
 	talk_line = line
-	
 
 
 func talk_hide():
 	$Dialogue.hide()
+	talking = false
+	talk_line_cursor = 0
+	talk_line = ""
+
+
+func options_hide():
+	$Options.hide()
+
+
+func options_show(options):
+	print_debug(options)
+	$Options/ButtonOption1.text = options[0].label
+	$Options/ButtonOption2.text = options[1].label
+	$Options.show()
 
 
 func talk_complete_line():
 	$Dialogue/LabelDialogue.text = talk_line
+	talk_line_cursor = talk_line.length()
 	emit_signal("hud_line_complete")
 
 
 func talk_next_letter():
 	return
+
+
+func _on_Option1_pressed():
+	emit_signal("option_1_pressed")
+	talk_hide()
+	options_hide()
+
+
+func _on_Option2_pressed():
+	emit_signal("option_2_pressed")
+	options_hide()
