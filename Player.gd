@@ -5,7 +5,7 @@ const DIR_T = "t"
 const DIR_L = "l"
 const DIR_R = "r"
 
-enum { IDLE, BUSY, DEAD }
+enum { IDLE, BUSY, DODGE, DEAD }
 
 var status = IDLE
 var velocity = Vector2()
@@ -72,16 +72,25 @@ func get_input():
 	if Input.is_action_pressed("ui_up"):
 		velocity.y -= 1
 		facing = DIR_T
-	velocity = velocity.normalized() * speed
+	if Input.is_action_pressed("dodge") and $TimerDodgeCoolDown.is_stopped():
+		print_debug("dodge")
+		status = DODGE
+		$TimerDodgeCoolDown.start()
 
 func _physics_process(delta):
 	if status == IDLE:
 		get_input()
+		if velocity == Vector2.ZERO:
+			$AnimatedSprite.animation = str(facing, "_idle")
+		else:
+			$AnimatedSprite.animation = str(facing, "_walk")
+	if status == BUSY:
+		velocity = Vector2.ZERO
+	if status == DODGE:
+		speed = 400
+		$AnimatedSprite.animation = "dodge"
+	velocity = velocity.normalized() * speed
 	velocity = move_and_slide(velocity)
-	if velocity == Vector2.ZERO:
-		$AnimatedSprite.animation = str(facing, "_idle")
-	else:
-		$AnimatedSprite.animation = str(facing, "_walk")
 
 func can_move():
 	return hp > 0
@@ -101,3 +110,11 @@ func set_busy():
 
 func set_idle():
 	status = IDLE
+
+
+func _on_TimerDodgeCoolDown_timeout():
+	speed = 300
+	if status == DODGE:
+		status = IDLE
+	else:
+		$AnimatedSprite.animation = str(facing, "_idle")
