@@ -4,6 +4,8 @@ signal interactable_available(position, type)
 signal interactable_unavailable()
 signal pickup(node)
 signal talk(id)
+signal set_busy()
+signal set_idle()
 
 export var id = 0
 

@@ -3,6 +3,8 @@ extends CanvasLayer
 signal hud_line_complete()
 signal option_1_pressed()
 signal option_2_pressed()
+signal player_set_idle()
+signal player_set_busy()
 
 
 var talking = false
@@ -74,6 +76,7 @@ func init_label_interactive():
 
 func talk_show(line):
 	print_debug("talk_show")
+	emit_signal("player_set_busy")
 	$Dialogue/LabelDialogue.text = ""
 	$Dialogue.show()
 	talking = true
@@ -82,6 +85,7 @@ func talk_show(line):
 
 
 func talk_hide():
+	emit_signal("player_set_idle")
 	$Dialogue.hide()
 	talking = false
 	talk_line_cursor = 0

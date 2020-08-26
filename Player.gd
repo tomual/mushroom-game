@@ -5,6 +5,9 @@ const DIR_T = "t"
 const DIR_L = "l"
 const DIR_R = "r"
 
+enum { IDLE, BUSY, DEAD }
+
+var status = IDLE
 var velocity = Vector2()
 var speed = 300
 var hp = 10
@@ -24,6 +27,10 @@ func _ready():
 	
 	for member in get_tree().get_nodes_in_group("spawn"):
 		position = member.position
+	
+	for member in get_tree().get_nodes_in_group("hud"):
+		member.connect("player_set_busy", self, "set_busy")
+		member.connect("player_set_idle", self, "set_idle")
 
 #
 #func _physics_process(delta):
@@ -68,7 +75,8 @@ func get_input():
 	velocity = velocity.normalized() * speed
 
 func _physics_process(delta):
-	get_input()
+	if status == IDLE:
+		get_input()
 	velocity = move_and_slide(velocity)
 	if velocity == Vector2.ZERO:
 		$AnimatedSprite.animation = str(facing, "_idle")
@@ -85,3 +93,11 @@ func pickup(node):
 
 func drop(node):
 	print_debug("drop")
+
+
+func set_busy():
+	status = BUSY
+
+
+func set_idle():
+	status = IDLE
