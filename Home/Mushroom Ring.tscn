@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/rainforest/mushroom ring.png" type="Texture" id=1]
+
+[node name="Tree" type="KinematicBody2D"]
+
+[node name="mushroom ring" type="Sprite" parent="."]
+position = Vector2( 2.92889, 59.1277 )
+texture = ExtResource( 1 )

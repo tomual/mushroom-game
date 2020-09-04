@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/rainforest/cat plant2.png" type="Texture" id=1]
+
+[node name="Tree" type="KinematicBody2D"]
+
+[node name="cat plant2" type="Sprite" parent="."]
+position = Vector2( -1.60596, -27.8991 )
+texture = ExtResource( 1 )
