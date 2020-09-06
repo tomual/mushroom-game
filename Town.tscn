@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Town/Rock.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Town/Rock 2.tscn" type="PackedScene" id=2]
@@ -27,6 +27,7 @@
 [ext_resource path="res://Home/Stick.tscn" type="PackedScene" id=25]
 [ext_resource path="res://Bumpy.tscn" type="PackedScene" id=26]
 [ext_resource path="res://Houdini.tscn" type="PackedScene" id=27]
+[ext_resource path="res://Monster.tscn" type="PackedScene" id=28]
 [ext_resource path="res://Home/Mushroom 2.tscn" type="PackedScene" id=30]
 [ext_resource path="res://Home/Deadtree 3.tscn" type="PackedScene" id=32]
 [ext_resource path="res://Map.gd" type="Script" id=34]
@@ -89,6 +90,9 @@ texture = ExtResource( 7 )
 
 [node name="YSort" type="YSort" parent="."]
 position = Vector2( -3.05286, -0.212341 )
+
+[node name="Garl" parent="YSort" instance=ExtResource( 28 )]
+position = Vector2( 631.754, 404.481 )
 
 [node name="Bush" parent="YSort" instance=ExtResource( 14 )]
 position = Vector2( 969.129, 1122.89 )

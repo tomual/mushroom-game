@@ -14,5 +14,6 @@ rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="bench" type="Sprite" parent="."]
-position = Vector2( 4.75562, -76.3541 )
+position = Vector2( -14.3047, -59.5362 )
+scale = Vector2( 0.796147, 0.796146 )
 texture = ExtResource( 1 )

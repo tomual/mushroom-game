@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://assets/rainforest/leaves2.png" type="Texture" id=1]
 [ext_resource path="res://Home/House.tscn" type="PackedScene" id=2]
@@ -34,6 +34,7 @@
 [ext_resource path="res://assets/rainforest/leaves3.png" type="Texture" id=32]
 [ext_resource path="res://assets/rainforest/leaves.png" type="Texture" id=33]
 [ext_resource path="res://assets/rainforest/rock3.png" type="Texture" id=34]
+[ext_resource path="res://Monster.tscn" type="PackedScene" id=35]
 
 [node name="Home" type="Node2D" groups=[
 "map",
@@ -358,6 +359,9 @@ position = Vector2( 1323.78, 603.916 )
 
 [node name="Bush7" parent="YSort" instance=ExtResource( 29 )]
 position = Vector2( 1581.17, 813.219 )
+
+[node name="Garl" parent="YSort" instance=ExtResource( 35 )]
+position = Vector2( 1186.02, 963.166 )
 
 [node name="Teleport2" parent="." instance=ExtResource( 18 )]
 position = Vector2( 3771.26, 1778.93 )

@@ -7,8 +7,8 @@ const DIR_R = "r"
 
 enum { IDLE, BUSY, DODGE, DEAD }
 
+var velocity
 var status = IDLE
-var velocity = Vector2()
 var speed = 300
 var hp = 10
 var screen_size
@@ -22,6 +22,9 @@ func _ready():
 	for member in get_tree().get_nodes_in_group("interactable"):
 		member.connect("pickup", self, "pickup")
 		member.connect("drop", self, "drop")
+		member.set_player()
+	
+	for member in get_tree().get_nodes_in_group("enemy"):
 		member.set_player()
 	
 	
