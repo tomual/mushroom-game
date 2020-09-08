@@ -144,5 +144,43 @@ text = "Option 2"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ContainerPlayerFrames" type="Control" parent="."]
+margin_right = 334.0
+margin_bottom = 89.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="ContainerPlayerFrames"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -50.0
+margin_right = 50.0
+margin_bottom = 89.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProgressBar" type="ProgressBar" parent="ContainerPlayerFrames/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 14.0
+margin_right = 1.52588e-05
+margin_bottom = -61.0
+value = 100.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProgressBar2" type="ProgressBar" parent="ContainerPlayerFrames/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 7.62939e-06
+margin_bottom = -75.0
+value = 100.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="Options/ButtonOption1" to="." method="_on_Option1_pressed"]
 [connection signal="pressed" from="Options/ButtonOption2" to="." method="_on_Option2_pressed"]

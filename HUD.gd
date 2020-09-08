@@ -10,6 +10,7 @@ signal player_set_busy()
 var talking = false
 var talk_line_cursor = 0
 var talk_line = ""
+var player
 
 func _ready():
 	init()
@@ -21,6 +22,10 @@ func _process(delta):
 		talk_line_cursor = talk_line_cursor + 1
 		if talk_line.length() <= talk_line_cursor + 1:
 			talk_complete_line()
+	var player_screen_position = player.get_global_transform_with_canvas()[2]
+	$ContainerPlayerFrames.margin_left = player_screen_position[0] - 150
+	$ContainerPlayerFrames.margin_top = player_screen_position[1] - 120
+	$ContainerPlayerFrames.rect_size = Vector2(300, 100)
 
 
 func init():
@@ -29,6 +34,9 @@ func init():
 	init_listeners()
 	talk_hide()
 	options_hide()
+
+func set_player():
+	player = get_tree().get_nodes_in_group("player")[0]
 
 
 func interactable_available(position, label):

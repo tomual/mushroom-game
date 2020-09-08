@@ -32,6 +32,7 @@ func _ready():
 		position = member.position
 	
 	for member in get_tree().get_nodes_in_group("hud"):
+		member.set_player()
 		member.connect("player_set_busy", self, "set_busy")
 		member.connect("player_set_idle", self, "set_idle")
 
