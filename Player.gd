@@ -5,7 +5,7 @@ const DIR_T = "t"
 const DIR_L = "l"
 const DIR_R = "r"
 
-enum { IDLE, BUSY, DODGE, DEAD }
+enum { IDLE, BUSY, DODGE, DEAD, ATTACK_PRE, ATTACK, ATTACK_POST }
 
 var velocity
 var status = IDLE
@@ -15,7 +15,12 @@ var screen_size
 export var facing = DIR_T
 export var flipped = false
 
+var time_attack_pre = 0.1
+var time_attack = 0.2
+var time_attack_post = 0.1
+
 func _ready():
+	disable_weapon()
 	screen_size = get_viewport_rect().size
 	$AnimatedSprite.play()
 	
@@ -60,7 +65,10 @@ func _ready():
 ##		position.x = clamp(position.x, 30, screen_size.x - 30)
 ##		position.y = clamp(position.y, 75, screen_size.y - 45)
 
+
 func get_input():
+	if Input.is_action_pressed("ui_accept"):
+		attack_start()
 	velocity = Vector2()
 	if Input.is_action_pressed("ui_right"):
 		velocity.x += 1
@@ -81,6 +89,7 @@ func get_input():
 		status = DODGE
 		$TimerDodgeCoolDown.start()
 
+
 func _physics_process(delta):
 	if status == IDLE:
 		get_input()
@@ -88,11 +97,16 @@ func _physics_process(delta):
 			$AnimatedSprite.animation = str(facing, "_idle")
 		else:
 			$AnimatedSprite.animation = str(facing, "_walk")
-	if status == BUSY:
+	if status != IDLE and status != DODGE:
 		velocity = Vector2.ZERO
 	if status == DODGE:
 		speed = 400
 		$AnimatedSprite.animation = "dodge"
+	
+	if flipped:
+		$AreaPlayerWeapon/CollisionShape2D.position.x = abs($AreaPlayerWeapon/CollisionShape2D.position.x) * -1
+	else:
+		$AreaPlayerWeapon/CollisionShape2D.position.x = abs($AreaPlayerWeapon/CollisionShape2D.position.x)
 	velocity = velocity.normalized() * speed
 	velocity = move_and_slide(velocity)
 
@@ -122,3 +136,33 @@ func _on_TimerDodgeCoolDown_timeout():
 		status = IDLE
 	else:
 		$AnimatedSprite.animation = str(facing, "_idle")
+
+
+func attack_start():
+	status = ATTACK_PRE
+	$TimerAttack.wait_time = time_attack_pre
+	$TimerAttack.start()
+
+
+func enable_weapon():
+	$AreaPlayerWeapon/CollisionShape2D.disabled = false 
+
+
+func disable_weapon():
+	$AreaPlayerWeapon/CollisionShape2D.disabled = true 
+
+
+func _on_TimerAttack_timeout():
+	
+	if status == ATTACK_PRE:
+		status = ATTACK
+		enable_weapon()
+		$TimerAttack.wait_time = time_attack
+		$TimerAttack.start()
+	elif status == ATTACK:
+		status = ATTACK_POST
+		disable_weapon()
+		$TimerAttack.wait_time = time_attack_post
+		$TimerAttack.start()
+	else:
+		status = IDLE
