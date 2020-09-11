@@ -15,7 +15,10 @@ func _ready():
 
 
 func activate():
+	print_debug("activate")
+	in_range = false
 	active = true
+	emit_signal("interactable_unavailable")
 	$Timer.start()
 	emit_signal("fade_out")
 

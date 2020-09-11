@@ -40,6 +40,7 @@ func set_player():
 
 
 func interactable_available(position, label):
+	# print_debug("interactable_available")
 	$LabelInteractable.text = label
 	$LabelInteractable.visible = true
 	$LabelInteractable.set_position(position)
@@ -47,6 +48,7 @@ func interactable_available(position, label):
 
 
 func interactable_unavailable():
+	# print_debug("interactable_unavailable")
 	$LabelInteractable.visible = false
 
 
