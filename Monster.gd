@@ -6,8 +6,8 @@ var speed = 200
 var player_in_attack_range = false
 var player_in_aggro_range = false
 
-var time_attack_pre = 1
-var time_attack = 1
+var time_attack_pre = 0.1
+var time_attack = 0.1
 var time_attack_post = 1
 
 enum { IDLE, FOLLOWING, BUSY, DODGE, DEAD, ATTACK_PRE, ATTACK, ATTACK_POST }
@@ -65,16 +65,14 @@ func attack_start():
 
 
 func _on_AreaAggro_area_entered(area):
-	var name = area.get_parent().name
-	if name == "Player":
+	if area.name == "AreaPlayer":
 		player_in_aggro_range = true
 		if status == IDLE:
 			status = FOLLOWING
 
 
 func _on_AreaAggro_area_exited(area):
-	var name = area.get_parent().name
-	if name == "Player":
+	if area.name == "AreaPlayer":
 		player_in_aggro_range = false
 		if status == FOLLOWING:
 			status = IDLE
