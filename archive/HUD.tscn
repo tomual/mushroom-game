@@ -1,0 +1,186 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://HUD.gd" type="Script" id=1]
+[ext_resource path="res://assets/EpilepsySansBold.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 22
+use_mipmaps = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 25
+font_data = ExtResource( 2 )
+
+[sub_resource type="StreamTexture" id=3]
+load_path = "res://.import/bed.png-9063465f74af0a52bd03cbc80494b856.stex"
+
+[sub_resource type="DynamicFont" id=4]
+size = 25
+font_data = ExtResource( 2 )
+
+[node name="HUD" type="CanvasLayer" groups=[
+"hud",
+]]
+script = ExtResource( 1 )
+
+[node name="LabelVersion" type="Label" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -40.0
+margin_top = -14.0
+text = "v0.3"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelInteractable" type="Label" parent="."]
+margin_right = 48.0
+margin_bottom = 14.0
+rect_pivot_offset = Vector2( 24.3302, 6.44544 )
+custom_fonts/font = SubResource( 1 )
+text = "Pick Up"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TweenInteractable" type="Tween" parent="."]
+repeat = true
+playback/repeat = true
+
+[node name="TweenFade" type="Tween" parent="."]
+
+[node name="ColorRectFade" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.560547
+margin_right = 0.560547
+color = Color( 0.145098, 0.145098, 0.278431, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimerFade" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="Dialogue" type="ColorRect" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -301.5
+margin_top = -166.0
+margin_right = 301.5
+color = Color( 0.145098, 0.145098, 0.278431, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelDialogue" type="Label" parent="Dialogue"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 26.0
+margin_top = 24.0
+margin_right = -23.0
+margin_bottom = 53.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.764706, 0.784314, 0.607843, 1 )
+text = "Hello is this text easy to read? I'm hoping it's easy to read so that I don't have to work anymore on this custom font garbage."
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+position = Vector2( 913, 426 )
+texture = SubResource( 3 )
+
+[node name="TimerDialogueLetter" type="Timer" parent="."]
+wait_time = 0.02
+
+[node name="Options" type="ColorRect" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 61.0731
+margin_top = -282.467
+margin_right = 301.073
+margin_bottom = -175.467
+color = Color( 0.145098, 0.145098, 0.278431, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonOption1" type="Button" parent="Options"]
+margin_left = 10.0
+margin_top = 10.7197
+margin_right = 230.0
+margin_bottom = 53.7197
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.764706, 0.784314, 0.607843, 1 )
+text = "Option 1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonOption2" type="Button" parent="Options"]
+margin_left = 10.0
+margin_top = 54.7197
+margin_right = 230.0
+margin_bottom = 97.7197
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.764706, 0.784314, 0.607843, 1 )
+text = "Option 2"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ContainerPlayerFrames" type="Control" parent="."]
+margin_right = 334.0
+margin_bottom = 89.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="ContainerPlayerFrames"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -50.0
+margin_right = 50.0
+margin_bottom = 89.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProgressBar" type="ProgressBar" parent="ContainerPlayerFrames/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 14.0
+margin_right = 1.52588e-05
+margin_bottom = -61.0
+value = 100.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProgressBar2" type="ProgressBar" parent="ContainerPlayerFrames/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 7.62939e-06
+margin_bottom = -75.0
+value = 100.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Options/ButtonOption1" to="." method="_on_Option1_pressed"]
+[connection signal="pressed" from="Options/ButtonOption2" to="." method="_on_Option2_pressed"]
