@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=2]
+[gd_scene load_steps=65 format=2]
 
 [ext_resource path="res://assets/player-idle.png" type="Texture" id=1]
 [ext_resource path="res://assets/player-walk.png" type="Texture" id=2]
@@ -260,7 +260,13 @@ animations = [ {
 
 [sub_resource type="RectangleShape2D" id=54]
 
-[node name="Player" type="KinematicBody2D"]
+[sub_resource type="RectangleShape2D" id=55]
+extents = Vector2( 10.5003, 7.11699 )
+
+[node name="Player" type="KinematicBody2D" groups=[
+"player",
+]]
+position = Vector2( 0, -16 )
 script = ExtResource( 5 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
@@ -286,5 +292,11 @@ one_shot = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaPlayerWeapon"]
 position = Vector2( 12.6277, 8.13783 )
 shape = SubResource( 54 )
+
+[node name="AreaPlayer" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaPlayer"]
+position = Vector2( 0.280613, 9.54091 )
+shape = SubResource( 55 )
 [connection signal="timeout" from="TimerDodgeCoolDown" to="." method="_on_TimerDodgeCoolDown_timeout"]
 [connection signal="timeout" from="TimerAttack" to="." method="_on_TimerAttack_timeout"]

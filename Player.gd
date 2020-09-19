@@ -16,6 +16,9 @@ func _ready():
 	disable_weapon()
 	$AnimatedSprite.play()
 	$AnimatedSpriteWeapon.play()
+	
+	for member in get_tree().get_nodes_in_group("enemy"):
+		member.set_player()
 
 
 func get_input():
@@ -61,6 +64,11 @@ func _physics_process(delta):
 		$AnimatedSpriteWeapon.animation = "dodge"
 	velocity = velocity.normalized() * speed
 	velocity = move_and_slide(velocity)
+	
+	if flipped:
+		$AreaPlayerWeapon/CollisionShape2D.position.x = abs($AreaPlayerWeapon/CollisionShape2D.position.x) * -1
+	else:
+		$AreaPlayerWeapon/CollisionShape2D.position.x = abs($AreaPlayerWeapon/CollisionShape2D.position.x)
 
 
 func _on_TimerDodgeCoolDown_timeout():
