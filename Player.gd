@@ -4,7 +4,7 @@ enum { IDLE, BUSY, DODGE, DEAD, ATTACK_PRE, ATTACK, ATTACK_POST }
 
 var velocity
 var status = IDLE
-var speed = 300
+var speed = 200
 export var flipped = false
 
 var time_attack_pre = 0.1
@@ -59,7 +59,7 @@ func _physics_process(delta):
 	if status != IDLE and status != DODGE:
 		velocity = Vector2.ZERO
 	if status == DODGE:
-		speed = 200
+		speed = 100
 		$AnimatedSprite.animation = "dodge"
 		$AnimatedSpriteWeapon.animation = "dodge"
 	velocity = velocity.normalized() * speed
@@ -72,7 +72,7 @@ func _physics_process(delta):
 
 
 func _on_TimerDodgeCoolDown_timeout():
-	speed = 300
+	speed = 200
 	if status == DODGE:
 		status = IDLE
 	else:

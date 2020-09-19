@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 var velocity
 var player
-var speed = 200
+var speed = 100
 var player_in_attack_range = false
 var player_in_aggro_range = false
 
@@ -81,6 +81,7 @@ func _on_AreaAggro_area_exited(area):
 	if area.name == "AreaPlayer":
 		player_in_aggro_range = false
 		if status == FOLLOWING:
+			$AnimatedSprite.animation = "idle"
 			status = IDLE
 
 

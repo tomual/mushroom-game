@@ -1,14 +1,126 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Garl.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/home/patch 2.png" type="Texture" id=3]
+[ext_resource path="res://assets/home/mushy 1.png" type="Texture" id=4]
+[ext_resource path="res://assets/home/patch 3.png" type="Texture" id=5]
+[ext_resource path="res://assets/home/lil mushes 2.png" type="Texture" id=6]
+[ext_resource path="res://assets/home/house.png" type="Texture" id=7]
+[ext_resource path="res://assets/home/lil mushes 1.png" type="Texture" id=8]
+[ext_resource path="res://assets/home/tree 1.png" type="Texture" id=9]
+[ext_resource path="res://assets/home/mush 2.png" type="Texture" id=10]
+[ext_resource path="res://assets/home/mush 1.png" type="Texture" id=11]
+[ext_resource path="res://assets/home/mushy 2.png" type="Texture" id=12]
+[ext_resource path="res://assets/home/mush 3.png" type="Texture" id=13]
+[ext_resource path="res://assets/home/patch 1.png" type="Texture" id=14]
+[ext_resource path="res://assets/home/tree 2.png" type="Texture" id=15]
+[ext_resource path="res://assets/home/tree 3.png" type="Texture" id=16]
+[ext_resource path="res://assets/home/patch 4.png" type="Texture" id=17]
 
 [node name="Home" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -10
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.764706, 0.784314, 0.607843, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="YSort2" type="YSort" parent="."]
+
+[node name="patch 4" type="Sprite" parent="YSort2"]
+position = Vector2( 303.637, 382.447 )
+scale = Vector2( 2.76271, 2.76271 )
+texture = ExtResource( 17 )
+
+[node name="patch 1" type="Sprite" parent="YSort2"]
+position = Vector2( 168.8, 289.376 )
+scale = Vector2( 2.76271, 2.76271 )
+texture = ExtResource( 14 )
+
+[node name="patch 2" type="Sprite" parent="YSort2"]
+position = Vector2( 464.168, 284.688 )
+scale = Vector2( 2.31748, 2.31748 )
+texture = ExtResource( 3 )
+
+[node name="patch 6" type="Sprite" parent="YSort2"]
+position = Vector2( 461.133, 424.405 )
+scale = Vector2( 1.51666, 1.51666 )
+texture = ExtResource( 3 )
+
+[node name="patch 3" type="Sprite" parent="YSort2"]
+position = Vector2( 134.146, 373.697 )
+scale = Vector2( 3.58329, 3.58329 )
+texture = ExtResource( 5 )
+
+[node name="patch 5" type="Sprite" parent="YSort2"]
+position = Vector2( 388.11, 199.145 )
+scale = Vector2( 3.58329, 3.58329 )
+texture = ExtResource( 5 )
 
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Monster" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 278.601, 148.493 )
+position = Vector2( 215.033, 509.77 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 84, 80 )
+position = Vector2( 553.342, 374.531 )
+
+[node name="lil mushes 1" type="Sprite" parent="YSort"]
+position = Vector2( 309.845, 378.032 )
+texture = ExtResource( 8 )
+
+[node name="lil mushes 2" type="Sprite" parent="YSort"]
+position = Vector2( 462.753, 311.961 )
+texture = ExtResource( 6 )
+
+[node name="mush 1" type="Sprite" parent="YSort"]
+position = Vector2( 485.406, 392.19 )
+texture = ExtResource( 11 )
+
+[node name="mush 2" type="Sprite" parent="YSort"]
+position = Vector2( 450.482, 408.236 )
+texture = ExtResource( 10 )
+
+[node name="mush 3" type="Sprite" parent="YSort"]
+position = Vector2( 505.227, 420.507 )
+texture = ExtResource( 13 )
+
+[node name="mushy 1" type="Sprite" parent="YSort"]
+position = Vector2( 200.168, 275.686 )
+texture = ExtResource( 4 )
+
+[node name="mushy 2" type="Sprite" parent="YSort"]
+position = Vector2( 425.754, 261.528 )
+texture = ExtResource( 12 )
+
+[node name="house" type="Sprite" parent="YSort"]
+position = Vector2( 203.187, 193.977 )
+texture = ExtResource( 7 )
+
+[node name="tree 1" type="Sprite" parent="YSort"]
+position = Vector2( 354.019, 186.962 )
+texture = ExtResource( 9 )
+
+[node name="tree 2" type="Sprite" parent="YSort"]
+position = Vector2( 243.586, 330.431 )
+texture = ExtResource( 15 )
+
+[node name="tree 5" type="Sprite" parent="YSort"]
+position = Vector2( 466.34, 202.064 )
+texture = ExtResource( 15 )
+
+[node name="tree 3" type="Sprite" parent="YSort"]
+position = Vector2( 590.932, 282.477 )
+texture = ExtResource( 16 )
+offset = Vector2( -59.4641, -9.6225 )
+
+[node name="tree 4" type="Sprite" parent="YSort"]
+position = Vector2( 207.719, 381.584 )
+texture = ExtResource( 16 )
+offset = Vector2( -59.4641, -9.6225 )
