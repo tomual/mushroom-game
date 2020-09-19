@@ -49,3 +49,11 @@ func _physics_process(delta):
 		$AnimatedSprite.animation = "dodge"
 	velocity = velocity.normalized() * speed
 	velocity = move_and_slide(velocity)
+
+
+func _on_TimerDodgeCoolDown_timeout():
+	speed = 300
+	if status == DODGE:
+		status = IDLE
+	else:
+		$AnimatedSprite.animation = "idle"
