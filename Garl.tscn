@@ -82,10 +82,10 @@ animations = [ {
 "name": "walk aggro",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ) ],
-"loop": true,
+"frames": [ SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 20 ) ],
+"loop": false,
 "name": "attack",
-"speed": 20.0
+"speed": 7.0
 }, {
 "frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
 "loop": true,
@@ -101,6 +101,7 @@ height = 26.0182
 extents = Vector2( 28.6664, 1.92645 )
 
 [sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 37.1512, 34.4539 )
 
 [sub_resource type="CircleShape2D" id=9]
 radius = 138.906
@@ -127,18 +128,20 @@ position = Vector2( 0, 8.48528 )
 shape = SubResource( 10 )
 
 [node name="AreaWeapon" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaWeapon"]
 position = Vector2( 20.1525, 8.83884 )
 shape = SubResource( 11 )
 
 [node name="AreaAggro" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaAggro"]
 shape = SubResource( 9 )
 
 [node name="TimerAttack" type="Timer" parent="."]
+one_shot = true
+[connection signal="area_entered" from="AreaAttack" to="." method="_on_AreaAttack_area_entered"]
+[connection signal="area_exited" from="AreaAttack" to="." method="_on_AreaAttack_area_exited"]
 [connection signal="area_entered" from="AreaAggro" to="." method="_on_AreaAggro_area_entered"]
 [connection signal="area_exited" from="AreaAggro" to="." method="_on_AreaAggro_area_exited"]
+[connection signal="timeout" from="TimerAttack" to="." method="_on_TimerAttack_timeout"]

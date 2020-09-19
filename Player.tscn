@@ -257,6 +257,8 @@ animations = [ {
 } ]
 
 [sub_resource type="CapsuleShape2D" id=27]
+radius = 7.4135
+height = 0.0
 
 [sub_resource type="RectangleShape2D" id=54]
 
@@ -278,6 +280,7 @@ frames = SubResource( 33 )
 animation = "walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 10.1021 )
 shape = SubResource( 27 )
 
 [node name="TimerDodgeCoolDown" type="Timer" parent="."]
