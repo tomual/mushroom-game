@@ -59,7 +59,7 @@ func _physics_process(delta):
 	if status != IDLE and status != DODGE:
 		velocity = Vector2.ZERO
 	if status == DODGE:
-		speed = 100
+		speed = 200
 		$AnimatedSprite.animation = "dodge"
 		$AnimatedSpriteWeapon.animation = "dodge"
 	velocity = velocity.normalized() * speed
