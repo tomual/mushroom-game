@@ -1,10 +1,13 @@
 extends KinematicBody2D
 
+signal apply_damage(amount)
+
 var velocity
 var player
 var speed = 100
 var player_in_attack_range = false
 var player_in_aggro_range = false
+var attack_physical = 5
 
 var time_attack_pre = 0.6
 var time_attack = 0.2
@@ -27,8 +30,8 @@ func _process(delta):
 			$AnimatedSprite.flip_h = position.x > player.position.x
 			flipped = $AnimatedSprite.flip_h
 			velocity = Vector2()
-			var offset_y = 0
-			var offset_x = 30
+			var offset_y = -15
+			var offset_x = 25
 			var precision = 5
 			if !flipped:
 				offset_x = offset_x * -1
@@ -118,3 +121,7 @@ func _on_TimerAttack_timeout():
 		else:
 			status = IDLE
 			$AnimatedSprite.animation = "idle"
+
+
+func _on_AreaWeapon_area_entered(area):
+	emit_signal("apply_damage", in_range)

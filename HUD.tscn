@@ -1,20 +1,44 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/ui/nine.png" type="Texture" id=1]
 [ext_resource path="res://ui/Button.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ui/font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://HUD.gd" type="Script" id=4]
 
-[node name="HUD" type="CanvasLayer"]
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.568627, 0.698039, 0.568627, 1 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0.176471, 0.203922, 0.356863, 1 )
 
-[node name="Label" type="Label" parent="."]
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.176471, 0.203922, 0.356863, 1 )
+
+[node name="HUD" type="CanvasLayer" groups=[
+"hud",
+]]
+script = ExtResource( 4 )
+
+[node name="LabelVersion" type="Label" parent="."]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -40.0
 margin_top = -14.0
-text = "v0.4"
+text = "v0.5"
 align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelInteractable" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = ExtResource( 3 )
+text = "Pick Up"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -54,6 +78,61 @@ margin_bottom = -18.0
 custom_fonts/normal_font = ExtResource( 3 )
 custom_colors/default_color = Color( 0.858824, 0.882353, 0.713726, 1 )
 text = "Scroll down in the inspector until you see \"Custom styles\". Create a new style for \"Normal\", and make it a \"new StyleBoxTexture\". Edit the StyleBoxTexture."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TweenFade" type="Tween" parent="."]
+
+[node name="TweenInteractable" type="Tween" parent="."]
+repeat = true
+playback/repeat = true
+
+[node name="ColorRectFade" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.145098, 0.145098, 0.278431, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimerFade" type="Timer" parent="."]
+
+[node name="Options" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerFrames" type="Control" parent="."]
+margin_right = 51.0
+margin_bottom = 27.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BarHealth" type="ProgressBar" parent="PlayerFrames"]
+anchor_right = 1.0
+margin_left = -0.44545
+margin_right = -0.44545
+margin_bottom = 14.0
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+value = 50.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BarStamina" type="ProgressBar" parent="PlayerFrames"]
+anchor_right = 1.0
+margin_top = 11.0
+margin_bottom = 21.0
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+value = 50.0
+percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Garl.tscn" type="PackedScene" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://map/home/tree 3.tscn" type="PackedScene" id=15]
 [ext_resource path="res://map/home/tree 2.tscn" type="PackedScene" id=16]
 [ext_resource path="res://assets/home/patch 4.png" type="Texture" id=17]
+[ext_resource path="res://Jouro.tscn" type="PackedScene" id=18]
 
 [node name="Home" type="Node2D"]
 
@@ -104,6 +105,9 @@ position = Vector2( 231.406, 400.652 )
 
 [node name="tree 5" parent="YSort" instance=ExtResource( 16 )]
 position = Vector2( 472.744, 256.018 )
+
+[node name="Jouro" parent="YSort" instance=ExtResource( 18 )]
+position = Vector2( 357.25, 318.051 )
 
 [node name="tree 3" parent="YSort" instance=ExtResource( 15 )]
 position = Vector2( 528.57, 316.198 )

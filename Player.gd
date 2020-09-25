@@ -1,16 +1,19 @@
 extends KinematicBody2D
 
+signal update_health(hp, max_hp)
+signal update_stamina(stamina, max_stamina)
+
 enum { IDLE, BUSY, DODGE, DEAD, ATTACK_PRE, ATTACK, ATTACK_POST }
 
 var velocity
 var status = IDLE
 var speed = 200
+var is_in_range_interactable = false
 export var flipped = false
 
 var time_attack_pre = 0.1
 var time_attack = 0.2
 var time_attack_post = 0.1
-
 
 func _ready():
 	disable_weapon()
@@ -19,12 +22,25 @@ func _ready():
 	
 	for member in get_tree().get_nodes_in_group("enemy"):
 		member.set_player()
+	
+	for member in get_tree().get_nodes_in_group("interactable"):
+		member.connect("pickup", self, "pickup")
+		member.connect("drop", self, "drop")
+		member.connect("interactable_in_range", self, "set_is_in_range_interactable")
+		member.set_player()
+		
+	for member in get_tree().get_nodes_in_group("hud"):
+		member.set_player()
+		member.connect("player_set_busy", self, "set_busy")
+		member.connect("player_set_idle", self, "set_idle")
 
 
 func get_input():
-	if Input.is_action_pressed("fire"):
+	# Attack
+	if status != BUSY and Input.is_action_pressed("fire"):
 		attack_start()
 
+	# Move
 	velocity = Vector2()
 	if Input.is_action_pressed("ui_right"):
 		velocity.x += 1
@@ -41,22 +57,23 @@ func get_input():
 	if Input.is_action_pressed("ui_up"):
 		velocity.y -= 1
 
-	if Input.is_action_pressed("dodge") and $TimerDodgeCoolDown.is_stopped():
+	# Dodge
+	if !is_in_range_interactable and Input.is_action_pressed("dodge") and $TimerDodgeCoolDown.is_stopped():
 		print_debug("dodge")
 		status = DODGE
 		$TimerDodgeCoolDown.start()
 
 
 func _physics_process(delta):
-	if status == IDLE:
+	if can_move():
 		get_input()
-		if velocity == Vector2.ZERO and status == IDLE:
+		if velocity == Vector2.ZERO:
 			$AnimatedSprite.animation = "idle"
 			$AnimatedSpriteWeapon.animation = "idle"
-		elif velocity != Vector2.ZERO and status == IDLE:
+		elif velocity != Vector2.ZERO:
 			$AnimatedSprite.animation = "walk"
 			$AnimatedSpriteWeapon.animation = "walk"
-	if status != IDLE and status != DODGE:
+	if !can_move() and status != DODGE:
 		velocity = Vector2.ZERO
 	if status == DODGE:
 		speed = 200
@@ -69,6 +86,10 @@ func _physics_process(delta):
 		$AreaPlayerWeapon/CollisionShape2D.position.x = abs($AreaPlayerWeapon/CollisionShape2D.position.x) * -1
 	else:
 		$AreaPlayerWeapon/CollisionShape2D.position.x = abs($AreaPlayerWeapon/CollisionShape2D.position.x)
+
+
+func can_move():
+	return status == IDLE or status == BUSY
 
 
 func _on_TimerDodgeCoolDown_timeout():
@@ -109,3 +130,29 @@ func enable_weapon():
 
 func disable_weapon():
 	$AreaPlayerWeapon/CollisionShape2D.disabled = true 
+
+
+func set_is_in_range_interactable(is_in_range):
+	print_debug("set_is_in_range_interactable")
+	is_in_range_interactable = is_in_range
+
+
+func pickup(node):
+	print_debug("pickup")
+	set_busy()
+	$AnimatedSpriteWeapon.hide()
+
+
+func drop(node):
+	print_debug("drop")
+	set_idle()
+	$AnimatedSpriteWeapon.show()
+
+
+func set_busy():
+	status = BUSY
+
+
+func set_idle():
+	status = IDLE
+
