@@ -89,8 +89,7 @@ func _on_AreaAggro_area_exited(area):
 
 
 func _on_AreaAttack_area_entered(area):
-	var name = area.get_parent().name
-	if name == "Player":
+	if area.name == "AreaPlayer":
 		player_in_attack_range = true
 		print_debug("_on_AreaAttack_area_entered")
 		if status == FOLLOWING:
@@ -98,8 +97,7 @@ func _on_AreaAttack_area_entered(area):
 
 
 func _on_AreaAttack_area_exited(area):
-	var name = area.get_parent().name
-	if name == "Player":
+	if area.name == "AreaPlayer":
 		print_debug("_on_AreaAttack_area_exited")
 		player_in_attack_range = false
 
@@ -124,4 +122,6 @@ func _on_TimerAttack_timeout():
 
 
 func _on_AreaWeapon_area_entered(area):
-	emit_signal("apply_damage", in_range)
+	if area.name == "AreaPlayer":
+		emit_signal("apply_damage", attack_physical)
+	

@@ -5,6 +5,11 @@ signal update_stamina(stamina, max_stamina)
 
 enum { IDLE, BUSY, DODGE, DEAD, ATTACK_PRE, ATTACK, ATTACK_POST }
 
+var max_hp = 200
+var hp
+var max_stamina = 200
+var stamina
+
 var velocity
 var status = IDLE
 var speed = 200
@@ -21,6 +26,7 @@ func _ready():
 	$AnimatedSpriteWeapon.play()
 	
 	for member in get_tree().get_nodes_in_group("enemy"):
+		member.connect("apply_damage", self, "take_damage")
 		member.set_player()
 	
 	for member in get_tree().get_nodes_in_group("interactable"):
@@ -33,6 +39,9 @@ func _ready():
 		member.set_player()
 		member.connect("player_set_busy", self, "set_busy")
 		member.connect("player_set_idle", self, "set_idle")
+	
+	hp = max_hp
+	emit_signal("update_health", hp, max_hp)
 
 
 func get_input():
@@ -67,12 +76,13 @@ func get_input():
 func _physics_process(delta):
 	if can_move():
 		get_input()
-		if velocity == Vector2.ZERO:
-			$AnimatedSprite.animation = "idle"
-			$AnimatedSpriteWeapon.animation = "idle"
-		elif velocity != Vector2.ZERO:
-			$AnimatedSprite.animation = "walk"
-			$AnimatedSpriteWeapon.animation = "walk"
+		if !is_attacking():
+			if velocity == Vector2.ZERO:
+				$AnimatedSprite.animation = "idle"
+				$AnimatedSpriteWeapon.animation = "idle"
+			elif velocity != Vector2.ZERO:
+				$AnimatedSprite.animation = "walk"
+				$AnimatedSpriteWeapon.animation = "walk"
 	if !can_move() and status != DODGE:
 		velocity = Vector2.ZERO
 	if status == DODGE:
@@ -138,13 +148,11 @@ func set_is_in_range_interactable(is_in_range):
 
 
 func pickup(node):
-	print_debug("pickup")
 	set_busy()
 	$AnimatedSpriteWeapon.hide()
 
 
 func drop(node):
-	print_debug("drop")
 	set_idle()
 	$AnimatedSpriteWeapon.show()
 
@@ -156,3 +164,10 @@ func set_busy():
 func set_idle():
 	status = IDLE
 
+
+func take_damage(amount):
+	hp = hp - amount
+	emit_signal("update_health", hp, max_hp)
+
+func is_attacking():
+	return status == ATTACK || status == ATTACK_POST || status == ATTACK_PRE

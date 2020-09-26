@@ -37,6 +37,7 @@ func init():
 
 func set_player():
 	player = get_tree().get_nodes_in_group("player")[0]
+	player.connect("update_health", self, "update_hp")
 
 
 func interactable_available(position, label):
@@ -132,3 +133,8 @@ func _on_Option1_pressed():
 func _on_Option2_pressed():
 	emit_signal("option_2_pressed")
 	options_hide()
+
+
+func update_hp(hp, max_hp):
+	$PlayerFrames/BarHealth.max_value = max_hp
+	$PlayerFrames/BarHealth.value = hp
