@@ -9,6 +9,7 @@ var max_hp = 200
 var hp
 var max_stamina = 200
 var stamina
+var attack = 10
 
 var velocity
 var status = IDLE

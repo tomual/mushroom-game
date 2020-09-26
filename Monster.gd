@@ -2,6 +2,11 @@ extends KinematicBody2D
 
 signal apply_damage(amount)
 
+var max_hp = 200
+var hp
+var max_stamina = 200
+var stamina
+
 var velocity
 var player
 var speed = 100
@@ -22,6 +27,7 @@ var flipped = false
 func _ready():
 	$AnimatedSprite.play()
 	disable_weapon()
+	hp = max_hp
 
 
 func _process(delta):
@@ -36,9 +42,13 @@ func _process(delta):
 			if !flipped:
 				offset_x = offset_x * -1
 				$AreaWeapon/CollisionShape2D.position.x = abs($AreaWeapon/CollisionShape2D.position.x)
+				$Particles2D.position.x = abs($Particles2D.position.x)
+				$Particles2D.scale.x = -1
 			else:
 				offset_x = offset_x
 				$AreaWeapon/CollisionShape2D.position.x = abs($AreaWeapon/CollisionShape2D.position.x) * -1
+				$Particles2D.position.x = abs($Particles2D.position.x) * -1
+				$Particles2D.scale.x = 1
 			var target_x = player.position.x + offset_x
 			var target_y = player.position.y + offset_y
 			if abs(target_x - position.x) > precision or abs(target_y - position.y ) > precision:
@@ -124,4 +134,14 @@ func _on_TimerAttack_timeout():
 func _on_AreaWeapon_area_entered(area):
 	if area.name == "AreaPlayer":
 		emit_signal("apply_damage", attack_physical)
-	
+
+
+func _on_AreaHitBox_area_entered(area):
+	if area.name == "AreaPlayerWeapon":
+		take_damage(player.attack)
+
+
+func take_damage(amount):
+	hp = hp - amount
+	$Particles2D.emitting = true
+	print_debug(hp)
