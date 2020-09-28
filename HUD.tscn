@@ -91,12 +91,15 @@ playback/repeat = true
 [node name="ColorRectFade" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.145098, 0.145098, 0.278431, 0 )
+color = Color( 0.176471, 0.203922, 0.356863, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TimerFade" type="Timer" parent="."]
+
+[node name="TimerFadeDelay" type="Timer" parent="."]
+one_shot = true
 
 [node name="Options" type="Control" parent="."]
 margin_right = 40.0
@@ -136,3 +139,4 @@ percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="timeout" from="TimerFadeDelay" to="." method="_on_TimerFadeDelay_timeout"]

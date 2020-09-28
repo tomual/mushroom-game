@@ -12,8 +12,10 @@ var talk_line_cursor = 0
 var talk_line = ""
 var player
 
+
 func _ready():
 	init()
+	$PlayerFrames.visible = false
 
 
 func _process(delta):
@@ -35,9 +37,11 @@ func init():
 	talk_hide()
 	options_hide()
 
+
 func set_player():
 	player = get_tree().get_nodes_in_group("player")[0]
 	player.connect("update_health", self, "update_hp")
+	player.connect("die", self, "death_screen")
 
 
 func interactable_available(position, label):
@@ -136,5 +140,15 @@ func _on_Option2_pressed():
 
 
 func update_hp(hp, max_hp):
+	if hp != max_hp:
+		$PlayerFrames.visible = true
 	$PlayerFrames/BarHealth.max_value = max_hp
 	$PlayerFrames/BarHealth.value = hp
+
+
+func death_screen():
+	$TimerFadeDelay.start()
+
+
+func _on_TimerFadeDelay_timeout():
+	fade_out()

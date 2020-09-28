@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 signal update_health(hp, max_hp)
 signal update_stamina(stamina, max_stamina)
+signal die()
 
 enum { IDLE, BUSY, DODGE, DEAD, ATTACK_PRE, ATTACK, ATTACK_POST }
 
@@ -20,6 +21,7 @@ export var flipped = false
 var time_attack_pre = 0.1
 var time_attack = 0.2
 var time_attack_post = 0.1
+
 
 func _ready():
 	disable_weapon()
@@ -77,11 +79,11 @@ func get_input():
 func _physics_process(delta):
 	if can_move():
 		get_input()
-		if !is_attacking():
+		if !is_attacking() and !is_dead():
 			if velocity == Vector2.ZERO:
 				$AnimatedSprite.animation = "idle"
 				$AnimatedSpriteWeapon.animation = "idle"
-			elif velocity != Vector2.ZERO:
+			else:
 				$AnimatedSprite.animation = "walk"
 				$AnimatedSpriteWeapon.animation = "walk"
 	if !can_move() and status != DODGE:
@@ -167,8 +169,23 @@ func set_idle():
 
 
 func take_damage(amount):
-	hp = hp - amount
-	emit_signal("update_health", hp, max_hp)
+	if !is_dead():
+		hp = hp - amount
+		emit_signal("update_health", hp, max_hp)
+		if is_dead():
+			die()
+
+
+func is_dead():
+	return hp <= 0
+
+
+func die():
+	status = BUSY
+	$AnimatedSpriteWeapon.visible = false
+	$AnimatedSprite.animation = 'die'
+	emit_signal("die")
+
 
 func is_attacking():
 	return status == ATTACK || status == ATTACK_POST || status == ATTACK_PRE

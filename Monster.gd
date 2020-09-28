@@ -12,7 +12,7 @@ var player
 var speed = 100
 var player_in_attack_range = false
 var player_in_aggro_range = false
-var attack_physical = 5
+var attack_physical = 100
 
 var time_attack_pre = 0.6
 var time_attack = 0.2
