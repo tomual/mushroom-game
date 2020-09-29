@@ -173,7 +173,7 @@ func take_damage(amount):
 		hp = hp - amount
 		emit_signal("update_health", hp, max_hp)
 		if is_dead():
-			die()
+			$TimerDie.start()
 
 
 func is_dead():
@@ -189,3 +189,12 @@ func die():
 
 func is_attacking():
 	return status == ATTACK || status == ATTACK_POST || status == ATTACK_PRE
+
+
+func _on_TimerDie_timeout():
+	if status == BUSY:
+		get_tree().reload_current_scene()
+	else:
+		die()
+		$TimerDie.wait_time = 5
+		$TimerDie.start()

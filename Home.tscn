@@ -68,10 +68,10 @@ texture = ExtResource( 5 )
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Monster" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 215.033, 509.77 )
+position = Vector2( 386.153, 343.599 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 553.342, 374.531 )
+position = Vector2( 433.134, 360.389 )
 
 [node name="lil mushes 1" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 320.133, 351.935 )

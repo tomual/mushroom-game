@@ -59,13 +59,13 @@ func interactable_unavailable():
 
 func fade_out():
 	$TweenFade.stop_all()
-	$TweenFade.interpolate_property($ColorRectFade, "color", Color(0.37, 0.37, 0.71, 0), Color(0.37, 0.37, 0.71, 1), 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	$TweenFade.interpolate_property($ColorRectFade, "color", Color(0.18, 0.2, 0.36, 0), Color(0.18, 0.2, 0.36, 1), 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$TweenFade.start()
 
 
 func fade_in():
 	$TweenFade.stop_all()
-	$TweenFade.interpolate_property($ColorRectFade, "color", Color(0.37, 0.37, 0.71, 1), Color(0.37, 0.37, 0.71, 0), 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	$TweenFade.interpolate_property($ColorRectFade, "color", Color(0.18, 0.2, 0.36, 1), Color(0.18, 0.2, 0.36, 0), 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$TweenFade.start()
 
 
@@ -147,8 +147,8 @@ func update_hp(hp, max_hp):
 
 
 func death_screen():
-	$TimerFadeDelay.start()
+	$TimerDeath.start()
 
 
-func _on_TimerFadeDelay_timeout():
+func _on_TimerDeath_timeout():
 	fade_out()
