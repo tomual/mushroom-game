@@ -4,7 +4,7 @@ signal update_health(hp, max_hp)
 signal update_stamina(stamina, max_stamina)
 signal die()
 
-enum { IDLE, BUSY, DODGE, DEAD, ATTACK_PRE, ATTACK, ATTACK_POST }
+enum { IDLE, BUSY, DODGE, DEAD, ATTACK_PRE, ATTACK, ATTACK_POST, DYING }
 
 var max_hp = 200
 var hp
@@ -102,7 +102,7 @@ func _physics_process(delta):
 
 
 func can_move():
-	return status == IDLE or status == BUSY
+	return (status == IDLE or status == BUSY) and status != DYING and status != DEAD
 
 
 func _on_TimerDodgeCoolDown_timeout():
@@ -174,6 +174,12 @@ func take_damage(amount):
 		emit_signal("update_health", hp, max_hp)
 		if is_dead():
 			$TimerDie.start()
+			$TimerAttack.stop()
+			$TimerDodgeCoolDown.stop()
+			
+			status = DYING
+			$AnimatedSprite.animation = 'idle'
+			$AnimatedSpriteWeapon.animation = "idle"
 
 
 func is_dead():
@@ -181,7 +187,7 @@ func is_dead():
 
 
 func die():
-	status = BUSY
+	status = DEAD
 	$AnimatedSpriteWeapon.visible = false
 	$AnimatedSprite.animation = 'die'
 	emit_signal("die")
@@ -192,7 +198,7 @@ func is_attacking():
 
 
 func _on_TimerDie_timeout():
-	if status == BUSY:
+	if status == DEAD:
 		get_tree().reload_current_scene()
 	else:
 		die()
