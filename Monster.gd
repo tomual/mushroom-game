@@ -70,8 +70,8 @@ func disable_weapon():
 	$AreaWeapon/CollisionShape2D.disabled = true 
 
 
-func set_player():
-	player = get_tree().get_nodes_in_group("player")[0]
+func set_player(node):
+	player = node
 
 
 func attack_start():

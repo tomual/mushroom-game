@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/house/bed.png" type="Texture" id=1]
+
+[node name="Bed" type="KinematicBody2D"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( -28.9844, -3.0313 )
+polygon = PoolVector2Array( -0.809418, -4.3952, 31.2267, 10.6217, 49.2471, -1.05811, 17.14, -14.5801 )
+
+[node name="bed" type="Sprite" parent="."]
+position = Vector2( -4.73611, -12.3752 )
+texture = ExtResource( 1 )

@@ -30,18 +30,19 @@ func _ready():
 	
 	for member in get_tree().get_nodes_in_group("enemy"):
 		member.connect("apply_damage", self, "take_damage")
-		member.set_player()
+		member.set_player(self)
 	
 	for member in get_tree().get_nodes_in_group("interactable"):
 		member.connect("pickup", self, "pickup")
 		member.connect("drop", self, "drop")
 		member.connect("interactable_in_range", self, "set_is_in_range_interactable")
-		member.set_player()
+		member.set_player(self)
 		
 	for member in get_tree().get_nodes_in_group("hud"):
-		member.set_player()
-		member.connect("player_set_busy", self, "set_busy")
-		member.connect("player_set_idle", self, "set_idle")
+		member.set_player(self)
+		
+	for member in get_tree().get_nodes_in_group("main"):
+		member.set_player(self)
 	
 	hp = max_hp
 	emit_signal("update_health", hp, max_hp)

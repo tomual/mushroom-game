@@ -36,9 +36,11 @@ var label_offset_x
 var label_offset_y
 var type
 var timer_interact_cooldown
+var main
+var hud
 
-func set_player():
-	player = get_tree().get_nodes_in_group("player")[0]
+func set_player(node):
+	player = node
 
 
 func _ready():
@@ -48,6 +50,12 @@ func _ready():
 	cooldown.wait_time = 0.5
 	cooldown.one_shot = true
 	add_child(cooldown)
+	
+	for member in get_tree().get_nodes_in_group("main"):
+		main = member
+		
+	for member in get_tree().get_nodes_in_group("hud"):
+		hud = member
 
 
 func _process(delta):
