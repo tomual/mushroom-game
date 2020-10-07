@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 signal apply_damage(amount)
 
-var max_hp = 200
+var max_hp = 20
 var hp
 var max_stamina = 200
 var stamina
@@ -12,7 +12,7 @@ var player
 var speed = 100
 var player_in_attack_range = false
 var player_in_aggro_range = false
-var attack_physical = 100
+var attack_physical = 10
 
 var time_attack_pre = 0.6
 var time_attack = 0.2
@@ -31,34 +31,35 @@ func _ready():
 
 
 func _process(delta):
-	if status == FOLLOWING:
-		if !player_in_attack_range:
-			$AnimatedSprite.flip_h = position.x > player.position.x
-			flipped = $AnimatedSprite.flip_h
-			velocity = Vector2()
-			var offset_y = -15
-			var offset_x = 25
-			var precision = 5
-			if !flipped:
-				offset_x = offset_x * -1
-				$AreaWeapon/CollisionShape2D.position.x = abs($AreaWeapon/CollisionShape2D.position.x)
-				$Particles2D.position.x = abs($Particles2D.position.x)
-				$Particles2D.scale.x = -1
+	if status != DEAD:
+		if status == FOLLOWING:
+			if !player_in_attack_range:
+				$AnimatedSprite.flip_h = position.x > player.position.x
+				flipped = $AnimatedSprite.flip_h
+				velocity = Vector2()
+				var offset_y = -15
+				var offset_x = 25
+				var precision = 5
+				if !flipped:
+					offset_x = offset_x * -1
+					$AreaWeapon/CollisionShape2D.position.x = abs($AreaWeapon/CollisionShape2D.position.x)
+					$Particles2D.position.x = abs($Particles2D.position.x)
+					$Particles2D.scale.x = -1
+				else:
+					offset_x = offset_x
+					$AreaWeapon/CollisionShape2D.position.x = abs($AreaWeapon/CollisionShape2D.position.x) * -1
+					$Particles2D.position.x = abs($Particles2D.position.x) * -1
+					$Particles2D.scale.x = 1
+				var target_x = player.position.x + offset_x
+				var target_y = player.position.y + offset_y
+				if abs(target_x - position.x) > precision or abs(target_y - position.y ) > precision:
+					velocity.x = target_x - position.x
+					velocity.y = target_y - position.y 
+					velocity = velocity.normalized() * speed
+					velocity = move_and_slide(velocity)
+					$AnimatedSprite.animation = "walk aggro"
 			else:
-				offset_x = offset_x
-				$AreaWeapon/CollisionShape2D.position.x = abs($AreaWeapon/CollisionShape2D.position.x) * -1
-				$Particles2D.position.x = abs($Particles2D.position.x) * -1
-				$Particles2D.scale.x = 1
-			var target_x = player.position.x + offset_x
-			var target_y = player.position.y + offset_y
-			if abs(target_x - position.x) > precision or abs(target_y - position.y ) > precision:
-				velocity.x = target_x - position.x
-				velocity.y = target_y - position.y 
-				velocity = velocity.normalized() * speed
-				velocity = move_and_slide(velocity)
-				$AnimatedSprite.animation = "walk aggro"
-		else:
-			attack_start()
+				attack_start()
 
 
 func enable_weapon():
@@ -144,4 +145,7 @@ func _on_AreaHitBox_area_entered(area):
 func take_damage(amount):
 	hp = hp - amount
 	$Particles2D.emitting = true
+	$AnimatedSprite.animation = "die"
+	$TimerAttack.stop()
+	status = DEAD
 	print_debug(hp)
