@@ -83,16 +83,14 @@ func _process(delta):
 
 
 func _on_Interactable_area_entered(area):
-	var name = area.get_parent().name
-	if !active and name == "Player":
+	if !active and area.name == "AreaPlayer":
 		show_label()
 		in_range = true
 		emit_signal("interactable_in_range", in_range)
 
 
 func _on_Interactable_area_exited(area):
-	var name = area.get_parent().name
-	if !active and name == "Player":
+	if !active and area.name == "AreaPlayer":
 		emit_signal("interactable_unavailable")
 		in_range = false
 		emit_signal("interactable_in_range", in_range)

@@ -13,7 +13,6 @@ var player
 
 func _ready():
 	init()
-	$PlayerFrames.visible = false
 	for member in get_tree().get_nodes_in_group("main"):
 		member.set_hud(self)
 
@@ -24,10 +23,6 @@ func _process(delta):
 		talk_line_cursor = talk_line_cursor + 1
 		if talk_line.length() <= talk_line_cursor + 1:
 			talk_complete_line()
-	var player_screen_position = player.get_global_transform_with_canvas()[2]
-	$PlayerFrames.margin_left = player_screen_position[0] - 50
-	$PlayerFrames.margin_top = player_screen_position[1] - 80
-	$PlayerFrames.rect_size = Vector2(100, 100)
 
 
 func init():
@@ -41,6 +36,7 @@ func init():
 func set_player(node):
 	player = node
 	player.connect("update_health", self, "update_hp")
+	player.connect("update_spores", self, "update_spores")
 	player.connect("die", self, "death_screen")
 
 
@@ -138,10 +134,12 @@ func _on_Option2_pressed():
 
 
 func update_hp(hp, max_hp):
-	if hp != max_hp:
-		$PlayerFrames.visible = true
-	$PlayerFrames/BarHealth.max_value = max_hp
-	$PlayerFrames/BarHealth.value = hp
+	$PlayerFrames/PlayerFramesInner/BarHealth.max_value = max_hp
+	$PlayerFrames/PlayerFramesInner/BarHealth.value = hp
+
+
+func update_spores(spores):
+	$PlayerFrames/PlayerFramesInner/LabelSpores.text = "* " + str(spores)
 
 
 func death_screen():

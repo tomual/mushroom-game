@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 signal apply_damage(amount)
+signal give_spores(amount)
 
 var max_hp = 20
 var hp
@@ -102,14 +103,12 @@ func _on_AreaAggro_area_exited(area):
 func _on_AreaAttack_area_entered(area):
 	if area.name == "AreaPlayer":
 		player_in_attack_range = true
-		print_debug("_on_AreaAttack_area_entered")
 		if status == FOLLOWING:
 			attack_start()
 
 
 func _on_AreaAttack_area_exited(area):
 	if area.name == "AreaPlayer":
-		print_debug("_on_AreaAttack_area_exited")
 		player_in_attack_range = false
 
 
@@ -145,7 +144,15 @@ func _on_AreaHitBox_area_entered(area):
 func take_damage(amount):
 	hp = hp - amount
 	$Particles2D.emitting = true
+	if status != DEAD and is_dead():
+		die()
+
+
+func is_dead():
+	return hp <= 0
+
+func die():
 	$AnimatedSprite.animation = "die"
 	$TimerAttack.stop()
 	status = DEAD
-	print_debug(hp)
+	emit_signal("give_spores", 5)

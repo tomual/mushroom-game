@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 signal update_health(hp, max_hp)
 signal update_stamina(stamina, max_stamina)
+signal update_spores(spores)
 signal die()
 
 enum { IDLE, BUSY, DODGE, DEAD, ATTACK_PRE, ATTACK, ATTACK_POST, DYING }
@@ -11,6 +12,7 @@ var hp
 var max_stamina = 200
 var stamina
 var attack = 10
+var spores = 0
 
 var velocity
 var status = IDLE
@@ -30,6 +32,7 @@ func _ready():
 	
 	for member in get_tree().get_nodes_in_group("enemy"):
 		member.connect("apply_damage", self, "take_damage")
+		member.connect("give_spores", self, "update_spores")
 		member.set_player(self)
 	
 	for member in get_tree().get_nodes_in_group("interactable"):
@@ -168,6 +171,11 @@ func set_busy():
 func set_idle():
 	status = IDLE
 
+
+func update_spores(amount):
+	spores = spores + amount
+	emit_signal("update_spores", spores)
+	
 
 func take_damage(amount):
 	if !is_dead():
