@@ -36,6 +36,7 @@ func init():
 func set_player(node):
 	player = node
 	player.connect("update_health", self, "update_hp")
+	player.connect("update_stamina", self, "update_stamina")
 	player.connect("update_spores", self, "update_spores")
 	player.connect("die", self, "death_screen")
 
@@ -136,6 +137,10 @@ func _on_Option2_pressed():
 func update_hp(hp, max_hp):
 	$PlayerFrames/PlayerFramesInner/BarHealth.max_value = max_hp
 	$PlayerFrames/PlayerFramesInner/BarHealth.value = hp
+	
+func update_stamina(stamina, max_stamina):
+	$PlayerFrames/PlayerFramesInner/BarStamina.max_value = max_stamina
+	$PlayerFrames/PlayerFramesInner/BarStamina.value = stamina
 
 
 func update_spores(spores):

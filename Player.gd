@@ -48,12 +48,15 @@ func _ready():
 		member.set_player(self)
 	
 	hp = max_hp
+	stamina = max_stamina
 	emit_signal("update_health", hp, max_hp)
+	emit_signal("update_stamina", stamina, max_stamina)
+	$TimerHealStamina.start()
 
 
 func get_input():
 	# Attack
-	if status != BUSY and Input.is_action_pressed("fire"):
+	if status != BUSY and Input.is_action_pressed("fire") and stamina > 40:
 		attack_start()
 
 	# Move
@@ -74,9 +77,11 @@ func get_input():
 		velocity.y -= 1
 
 	# Dodge
-	if !is_in_range_interactable and Input.is_action_pressed("dodge") and $TimerDodgeCoolDown.is_stopped():
+	if !is_in_range_interactable and Input.is_action_pressed("dodge") and $TimerDodgeCoolDown.is_stopped() and stamina > 60:
 		print_debug("dodge")
 		status = DODGE
+		stamina = stamina - 60
+		emit_signal("update_stamina", stamina, max_stamina)
 		$TimerDodgeCoolDown.start()
 
 
@@ -135,6 +140,8 @@ func _on_TimerAttack_timeout():
 
 func attack_start():
 	status = ATTACK_PRE
+	stamina = stamina - 40
+	emit_signal("update_stamina", stamina, max_stamina)
 	$AnimatedSprite.animation = "attack"
 	$AnimatedSpriteWeapon.animation = "attack"
 	$TimerAttack.wait_time = time_attack_pre
@@ -213,3 +220,9 @@ func _on_TimerDie_timeout():
 		die()
 		$TimerDie.wait_time = 5
 		$TimerDie.start()
+
+
+func _on_TimerHealStamina_timeout():
+	if stamina < max_stamina:
+		stamina = stamina + 3
+		emit_signal("update_stamina", stamina, max_stamina)

@@ -65,67 +65,67 @@ atlas = ExtResource( 11 )
 region = Rect2( 300, 0, 100, 100 )
 
 [sub_resource type="AtlasTexture" id=14]
-atlas = ExtResource( 2 )
+atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 100, 100 )
 
 [sub_resource type="AtlasTexture" id=15]
-atlas = ExtResource( 2 )
+atlas = ExtResource( 3 )
 region = Rect2( 100, 0, 100, 100 )
 
 [sub_resource type="AtlasTexture" id=16]
-atlas = ExtResource( 2 )
+atlas = ExtResource( 3 )
 region = Rect2( 200, 0, 100, 100 )
 
 [sub_resource type="AtlasTexture" id=17]
-atlas = ExtResource( 2 )
+atlas = ExtResource( 3 )
 region = Rect2( 300, 0, 100, 100 )
 
 [sub_resource type="AtlasTexture" id=18]
-atlas = ExtResource( 2 )
+atlas = ExtResource( 3 )
 region = Rect2( 400, 0, 100, 100 )
 
 [sub_resource type="AtlasTexture" id=19]
-atlas = ExtResource( 2 )
+atlas = ExtResource( 3 )
 region = Rect2( 500, 0, 100, 100 )
 
 [sub_resource type="AtlasTexture" id=20]
-atlas = ExtResource( 2 )
+atlas = ExtResource( 3 )
 region = Rect2( 600, 0, 100, 100 )
 
 [sub_resource type="AtlasTexture" id=21]
-atlas = ExtResource( 2 )
+atlas = ExtResource( 3 )
 region = Rect2( 700, 0, 100, 100 )
 
 [sub_resource type="AtlasTexture" id=22]
-atlas = ExtResource( 3 )
+atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 100, 100 )
 
 [sub_resource type="AtlasTexture" id=23]
-atlas = ExtResource( 3 )
+atlas = ExtResource( 2 )
 region = Rect2( 100, 0, 100, 100 )
 
 [sub_resource type="AtlasTexture" id=24]
-atlas = ExtResource( 3 )
+atlas = ExtResource( 2 )
 region = Rect2( 200, 0, 100, 100 )
 
 [sub_resource type="AtlasTexture" id=25]
-atlas = ExtResource( 3 )
+atlas = ExtResource( 2 )
 region = Rect2( 300, 0, 100, 100 )
 
 [sub_resource type="AtlasTexture" id=26]
-atlas = ExtResource( 3 )
+atlas = ExtResource( 2 )
 region = Rect2( 400, 0, 100, 100 )
 
 [sub_resource type="AtlasTexture" id=27]
-atlas = ExtResource( 3 )
+atlas = ExtResource( 2 )
 region = Rect2( 500, 0, 100, 100 )
 
 [sub_resource type="AtlasTexture" id=28]
-atlas = ExtResource( 3 )
+atlas = ExtResource( 2 )
 region = Rect2( 600, 0, 100, 100 )
 
 [sub_resource type="AtlasTexture" id=29]
-atlas = ExtResource( 3 )
+atlas = ExtResource( 2 )
 region = Rect2( 700, 0, 100, 100 )
 
 [sub_resource type="SpriteFrames" id=30]
@@ -147,12 +147,12 @@ animations = [ {
 }, {
 "frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ) ],
 "loop": true,
-"name": "walk",
+"name": "dodge",
 "speed": 20.0
 }, {
 "frames": [ SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ) ],
 "loop": true,
-"name": "dodge",
+"name": "walk",
 "speed": 20.0
 } ]
 
@@ -193,67 +193,67 @@ atlas = ExtResource( 8 )
 region = Rect2( 300, 0, 100, 100 )
 
 [sub_resource type="AtlasTexture" id=40]
-atlas = ExtResource( 9 )
+atlas = ExtResource( 7 )
 region = Rect2( 0, 0, 100, 100 )
 
 [sub_resource type="AtlasTexture" id=41]
-atlas = ExtResource( 9 )
+atlas = ExtResource( 7 )
 region = Rect2( 100, 0, 100, 100 )
 
 [sub_resource type="AtlasTexture" id=42]
-atlas = ExtResource( 9 )
+atlas = ExtResource( 7 )
 region = Rect2( 200, 0, 100, 100 )
 
 [sub_resource type="AtlasTexture" id=43]
-atlas = ExtResource( 9 )
+atlas = ExtResource( 7 )
 region = Rect2( 300, 0, 100, 100 )
 
 [sub_resource type="AtlasTexture" id=44]
-atlas = ExtResource( 9 )
+atlas = ExtResource( 7 )
 region = Rect2( 400, 0, 100, 100 )
 
 [sub_resource type="AtlasTexture" id=45]
-atlas = ExtResource( 9 )
+atlas = ExtResource( 7 )
 region = Rect2( 500, 0, 100, 100 )
 
 [sub_resource type="AtlasTexture" id=46]
-atlas = ExtResource( 9 )
+atlas = ExtResource( 7 )
 region = Rect2( 600, 0, 100, 100 )
 
 [sub_resource type="AtlasTexture" id=47]
-atlas = ExtResource( 9 )
+atlas = ExtResource( 7 )
 region = Rect2( 700, 0, 100, 100 )
 
 [sub_resource type="AtlasTexture" id=48]
-atlas = ExtResource( 7 )
+atlas = ExtResource( 9 )
 region = Rect2( 0, 0, 100, 100 )
 
 [sub_resource type="AtlasTexture" id=49]
-atlas = ExtResource( 7 )
+atlas = ExtResource( 9 )
 region = Rect2( 100, 0, 100, 100 )
 
 [sub_resource type="AtlasTexture" id=50]
-atlas = ExtResource( 7 )
+atlas = ExtResource( 9 )
 region = Rect2( 200, 0, 100, 100 )
 
 [sub_resource type="AtlasTexture" id=51]
-atlas = ExtResource( 7 )
+atlas = ExtResource( 9 )
 region = Rect2( 300, 0, 100, 100 )
 
 [sub_resource type="AtlasTexture" id=52]
-atlas = ExtResource( 7 )
+atlas = ExtResource( 9 )
 region = Rect2( 400, 0, 100, 100 )
 
 [sub_resource type="AtlasTexture" id=53]
-atlas = ExtResource( 7 )
+atlas = ExtResource( 9 )
 region = Rect2( 500, 0, 100, 100 )
 
 [sub_resource type="AtlasTexture" id=54]
-atlas = ExtResource( 7 )
+atlas = ExtResource( 9 )
 region = Rect2( 600, 0, 100, 100 )
 
 [sub_resource type="AtlasTexture" id=55]
-atlas = ExtResource( 7 )
+atlas = ExtResource( 9 )
 region = Rect2( 700, 0, 100, 100 )
 
 [sub_resource type="SpriteFrames" id=56]
@@ -270,12 +270,12 @@ animations = [ {
 }, {
 "frames": [ SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ) ],
 "loop": true,
-"name": "walk",
+"name": "dodge",
 "speed": 20.0
 }, {
 "frames": [ SubResource( 48 ), SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ) ],
 "loop": true,
-"name": "dodge",
+"name": "walk",
 "speed": 20.0
 } ]
 
@@ -338,7 +338,11 @@ shape = SubResource( 59 )
 current = true
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
+
+[node name="TimerHealStamina" type="Timer" parent="."]
+wait_time = 0.1
 [connection signal="timeout" from="TimerDodgeCoolDown" to="." method="_on_TimerDodgeCoolDown_timeout"]
 [connection signal="timeout" from="TimerDie" to="." method="_on_TimerDie_timeout"]
 [connection signal="timeout" from="TimerAttack" to="." method="_on_TimerAttack_timeout"]
 [connection signal="area_entered" from="AreaPlayer" to="." method="_on_AreaPlayer_area_entered"]
+[connection signal="timeout" from="TimerHealStamina" to="." method="_on_TimerHealStamina_timeout"]
