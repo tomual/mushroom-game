@@ -61,6 +61,7 @@ func fade_out():
 
 
 func fade_in():
+	$ColorRectFade.visible = true
 	$TweenFade.stop_all()
 	$TweenFade.interpolate_property($ColorRectFade, "color", Color(0.18, 0.2, 0.36, 1), Color(0.18, 0.2, 0.36, 0), 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$TweenFade.start()
@@ -153,3 +154,9 @@ func death_screen():
 
 func _on_TimerDeath_timeout():
 	fade_out()
+
+
+func _on_TweenFade_tween_completed(object, key):
+	$ColorRectFade.visible = false
+
+
