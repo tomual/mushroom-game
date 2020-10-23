@@ -9,7 +9,6 @@
 [ext_resource path="res://presets/Theme.tres" type="Theme" id=7]
 [ext_resource path="res://assets/EpilepsySans.ttf" type="DynamicFontData" id=8]
 
-
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 6 )
 region = Rect2( 0, 0, 100, 100 )
@@ -66,10 +65,12 @@ __meta__ = {
 }
 
 [node name="LabelInteractable" type="Label" parent="."]
-margin_right = 40.0
-margin_bottom = 14.0
+margin_right = 122.0
+margin_bottom = 26.0
+rect_pivot_offset = Vector2( 60.3612, 13.7118 )
 custom_fonts/font = ExtResource( 3 )
 text = "Pick Up"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -401,7 +402,8 @@ wait_time = 3.0
 one_shot = true
 
 [node name="Options" type="Control" parent="."]
-margin_right = 40.0
+margin_left = 0.222733
+margin_right = 40.2227
 margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false

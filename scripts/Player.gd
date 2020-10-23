@@ -25,14 +25,14 @@ var time_attack = 0.2
 var time_attack_post = 0.1
 
 var inventory = [
-	[1, 1],
-	[2, 1],
-	[3, 1],
-	[4, 1],
-	[5, 1],
-	[6, 1],
-	[7, 1],
-	[7, 1],
+	[0, 1],
+	[0, 1],
+	[0, 1],
+	[0, 1],
+	[0, 1],
+	[0, 1],
+	[0, 1],
+	[0, 1],
 ]
 
 func _ready():
@@ -46,7 +46,6 @@ func _ready():
 		member.set_player(self)
 	
 	for member in get_tree().get_nodes_in_group("interactable"):
-		member.connect("pickup", self, "pickup")
 		member.connect("drop", self, "drop")
 		member.connect("interactable_in_range", self, "set_is_in_range_interactable")
 		member.set_player(self)
@@ -171,9 +170,12 @@ func set_is_in_range_interactable(is_in_range):
 	is_in_range_interactable = is_in_range
 
 
-func pickup(node):
-	set_busy()
-	$AnimatedSpriteWeapon.hide()
+func pickup(item_id, item_quantity):
+	for i in range(inventory.size()):
+		if inventory[i][0] == 0:
+			inventory[i] = [item_id, item_quantity]
+			return true	
+	return false
 
 
 func drop(node):

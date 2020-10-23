@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://scripts/Map.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Garl.tscn" type="PackedScene" id=2]
@@ -19,9 +19,7 @@
 [ext_resource path="res://assets/home/patch 4.png" type="Texture" id=17]
 [ext_resource path="res://scenes/Jouro.tscn" type="PackedScene" id=18]
 [ext_resource path="res://scenes/Teleporter.tscn" type="PackedScene" id=19]
-
-
-
+[ext_resource path="res://scenes/Item.tscn" type="PackedScene" id=20]
 
 [node name="Home" type="Node2D" groups=[
 "map",
@@ -118,6 +116,33 @@ position = Vector2( 397.696, 53.1757 )
 
 [node name="tree 4" parent="YSort" instance=ExtResource( 15 )]
 position = Vector2( 3.15555, 118.303 )
+
+[node name="Item2" parent="YSort" instance=ExtResource( 20 )]
+position = Vector2( 65.4556, 168.488 )
+
+[node name="Item3" parent="YSort" instance=ExtResource( 20 )]
+position = Vector2( 87.3436, 163.437 )
+
+[node name="Item4" parent="YSort" instance=ExtResource( 20 )]
+position = Vector2( 113.16, 162.875 )
+
+[node name="Item5" parent="YSort" instance=ExtResource( 20 )]
+position = Vector2( 132.803, 168.488 )
+
+[node name="Item6" parent="YSort" instance=ExtResource( 20 )]
+position = Vector2( 151.885, 175.223 )
+
+[node name="Item7" parent="YSort" instance=ExtResource( 20 )]
+position = Vector2( 177.702, 167.365 )
+
+[node name="Item8" parent="YSort" instance=ExtResource( 20 )]
+position = Vector2( 203.518, 156.141 )
+
+[node name="Item9" parent="YSort" instance=ExtResource( 20 )]
+position = Vector2( 22.2408, 177.467 )
+
+[node name="Item" parent="YSort" instance=ExtResource( 20 )]
+position = Vector2( 43.9554, 170.31 )
 
 [node name="Teleporter" parent="." instance=ExtResource( 19 )]
 position = Vector2( 137.299, -12.2414 )

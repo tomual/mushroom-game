@@ -3,7 +3,6 @@ extends Area2D
 signal interactable_available(position, type)
 signal interactable_unavailable()
 signal interactable_in_range(in_range)
-signal pickup(node)
 signal drop(node)
 signal talk(id)
 signal set_busy()
@@ -32,8 +31,8 @@ var active = false
 var player
 
 var cooldown
-var label_offset_x
-var label_offset_y
+var label_offset_x = 60
+var label_offset_y = 70
 var type
 var timer_interact_cooldown
 var main
