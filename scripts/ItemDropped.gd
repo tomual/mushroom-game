@@ -8,6 +8,13 @@ func _ready():
 	$AnimatedSprite.play()
 
 
+func init():
+	hud.set_listen_interactable(self)
+	for member in get_tree().get_nodes_in_group("player"):
+		player = member
+		player.set_listen_interactable(self)
+
+
 func activate():
 	.activate()
 	if player.pickup(item_id, item_quantity):

@@ -38,6 +38,7 @@ var timer_interact_cooldown
 var main
 var hud
 
+
 func set_player(node):
 	player = node
 

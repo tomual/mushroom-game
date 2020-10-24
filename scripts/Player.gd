@@ -63,6 +63,11 @@ func _ready():
 	$TimerHealStamina.start()
 
 
+func set_listen_interactable(node):
+	node.connect("drop", self, "drop")
+	node.connect("interactable_in_range", self, "set_is_in_range_interactable")
+
+
 func get_input():
 	# Attack
 	if status != BUSY and Input.is_action_pressed("fire") and stamina > 40:

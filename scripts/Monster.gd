@@ -153,6 +153,19 @@ func is_dead():
 
 func die():
 	$AnimatedSprite.animation = "die"
+	$CollisionShape2D.set_deferred("disabled", true)
 	$TimerAttack.stop()
 	status = DEAD
 	emit_signal("give_spores", 5)
+	var scene = load("res://scenes/Item.tscn")
+	var item = scene.instance()
+	var roll = roll_item_drop()
+	item.item_id = roll[0]
+	item.item_quantity = roll[1]
+	
+	add_child(item)
+	item.position = Vector2(0, 5)
+	item.init()
+
+func roll_item_drop():
+	return [12, 2]

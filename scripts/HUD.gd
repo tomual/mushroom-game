@@ -80,6 +80,11 @@ func init_listeners():
 		member.connect("options_hide", self, "options_hide")
 
 
+func set_listen_interactable(node):
+	node.connect("interactable_available", self, "interactable_available")
+	node.connect("interactable_unavailable", self, "interactable_unavailable")
+
+
 func init_label_interactive():
 	$LabelInteractable.visible = false
 	$TweenInteractable.interpolate_property($LabelInteractable, "rect_scale", Vector2(1,1), Vector2(1.1, 1.1), 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
