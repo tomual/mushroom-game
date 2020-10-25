@@ -151,6 +151,7 @@ func take_damage(amount):
 func is_dead():
 	return hp <= 0
 
+
 func die():
 	$AnimatedSprite.animation = "die"
 	$CollisionShape2D.set_deferred("disabled", true)
@@ -166,6 +167,7 @@ func die():
 	add_child(item)
 	item.position = Vector2(0, 5)
 	item.init()
+
 
 func roll_item_drop():
 	return [12, 2]

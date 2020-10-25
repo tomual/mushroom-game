@@ -1,6 +1,6 @@
 extends "Interactable.gd"
 
-export var item_id = 12
+export var item_id = 5
 export var item_quantity = 1
 
 func _ready():

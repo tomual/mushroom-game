@@ -24,7 +24,9 @@ var time_attack_pre = 0.1
 var time_attack = 0.2
 var time_attack_post = 0.1
 
-var inventory = [
+var hud
+
+export var inventory = [
 	[0, 1],
 	[0, 1],
 	[0, 1],
@@ -52,6 +54,7 @@ func _ready():
 		
 	for member in get_tree().get_nodes_in_group("hud"):
 		member.set_player(self)
+		hud = member
 		
 	for member in get_tree().get_nodes_in_group("main"):
 		member.set_player(self)
@@ -179,6 +182,7 @@ func pickup(item_id, item_quantity):
 	for i in range(inventory.size()):
 		if inventory[i][0] == 0:
 			inventory[i] = [item_id, item_quantity]
+			hud.update_inventory()
 			return true	
 	return false
 

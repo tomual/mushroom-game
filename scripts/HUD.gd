@@ -144,7 +144,8 @@ func _on_Option2_pressed():
 func update_hp(hp, max_hp):
 	$PlayerFrames/PlayerFramesInner/BarHealth.max_value = max_hp
 	$PlayerFrames/PlayerFramesInner/BarHealth.value = hp
-	
+
+
 func update_stamina(stamina, max_stamina):
 	$PlayerFrames/PlayerFramesInner/BarStamina.max_value = max_stamina
 	$PlayerFrames/PlayerFramesInner/BarStamina.value = stamina
@@ -167,3 +168,29 @@ func _on_TweenFade_tween_completed(object, key):
 		$ColorRectFade.visible = false
 
 
+func update_inventory():
+	var dictionary_item = {
+		0: {"name": "leaves", "description": "hello"},
+		1: {"name": "urn", "description": "hello"},
+		2: {"name": "mushroom", "description": "hello"},
+		3: {"name": "rotten berry", "description": "hello"},
+		4: {"name": "garl teeth", "description": "hello"},
+		5: {"name": "peppy seeds", "description": "hello"},
+		6: {"name": "merry seeds", "description": "hello"},
+		7: {"name": "crystal heart", "description": "hello"},
+	}
+	var inventory_slots = [
+		$Inventory/Control/Slots/Slot1,
+		$Inventory/Control/Slots/Slot2,
+		$Inventory/Control/Slots/Slot3,
+		$Inventory/Control/Slots/Slot4,
+		$Inventory/Control/Slots/Slot5,
+		$Inventory/Control/Slots/Slot6,
+		$Inventory/Control/Slots/Slot7,
+		$Inventory/Control/Slots/Slot8,
+	]
+	var inventory = player.inventory
+	print_debug(inventory)
+	for i in range(0, 8):
+		inventory_slots[i].get_node("AnimatedSprite").frame = dictionary_item[inventory[i]]
+		
