@@ -526,6 +526,8 @@ __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
+[connection signal="pressed" from="Inventory/Control/Detail/ButtonUse" to="." method="_on_ButtonUse_pressed"]
+[connection signal="pressed" from="Inventory/Control/Detail/ButtonDrop" to="." method="_on_ButtonDrop_pressed"]
 [connection signal="tween_all_completed" from="TweenFade" to="." method="_on_TweenFade_tween_all_completed"]
 [connection signal="tween_completed" from="TweenFade" to="." method="_on_TweenFade_tween_completed"]
 [connection signal="tween_started" from="TweenFade" to="." method="_on_TweenFade_tween_started"]

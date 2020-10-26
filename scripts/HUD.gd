@@ -11,18 +11,28 @@ var talk_line_cursor = 0
 var talk_line = ""
 var player
 
+enum {
+	HEALTH_HEAL,
+	STAMINA_HEAL,
+	HEALTH_REGEN,
+	STAMINA_REGEN,
+	SPEED,
+	ATTACK_SPEED,
+	ATTACK_POWER
+}
 
 var dictionary_item = {
-	0: {"name": "leaves", "description": "hello"},
+	0: {"name": "leaves", "description": "hello", "use": HEALTH_HEAL, "use_multiplier": 1},
 	1: {"name": "urn", "description": "hello"},
 	2: {"name": "mushroom", "description": "hello"},
 	3: {"name": "rotten berry", "description": "hello"},
 	4: {"name": "garl teeth", "description": "hello"},
-	5: {"name": "peppy seeds", "description": "hello"},
+	5: {"name": "peppy seeds", "description": "hello", "use": HEALTH_HEAL, "use_multiplier": 1},
 	6: {"name": "merry seeds", "description": "hello"},
 	7: {"name": "crystal heart", "description": "hello"},
 }
 var inventory_slots
+var selected_slot
 
 func _ready():
 	init()
@@ -211,8 +221,8 @@ func _on_TweenFade_tween_completed(object, key):
 	if $ColorRectFade.color.a == 0:
 		$ColorRectFade.visible = false
 
-func update_inventory():
 
+func update_inventory():
 	var inventory = player.inventory
 	print_debug(inventory)
 	for i in range(0, 8):
@@ -224,6 +234,7 @@ func update_inventory():
 			inventory_slots[i].get_node("AnimatedSprite").scale = Vector2(0, 0)
 			inventory_slots[i].get_node("Count").text = ""
 
+
 func close_windows():
 	$Inventory.visible = false
 	
@@ -234,9 +245,24 @@ func is_window_open():
 
 func on_Slot_focus_entered(slot):
 	var inventory = player.inventory
+	selected_slot = slot
 	if inventory[slot][0] != -1:
 		$Inventory/Control/Detail/Title.text = dictionary_item[inventory[slot][0]].name
 		$Inventory/Control/Detail/Description.text = dictionary_item[inventory[slot][0]].description
+		$Inventory/Control/Detail/ButtonDrop.disabled = false
+		if dictionary_item[inventory[slot][0]].use != null:
+			$Inventory/Control/Detail/ButtonUse.disabled = false
 	else:
 		$Inventory/Control/Detail/Title.text = "Select an item"
 		$Inventory/Control/Detail/Description.text = ""
+		$Inventory/Control/Detail/ButtonUse.disabled = true
+		$Inventory/Control/Detail/ButtonDrop.disabled = true
+
+
+func _on_ButtonUse_pressed():
+	var inventory = player.inventory
+	print_debug(dictionary_item[inventory[selected_slot][0]].use)
+
+
+func _on_ButtonDrop_pressed():
+	pass # Replace with function body.
