@@ -27,14 +27,14 @@ var time_attack_post = 0.1
 var hud
 
 export var inventory = [
-	[0, 1],
-	[0, 1],
-	[0, 1],
-	[0, 1],
-	[0, 1],
-	[0, 1],
-	[0, 1],
-	[0, 1],
+	[-1, 0],
+	[-1, 0],
+	[-1, 0],
+	[-1, 0],
+	[-1, 0],
+	[-1, 0],
+	[-1, 0],
+	[-1, 0],
 ]
 
 func _ready():
@@ -63,6 +63,7 @@ func _ready():
 	stamina = max_stamina
 	emit_signal("update_health", hp, max_hp)
 	emit_signal("update_stamina", stamina, max_stamina)
+	hud.update_inventory()
 	$TimerHealStamina.start()
 
 
@@ -179,8 +180,19 @@ func set_is_in_range_interactable(is_in_range):
 
 
 func pickup(item_id, item_quantity):
+	
 	for i in range(inventory.size()):
-		if inventory[i][0] == 0:
+		if inventory[i][0] == item_id:
+			if inventory[i][1] + item_quantity < 100:
+				inventory[i] = [item_id, inventory[i][1] + item_quantity]
+				hud.update_inventory()
+				return true	
+			else:
+				# Too many items
+				return false
+
+	for i in range(inventory.size()):
+		if inventory[i][0] == -1:
 			inventory[i] = [item_id, item_quantity]
 			hud.update_inventory()
 			return true	

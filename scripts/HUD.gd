@@ -192,5 +192,11 @@ func update_inventory():
 	var inventory = player.inventory
 	print_debug(inventory)
 	for i in range(0, 8):
-		inventory_slots[i].get_node("AnimatedSprite").frame = dictionary_item[inventory[i]]
-		
+		if inventory[i][0] > 0:
+			inventory_slots[i].get_node("AnimatedSprite").scale = Vector2(2, 2)
+			inventory_slots[i].get_node("AnimatedSprite").frame = inventory[i][0]
+			inventory_slots[i].get_node("Count").text = str(inventory[i][1])
+		else:
+			inventory_slots[i].get_node("AnimatedSprite").scale = Vector2(0, 0)
+			inventory_slots[i].get_node("Count").text = ""
+
