@@ -183,8 +183,32 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Slot1" type="Button" parent="Inventory/Control/Slots"]
+[node name="Slot0" type="Button" parent="Inventory/Control/Slots"]
 margin_right = 60.0
+margin_bottom = 60.0
+theme = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Inventory/Control/Slots/Slot0"]
+position = Vector2( 30, 30 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 9 )
+
+[node name="Count" type="Label" parent="Inventory/Control/Slots/Slot0"]
+margin_left = 40.0
+margin_top = 40.0
+margin_right = 60.0
+margin_bottom = 60.6875
+text = "99"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot1" type="Button" parent="Inventory/Control/Slots"]
+margin_left = 70.0
+margin_right = 130.0
 margin_bottom = 60.0
 theme = ExtResource( 7 )
 __meta__ = {
@@ -199,17 +223,18 @@ frames = SubResource( 9 )
 [node name="Count" type="Label" parent="Inventory/Control/Slots/Slot1"]
 margin_left = 40.0
 margin_top = 40.0
-margin_right = 60.0
-margin_bottom = 60.6875
+margin_right = 62.0
+margin_bottom = 61.0
 text = "99"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Slot2" type="Button" parent="Inventory/Control/Slots"]
-margin_left = 70.0
-margin_right = 130.0
-margin_bottom = 60.0
+margin_left = 140.0
+margin_top = 0.529999
+margin_right = 200.0
+margin_bottom = 60.53
 theme = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -224,17 +249,16 @@ frames = SubResource( 9 )
 margin_left = 40.0
 margin_top = 40.0
 margin_right = 62.0
-margin_bottom = 61.0
+margin_bottom = 62.0
 text = "99"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Slot3" type="Button" parent="Inventory/Control/Slots"]
-margin_left = 140.0
-margin_top = 0.529999
-margin_right = 200.0
-margin_bottom = 60.53
+margin_left = 210.0
+margin_right = 270.0
+margin_bottom = 60.0
 theme = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -256,9 +280,9 @@ __meta__ = {
 }
 
 [node name="Slot4" type="Button" parent="Inventory/Control/Slots"]
-margin_left = 210.0
-margin_right = 270.0
-margin_bottom = 60.0
+margin_top = 70.0
+margin_right = 60.0
+margin_bottom = 130.0
 theme = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -272,16 +296,17 @@ frames = SubResource( 9 )
 [node name="Count" type="Label" parent="Inventory/Control/Slots/Slot4"]
 margin_left = 40.0
 margin_top = 40.0
-margin_right = 62.0
-margin_bottom = 62.0
+margin_right = 60.0
+margin_bottom = 60.6875
 text = "99"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Slot5" type="Button" parent="Inventory/Control/Slots"]
+margin_left = 70.0
 margin_top = 70.0
-margin_right = 60.0
+margin_right = 130.0
 margin_bottom = 130.0
 theme = ExtResource( 7 )
 __meta__ = {
@@ -296,18 +321,18 @@ frames = SubResource( 9 )
 [node name="Count" type="Label" parent="Inventory/Control/Slots/Slot5"]
 margin_left = 40.0
 margin_top = 40.0
-margin_right = 60.0
-margin_bottom = 60.6875
+margin_right = 62.0
+margin_bottom = 61.0
 text = "99"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Slot6" type="Button" parent="Inventory/Control/Slots"]
-margin_left = 70.0
-margin_top = 70.0
-margin_right = 130.0
-margin_bottom = 130.0
+margin_left = 140.0
+margin_top = 70.53
+margin_right = 200.0
+margin_bottom = 130.53
 theme = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -322,17 +347,17 @@ frames = SubResource( 9 )
 margin_left = 40.0
 margin_top = 40.0
 margin_right = 62.0
-margin_bottom = 61.0
+margin_bottom = 62.0
 text = "99"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Slot7" type="Button" parent="Inventory/Control/Slots"]
-margin_left = 140.0
-margin_top = 70.53
-margin_right = 200.0
-margin_bottom = 130.53
+margin_left = 210.0
+margin_top = 70.0
+margin_right = 270.0
+margin_bottom = 130.0
 theme = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -344,31 +369,6 @@ scale = Vector2( 2, 2 )
 frames = SubResource( 9 )
 
 [node name="Count" type="Label" parent="Inventory/Control/Slots/Slot7"]
-margin_left = 40.0
-margin_top = 40.0
-margin_right = 62.0
-margin_bottom = 62.0
-text = "99"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Slot8" type="Button" parent="Inventory/Control/Slots"]
-margin_left = 210.0
-margin_top = 70.0
-margin_right = 270.0
-margin_bottom = 130.0
-theme = ExtResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Inventory/Control/Slots/Slot8"]
-position = Vector2( 30, 30 )
-scale = Vector2( 2, 2 )
-frames = SubResource( 9 )
-
-[node name="Count" type="Label" parent="Inventory/Control/Slots/Slot8"]
 margin_left = 40.0
 margin_top = 40.0
 margin_right = 62.0
@@ -390,7 +390,7 @@ __meta__ = {
 margin_right = 40.0
 margin_bottom = 14.0
 custom_fonts/font = SubResource( 10 )
-text = "Item Name"
+text = "Select an item"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -401,7 +401,6 @@ margin_top = 29.0
 margin_right = 217.0
 margin_bottom = 98.0
 custom_fonts/normal_font = SubResource( 11 )
-text = "The weekend is over and the week begins. What did you do with your weekend? How's the week ahead looking for you?"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -412,6 +411,7 @@ margin_top = 103.45
 margin_right = 48.6719
 margin_bottom = 128.45
 theme = ExtResource( 7 )
+disabled = true
 text = "Use"
 
 [node name="ButtonDrop" type="Button" parent="Inventory/Control/Detail"]
@@ -420,6 +420,7 @@ margin_top = 103.45
 margin_right = 110.4
 margin_bottom = 128.45
 theme = ExtResource( 7 )
+disabled = true
 text = "Drop"
 
 [node name="TweenFade" type="Tween" parent="."]

@@ -5,16 +5,55 @@ signal option_1_pressed()
 signal option_2_pressed()
 
 
+var cooldown
 var talking = false
 var talk_line_cursor = 0
 var talk_line = ""
 var player
 
 
+var dictionary_item = {
+	0: {"name": "leaves", "description": "hello"},
+	1: {"name": "urn", "description": "hello"},
+	2: {"name": "mushroom", "description": "hello"},
+	3: {"name": "rotten berry", "description": "hello"},
+	4: {"name": "garl teeth", "description": "hello"},
+	5: {"name": "peppy seeds", "description": "hello"},
+	6: {"name": "merry seeds", "description": "hello"},
+	7: {"name": "crystal heart", "description": "hello"},
+}
+var inventory_slots
+
 func _ready():
 	init()
 	for member in get_tree().get_nodes_in_group("main"):
 		member.set_hud(self)
+	cooldown = Timer.new()
+	cooldown.wait_time = 0.2
+	cooldown.one_shot = true
+	add_child(cooldown)
+	
+	# Inventory
+	$Inventory.visible = false
+	$Inventory/Control/Slots/Slot0.connect("focus_entered", self, "on_Slot_focus_entered", [0])
+	$Inventory/Control/Slots/Slot1.connect("focus_entered", self, "on_Slot_focus_entered", [1])
+	$Inventory/Control/Slots/Slot2.connect("focus_entered", self, "on_Slot_focus_entered", [2])
+	$Inventory/Control/Slots/Slot3.connect("focus_entered", self, "on_Slot_focus_entered", [3])
+	$Inventory/Control/Slots/Slot4.connect("focus_entered", self, "on_Slot_focus_entered", [4])
+	$Inventory/Control/Slots/Slot5.connect("focus_entered", self, "on_Slot_focus_entered", [5])
+	$Inventory/Control/Slots/Slot6.connect("focus_entered", self, "on_Slot_focus_entered", [6])
+	$Inventory/Control/Slots/Slot7.connect("focus_entered", self, "on_Slot_focus_entered", [7])
+	
+	inventory_slots = [
+		$Inventory/Control/Slots/Slot0,
+		$Inventory/Control/Slots/Slot1,
+		$Inventory/Control/Slots/Slot2,
+		$Inventory/Control/Slots/Slot3,
+		$Inventory/Control/Slots/Slot4,
+		$Inventory/Control/Slots/Slot5,
+		$Inventory/Control/Slots/Slot6,
+		$Inventory/Control/Slots/Slot7,
+	]
 
 
 func _process(delta):
@@ -23,6 +62,11 @@ func _process(delta):
 		talk_line_cursor = talk_line_cursor + 1
 		if talk_line.length() <= talk_line_cursor + 1:
 			talk_complete_line()
+	if Input.is_action_pressed("inventory") and cooldown.is_stopped():
+		$Inventory.visible = !$Inventory.visible
+		cooldown.start()
+	if Input.is_action_pressed("ui_cancel"):
+		close_windows()
 
 
 func init():
@@ -167,28 +211,8 @@ func _on_TweenFade_tween_completed(object, key):
 	if $ColorRectFade.color.a == 0:
 		$ColorRectFade.visible = false
 
-
 func update_inventory():
-	var dictionary_item = {
-		0: {"name": "leaves", "description": "hello"},
-		1: {"name": "urn", "description": "hello"},
-		2: {"name": "mushroom", "description": "hello"},
-		3: {"name": "rotten berry", "description": "hello"},
-		4: {"name": "garl teeth", "description": "hello"},
-		5: {"name": "peppy seeds", "description": "hello"},
-		6: {"name": "merry seeds", "description": "hello"},
-		7: {"name": "crystal heart", "description": "hello"},
-	}
-	var inventory_slots = [
-		$Inventory/Control/Slots/Slot1,
-		$Inventory/Control/Slots/Slot2,
-		$Inventory/Control/Slots/Slot3,
-		$Inventory/Control/Slots/Slot4,
-		$Inventory/Control/Slots/Slot5,
-		$Inventory/Control/Slots/Slot6,
-		$Inventory/Control/Slots/Slot7,
-		$Inventory/Control/Slots/Slot8,
-	]
+
 	var inventory = player.inventory
 	print_debug(inventory)
 	for i in range(0, 8):
@@ -200,3 +224,19 @@ func update_inventory():
 			inventory_slots[i].get_node("AnimatedSprite").scale = Vector2(0, 0)
 			inventory_slots[i].get_node("Count").text = ""
 
+func close_windows():
+	$Inventory.visible = false
+	
+
+func is_window_open():
+	return $Inventory.visible
+
+
+func on_Slot_focus_entered(slot):
+	var inventory = player.inventory
+	if inventory[slot][0] != -1:
+		$Inventory/Control/Detail/Title.text = dictionary_item[inventory[slot][0]].name
+		$Inventory/Control/Detail/Description.text = dictionary_item[inventory[slot][0]].description
+	else:
+		$Inventory/Control/Detail/Title.text = "Select an item"
+		$Inventory/Control/Detail/Description.text = ""

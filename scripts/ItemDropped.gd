@@ -18,6 +18,7 @@ func init():
 func activate():
 	.activate()
 	if player.pickup(item_id, item_quantity):
+		deactivate()
 		queue_free()
 	else:
 		deactivate()

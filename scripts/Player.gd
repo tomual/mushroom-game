@@ -106,19 +106,20 @@ func get_input():
 func _physics_process(delta):
 	if can_move():
 		get_input()
-		if !is_attacking() and !is_dead():
-			if velocity == Vector2.ZERO:
-				$AnimatedSprite.animation = "idle"
-				$AnimatedSpriteWeapon.animation = "idle"
-			else:
-				$AnimatedSprite.animation = "walk"
-				$AnimatedSpriteWeapon.animation = "walk"
+	if !is_attacking() and !is_dead() and status != DODGE:
+		if velocity == Vector2.ZERO:
+			$AnimatedSprite.animation = "idle"
+			$AnimatedSpriteWeapon.animation = "idle"
+		else:
+			$AnimatedSprite.animation = "walk"
+			$AnimatedSpriteWeapon.animation = "walk"
 	if !can_move() and status != DODGE:
 		velocity = Vector2.ZERO
 	if status == DODGE:
 		speed = 200
 		$AnimatedSprite.animation = "dodge"
 		$AnimatedSpriteWeapon.animation = "dodge"
+
 	velocity = velocity.normalized() * speed
 	velocity = move_and_slide(velocity)
 	
@@ -129,7 +130,7 @@ func _physics_process(delta):
 
 
 func can_move():
-	return (status == IDLE or status == BUSY) and status != DYING and status != DEAD
+	return (status == IDLE or status == BUSY) and status != DYING and status != DEAD and !hud.is_window_open()
 
 
 func _on_TimerDodgeCoolDown_timeout():
@@ -180,7 +181,7 @@ func set_is_in_range_interactable(is_in_range):
 
 
 func pickup(item_id, item_quantity):
-	
+	$TimerDodgeCoolDown.start()
 	for i in range(inventory.size()):
 		if inventory[i][0] == item_id:
 			if inventory[i][1] + item_quantity < 100:
