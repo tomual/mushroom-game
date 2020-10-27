@@ -282,3 +282,8 @@ func use_item(slot):
 	if inventory[slot][1] <= 0:
 		inventory[slot] = [-1, 0]
 	hud.update_inventory()
+
+
+func hold(node):
+	set_busy()
+	$AnimatedSpriteWeapon.hide()

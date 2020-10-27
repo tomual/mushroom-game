@@ -2,6 +2,7 @@
 
 [ext_resource path="res://presets/Particles2DBlood.tres" type="Material" id=1]
 
+
 [node name="Particles2D" type="Particles2D"]
 position = Vector2( 27.4943, 2.90305 )
 emitting = false
