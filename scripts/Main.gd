@@ -4,6 +4,34 @@ var hud
 var player
 var previous_map
 
+enum {
+	HEALTH_HEAL,
+	STAMINA_HEAL,
+	HEALTH_REGEN,
+	STAMINA_REGEN,
+	SPEED,
+	ATTACK_SPEED,
+	ATTACK_POWER
+}
+var dictionary_item = {
+	0: {"name": "leaves", "description": "hello", "use": {"type": HEALTH_HEAL, "duration": 10, "effect": 2}},
+	1: {"name": "urn", "description": "hello"},
+	2: {"name": "mushroom", "description": "hello"},
+	3: {"name": "rotten berry", "description": "hello"},
+	4: {"name": "garl teeth", "description": "hello"},
+	5: {"name": "peppy seeds", "description": "hello", "use": {"type": STAMINA_HEAL, "duration": 10, "effect": 20}},
+	6: {"name": "merry seeds", "description": "hello"},
+	7: {"name": "crystal heart", "description": "hello"},
+}
+var dictionary_buffs = {
+	HEALTH_HEAL: "buff_health_heal",
+	STAMINA_HEAL: "buff_stamina_heal",
+	HEALTH_REGEN: "buff_health_regen",
+	STAMINA_REGEN: "buff_health_regen",
+	SPEED: "buff_speed",
+	ATTACK_SPEED: "buff_attack_speed",
+	ATTACK_POWER: "buff_attack_power",
+}
 
 func init():
 	init_listeners()

@@ -4,40 +4,22 @@ signal hud_line_complete()
 signal option_1_pressed()
 signal option_2_pressed()
 
-
 var cooldown
 var talking = false
 var talk_line_cursor = 0
 var talk_line = ""
 var player
+var main
 
-enum {
-	HEALTH_HEAL,
-	STAMINA_HEAL,
-	HEALTH_REGEN,
-	STAMINA_REGEN,
-	SPEED,
-	ATTACK_SPEED,
-	ATTACK_POWER
-}
 
-var dictionary_item = {
-	0: {"name": "leaves", "description": "hello", "use": HEALTH_HEAL, "use_multiplier": 1},
-	1: {"name": "urn", "description": "hello"},
-	2: {"name": "mushroom", "description": "hello"},
-	3: {"name": "rotten berry", "description": "hello"},
-	4: {"name": "garl teeth", "description": "hello"},
-	5: {"name": "peppy seeds", "description": "hello", "use": HEALTH_HEAL, "use_multiplier": 1},
-	6: {"name": "merry seeds", "description": "hello"},
-	7: {"name": "crystal heart", "description": "hello"},
-}
 var inventory_slots
-var selected_slot
+var selected_slot = -1
 
 func _ready():
 	init()
 	for member in get_tree().get_nodes_in_group("main"):
 		member.set_hud(self)
+		main = member
 	cooldown = Timer.new()
 	cooldown.wait_time = 0.2
 	cooldown.one_shot = true
@@ -233,6 +215,13 @@ func update_inventory():
 		else:
 			inventory_slots[i].get_node("AnimatedSprite").scale = Vector2(0, 0)
 			inventory_slots[i].get_node("Count").text = ""
+	if selected_slot > -1 and inventory[selected_slot][1] <= 0:
+		inventory_slots[selected_slot].get_node("AnimatedSprite").scale = Vector2(0, 0)
+		inventory_slots[selected_slot].get_node("Count").text = ""
+		$Inventory/Control/Detail/ButtonUse.disabled = true
+		$Inventory/Control/Detail/ButtonDrop.disabled = true
+		$Inventory/Control/Detail/Title.text = "Select an item"
+		$Inventory/Control/Detail/Description.text = ""
 
 
 func close_windows():
@@ -245,6 +234,7 @@ func is_window_open():
 
 func on_Slot_focus_entered(slot):
 	var inventory = player.inventory
+	var dictionary_item = main.dictionary_item
 	selected_slot = slot
 	if inventory[slot][0] != -1:
 		$Inventory/Control/Detail/Title.text = dictionary_item[inventory[slot][0]].name
@@ -260,8 +250,7 @@ func on_Slot_focus_entered(slot):
 
 
 func _on_ButtonUse_pressed():
-	var inventory = player.inventory
-	print_debug(dictionary_item[inventory[selected_slot][0]].use)
+	player.use_item(selected_slot)
 
 
 func _on_ButtonDrop_pressed():
