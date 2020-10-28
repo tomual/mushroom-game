@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scripts/Map.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Garl.tscn" type="PackedScene" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://scenes/Jouro.tscn" type="PackedScene" id=18]
 [ext_resource path="res://scenes/Teleporter.tscn" type="PackedScene" id=19]
 [ext_resource path="res://scenes/Item.tscn" type="PackedScene" id=20]
+[ext_resource path="res://scenes/Mound.tscn" type="PackedScene" id=21]
 
 [node name="Home" type="Node2D" groups=[
 "map",
@@ -69,6 +70,18 @@ texture = ExtResource( 5 )
 position = Vector2( 263.013, -58.8376 )
 scale = Vector2( 3.58329, 3.58329 )
 texture = ExtResource( 5 )
+
+[node name="Mound" parent="YSortBackground" instance=ExtResource( 21 )]
+position = Vector2( -105.96, 52.3568 )
+
+[node name="Mound" parent="YSortBackground/Mound" instance=ExtResource( 21 )]
+position = Vector2( 40.4253, 8.19661 )
+
+[node name="Mound2" parent="YSortBackground/Mound" instance=ExtResource( 21 )]
+position = Vector2( -36.0189, 13.2647 )
+
+[node name="Mound3" parent="YSortBackground/Mound" instance=ExtResource( 21 )]
+position = Vector2( -64.4711, -2.31557 )
 
 [node name="YSort" type="YSort" parent="."]
 

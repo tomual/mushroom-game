@@ -277,11 +277,18 @@ func buff_stamina_heal(buff):
 func use_item(slot):
 	print_debug(slot)
 	var dictionary_item = main.dictionary_item
-	apply_buff(dictionary_item[inventory[slot][0]].use)
+	if dictionary_item[inventory[slot][0]].use.type == "buff":
+		apply_buff(dictionary_item[inventory[slot][0]].use)
+	elif dictionary_item[inventory[slot][0]].use.type == "plant":
+		plant(inventory[slot][0])
 	inventory[slot][1] = inventory[slot][1] - 1
 	if inventory[slot][1] <= 0:
 		inventory[slot] = [-1, 0]
 	hud.update_inventory()
+
+
+func plant(item_id):
+	print_debug(item_id)
 
 
 func hold(node):

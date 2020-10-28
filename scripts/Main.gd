@@ -11,15 +11,15 @@ enum {
 	STAMINA_REGEN,
 	SPEED,
 	ATTACK_SPEED,
-	ATTACK_POWER
+	ATTACK_POWER,
 }
 var dictionary_item = {
-	0: {"name": "leaves", "description": "hello", "use": {"type": HEALTH_HEAL, "duration": 10, "effect": 2}},
+	0: {"name": "leaves", "description": "hello", "use": {"type": "buff", "buff": HEALTH_HEAL, "duration": 10, "effect": 2}},
 	1: {"name": "urn", "description": "hello"},
 	2: {"name": "mushroom", "description": "hello"},
 	3: {"name": "rotten berry", "description": "hello"},
 	4: {"name": "garl teeth", "description": "hello"},
-	5: {"name": "peppy seeds", "description": "hello", "use": {"type": STAMINA_HEAL, "duration": 10, "effect": 20}},
+	5: {"name": "peppy seeds", "description": "hello", "use": {"type": "plant"}},
 	6: {"name": "merry seeds", "description": "hello"},
 	7: {"name": "crystal heart", "description": "hello"},
 }

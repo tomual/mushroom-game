@@ -80,13 +80,6 @@ func _process(delta):
 		offset_y = -13
 		position = Vector2(player.position.x + offset_x, player.position.y + offset_y)
 		
-		if $Particles2D:
-			$Particles2D.position = Vector2(offset_x, 0)
-			if !player.flipped:
-				$Particles2D.scale.x = -1
-			if player.flipped:
-				$Particles2D.scale.x = 1
-			
 		$AnimatedSprite.flip_h = player.flipped
 
 
