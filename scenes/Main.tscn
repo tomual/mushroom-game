@@ -14,3 +14,15 @@ script = ExtResource( 3 )
 [node name="Map" type="Node2D" parent="."]
 
 [node name="Home" parent="Map" instance=ExtResource( 1 )]
+
+[node name="TimerMound1" type="Timer" parent="."]
+wait_time = 10.0
+
+[node name="TimerMound2" type="Timer" parent="."]
+wait_time = 10.0
+
+[node name="TimerMound3" type="Timer" parent="."]
+wait_time = 10.0
+
+[node name="TimerMound4" type="Timer" parent="."]
+wait_time = 10.0

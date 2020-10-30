@@ -19,7 +19,7 @@ var dictionary_item = {
 	2: {"name": "mushroom", "description": "hello"},
 	3: {"name": "rotten berry", "description": "hello"},
 	4: {"name": "garl teeth", "description": "hello"},
-	5: {"name": "peppy seeds", "description": "hello", "use": {"type": "plant"}},
+	5: {"name": "peppy seeds", "description": "may you never know", "use": {"type": "plant"}},
 	6: {"name": "merry seeds", "description": "hello"},
 	7: {"name": "crystal heart", "description": "hello"},
 }
@@ -32,6 +32,17 @@ var dictionary_buffs = {
 	ATTACK_SPEED: "buff_attack_speed",
 	ATTACK_POWER: "buff_attack_power",
 }
+var mounds  = {
+	1: {"phase":1},
+	2: {"phase":2},
+	3: {"phase":3},
+	4: {"phase":4},
+}
+
+func _ready():
+	print_debug("test")
+	for i in range(1, 5):
+		print_debug(get_node("TimerMound" + str(i)))
 
 func init():
 	init_listeners()

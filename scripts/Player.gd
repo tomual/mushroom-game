@@ -20,6 +20,7 @@ var status = IDLE
 var speed = 200
 var is_in_range_interactable = false
 export var flipped = false
+var mound_in_range
 
 var time_attack_pre = 0.1
 var time_attack = 0.2
@@ -65,6 +66,7 @@ func _ready():
 	stamina = max_stamina
 	emit_signal("update_health", hp, max_hp)
 	emit_signal("update_stamina", stamina, max_stamina)
+	emit_signal("update_spores", spores)
 	hud.update_inventory()
 	$TimerHealStamina.start()
 
@@ -279,9 +281,10 @@ func use_item(slot):
 	var dictionary_item = main.dictionary_item
 	if dictionary_item[inventory[slot][0]].use.type == "buff":
 		apply_buff(dictionary_item[inventory[slot][0]].use)
+		inventory[slot][1] = inventory[slot][1] - 1
 	elif dictionary_item[inventory[slot][0]].use.type == "plant":
-		plant(inventory[slot][0])
-	inventory[slot][1] = inventory[slot][1] - 1
+		if plant(inventory[slot][0]):
+			inventory[slot][1] = inventory[slot][1] - 1
 	if inventory[slot][1] <= 0:
 		inventory[slot] = [-1, 0]
 	hud.update_inventory()
@@ -289,8 +292,27 @@ func use_item(slot):
 
 func plant(item_id):
 	print_debug(item_id)
+	if mound_in_range:
+		print_debug("can plant")
+		mound_in_range.plant(item_id)
+		return true
+	else:
+		print_debug("can't plant")
+		return false
 
 
 func hold(node):
 	set_busy()
 	$AnimatedSpriteWeapon.hide()
+
+
+func _on_AreaPlayer_area_entered(area):
+	if "Mound" in area.name:
+		print_debug("Yeah mound")
+		mound_in_range = area
+
+
+func _on_AreaPlayer_area_exited(area):
+	if "Mound" in area.name:
+		print_debug("Nah mound")
+		mound_in_range = null

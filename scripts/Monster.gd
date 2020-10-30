@@ -170,4 +170,4 @@ func die():
 
 
 func roll_item_drop():
-	return [12, 2]
+	return [5, 2]

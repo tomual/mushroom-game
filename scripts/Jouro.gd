@@ -7,7 +7,9 @@ func _ready():
 
 func use():
 	.use()
-	print_debug('jouro use')
+	$Particles2D.emitting = true
+	$Timer.start()
+
 
 func _process(delta):
 	._process(delta)
@@ -22,3 +24,7 @@ func _process(delta):
 		$Particles2D.scale.x = -1
 	if player.flipped:
 		$Particles2D.scale.x = 1
+
+
+func _on_Timer_timeout():
+	$Particles2D.emitting = false

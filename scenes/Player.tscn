@@ -345,4 +345,5 @@ wait_time = 0.1
 [connection signal="timeout" from="TimerDie" to="." method="_on_TimerDie_timeout"]
 [connection signal="timeout" from="TimerAttack" to="." method="_on_TimerAttack_timeout"]
 [connection signal="area_entered" from="AreaPlayer" to="." method="_on_AreaPlayer_area_entered"]
+[connection signal="area_exited" from="AreaPlayer" to="." method="_on_AreaPlayer_area_exited"]
 [connection signal="timeout" from="TimerHealStamina" to="." method="_on_TimerHealStamina_timeout"]
