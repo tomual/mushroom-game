@@ -73,7 +73,7 @@ func _process(delta):
 			deactivate()
 		var offset_x = 0
 		var offset_y = 0
-		if (player.flipped):
+		if player.flipped:
 			offset_x = -13
 		else:
 			offset_x = 13

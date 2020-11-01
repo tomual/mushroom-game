@@ -17,12 +17,16 @@ script = ExtResource( 3 )
 
 [node name="TimerMound1" type="Timer" parent="."]
 wait_time = 10.0
+one_shot = true
 
 [node name="TimerMound2" type="Timer" parent="."]
 wait_time = 10.0
+one_shot = true
 
 [node name="TimerMound3" type="Timer" parent="."]
 wait_time = 10.0
+one_shot = true
 
 [node name="TimerMound4" type="Timer" parent="."]
 wait_time = 10.0
+one_shot = true

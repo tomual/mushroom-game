@@ -1,12 +1,11 @@
 extends "Interactable.gd"
 
-export var item_id = 5
-export var item_quantity = 1
+export var item_id = 2
+export var item_quantity = 55
 
 
 func _ready():
 	type = PICKUP
-	$AnimatedSprite.play()
 
 
 func init():
