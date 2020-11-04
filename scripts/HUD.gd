@@ -240,7 +240,7 @@ func on_Slot_focus_entered(slot):
 		$Inventory/Control/Detail/Title.text = dictionary_item[inventory[slot][0]].name
 		$Inventory/Control/Detail/Description.text = dictionary_item[inventory[slot][0]].description
 		$Inventory/Control/Detail/ButtonDrop.disabled = false
-		if dictionary_item[inventory[slot][0]].use != null:
+		if dictionary_item[inventory[slot][0]].has('use'):
 			$Inventory/Control/Detail/ButtonUse.disabled = false
 	else:
 		$Inventory/Control/Detail/Title.text = "Select an item"
