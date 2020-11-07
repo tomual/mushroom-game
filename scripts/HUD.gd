@@ -254,4 +254,12 @@ func _on_ButtonUse_pressed():
 
 
 func _on_ButtonDrop_pressed():
-	pass # Replace with function body.
+	print_debug("drop!")
+
+
+func _on_ButtonUpgrade_pressed():
+	print_debug("upgrade!")
+
+
+func _on_ButtonCancelUpgrade_pressed():
+	$Upgrade.visible = false
