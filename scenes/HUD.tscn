@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://assets/ui/nine.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Button.tscn" type="PackedScene" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://assets/items/6.png" type="Texture" id=13]
 [ext_resource path="res://assets/items/5.png" type="Texture" id=14]
 [ext_resource path="res://assets/items/2.png" type="Texture" id=15]
+[ext_resource path="res://scenes/Upgrade.gd" type="Script" id=16]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 12 )
@@ -436,20 +437,23 @@ theme = ExtResource( 7 )
 disabled = true
 text = "Drop"
 
-[node name="Upgrade" type="NinePatchRect" parent="."]
+[node name="Upgrade" type="NinePatchRect" parent="." groups=[
+"upgrade",
+]]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -128.5
-margin_top = -192.5
-margin_right = 128.5
-margin_bottom = 192.5
+margin_left = -128.0
+margin_top = -192.0
+margin_right = 129.0
+margin_bottom = 181.0
 texture = ExtResource( 1 )
 patch_margin_left = 5
 patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
+script = ExtResource( 16 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -582,9 +586,9 @@ __meta__ = {
 
 [node name="Arrow" type="Label" parent="Upgrade"]
 margin_left = 110.103
-margin_top = 230.034
+margin_top = 228.034
 margin_right = 150.103
-margin_bottom = 256.034
+margin_bottom = 254.034
 custom_fonts/font = SubResource( 12 )
 custom_colors/font_color = Color( 0.298039, 0.388235, 0.560784, 1 )
 text = "V"
@@ -596,9 +600,9 @@ __meta__ = {
 
 [node name="Arrow2" type="Label" parent="Upgrade"]
 margin_left = 110.396
-margin_top = 227.519
+margin_top = 225.519
 margin_right = 150.396
-margin_bottom = 253.519
+margin_bottom = 251.519
 custom_fonts/font = SubResource( 12 )
 custom_colors/font_color = Color( 0.298039, 0.388235, 0.560784, 1 )
 text = "I"
@@ -619,7 +623,6 @@ margin_right = 31.5
 margin_bottom = 37.0
 rect_pivot_offset = Vector2( 48.1665, 13 )
 custom_fonts/font = SubResource( 13 )
-custom_colors/font_color = Color( 0.568627, 0.698039, 0.568627, 1 )
 text = "Attack: 15"
 align = 2
 valign = 1
@@ -656,7 +659,6 @@ margin_right = 31.5
 margin_bottom = 93.0
 rect_pivot_offset = Vector2( 48.1665, 13 )
 custom_fonts/font = SubResource( 13 )
-custom_colors/font_color = Color( 0.568627, 0.698039, 0.568627, 1 )
 text = "Attack: 15"
 align = 2
 valign = 1
@@ -672,7 +674,6 @@ margin_top = 24.0
 margin_right = 48.0
 margin_bottom = 50.0
 custom_fonts/font = ExtResource( 3 )
-custom_colors/font_color = Color( 0.858824, 0.882353, 0.713726, 1 )
 text = "Upgrade"
 __meta__ = {
 "_edit_use_anchors_": false

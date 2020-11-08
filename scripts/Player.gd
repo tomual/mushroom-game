@@ -26,6 +26,12 @@ var time_attack_pre = 0.1
 var time_attack = 0.2
 var time_attack_post = 0.1
 
+var weapon = {
+	"name": "Doorknob",
+	"upgrade": 1,
+	"attack": 15
+}
+
 var hud
 
 export var inventory = [
@@ -61,6 +67,10 @@ func _ready():
 	for member in get_tree().get_nodes_in_group("main"):
 		main = member
 		main.set_player(self)
+		
+	for member in get_tree().get_nodes_in_group("upgrade"):
+		main = member
+		main.player = self
 	
 	hp = max_hp
 	stamina = max_stamina

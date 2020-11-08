@@ -258,7 +258,10 @@ func _on_ButtonDrop_pressed():
 
 
 func _on_ButtonUpgrade_pressed():
-	print_debug("upgrade!")
+	var upgrade
+	for member in get_tree().get_nodes_in_group("upgrade"):
+		upgrade = member
+	upgrade.upgrade()
 
 
 func _on_ButtonCancelUpgrade_pressed():
