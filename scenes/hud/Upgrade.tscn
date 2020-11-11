@@ -1,0 +1,312 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://scenes/Upgrade.gd" type="Script" id=1]
+[ext_resource path="res://assets/ui/nine.png" type="Texture" id=2]
+[ext_resource path="res://assets/items/7.png" type="Texture" id=3]
+[ext_resource path="res://assets/items/8.png" type="Texture" id=4]
+[ext_resource path="res://assets/items/1.png" type="Texture" id=5]
+[ext_resource path="res://assets/items/4.png" type="Texture" id=6]
+[ext_resource path="res://assets/items/6.png" type="Texture" id=7]
+[ext_resource path="res://assets/items/5.png" type="Texture" id=8]
+[ext_resource path="res://assets/items/2.png" type="Texture" id=9]
+[ext_resource path="res://assets/items/3.png" type="Texture" id=10]
+[ext_resource path="res://assets/EpilepsySansBold.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://presets/font.tres" type="DynamicFont" id=12]
+[ext_resource path="res://presets/Theme.tres" type="Theme" id=13]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 9 )
+region = Rect2( 0, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 10 )
+region = Rect2( 0, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 8 )
+region = Rect2( 0, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 100, 100 )
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="DynamicFont" id=10]
+size = 13
+font_data = ExtResource( 11 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 14
+font_data = ExtResource( 11 )
+
+[sub_resource type="DynamicFont" id=12]
+size = 20
+outline_color = Color( 0.858824, 0.882353, 0.713726, 1 )
+font_data = ExtResource( 11 )
+
+[node name="Upgrade" type="NinePatchRect" groups=[
+"upgrade",
+]]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -128.0
+margin_top = -192.0
+margin_right = 129.0
+margin_bottom = 181.0
+texture = ExtResource( 2 )
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonUpgrade" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -56.5
+margin_top = 107.5
+margin_right = 56.5
+margin_bottom = 132.5
+theme = ExtResource( 13 )
+text = "Upgrade (3000)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonCancelUpgrade" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -56.5
+margin_top = 139.5
+margin_right = 56.5
+margin_bottom = 164.5
+theme = ExtResource( 13 )
+text = "Cancel"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 135.702, 110.377 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 9 )
+
+[node name="Control" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 74.9164
+margin_top = 164.487
+margin_right = -98.0836
+margin_bottom = -177.513
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slots" type="Control" parent="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot0" type="Button" parent="Control/Slots"]
+margin_right = 60.0
+margin_bottom = 60.0
+theme = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Control/Slots/Slot0"]
+position = Vector2( 30, 30 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 9 )
+
+[node name="Count" type="Label" parent="Control/Slots/Slot0"]
+margin_left = 40.0
+margin_top = 40.0
+margin_right = 60.0
+margin_bottom = 60.6875
+text = "99"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot1" type="Button" parent="Control/Slots"]
+margin_left = 70.0
+margin_right = 130.0
+margin_bottom = 60.0
+theme = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Control/Slots/Slot1"]
+position = Vector2( 30, 30 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 9 )
+
+[node name="Count" type="Label" parent="Control/Slots/Slot1"]
+margin_left = 40.0
+margin_top = 40.0
+margin_right = 62.0
+margin_bottom = 61.0
+text = "99"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot2" type="Button" parent="Control/Slots"]
+margin_left = 140.0
+margin_top = 0.529999
+margin_right = 200.0
+margin_bottom = 60.53
+theme = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Control/Slots/Slot2"]
+position = Vector2( 30, 30 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 9 )
+
+[node name="Count" type="Label" parent="Control/Slots/Slot2"]
+margin_left = 40.0
+margin_top = 40.0
+margin_right = 62.0
+margin_bottom = 62.0
+text = "99"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Arrow" type="Label" parent="."]
+margin_left = 110.103
+margin_top = 228.034
+margin_right = 150.103
+margin_bottom = 254.034
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0.298039, 0.388235, 0.560784, 1 )
+text = "V"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Arrow2" type="Label" parent="."]
+margin_left = 110.396
+margin_top = 225.519
+margin_right = 150.396
+margin_bottom = 251.519
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0.298039, 0.388235, 0.560784, 1 )
+text = "I"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AttackBefore" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -31.5
+margin_top = 11.0
+margin_right = 31.5
+margin_bottom = 37.0
+rect_pivot_offset = Vector2( 48.1665, 13 )
+custom_fonts/font = SubResource( 11 )
+text = "Attack: 15"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Weapon" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -62.5
+margin_top = -37.0
+margin_right = 62.5
+margin_bottom = 5.0
+rect_pivot_offset = Vector2( 48.1665, 13 )
+custom_fonts/font = SubResource( 12 )
+text = "Doorknob +1"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AttackAfter" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -31.5
+margin_top = 67.0
+margin_right = 31.5
+margin_bottom = 93.0
+rect_pivot_offset = Vector2( 48.1665, 13 )
+custom_fonts/font = SubResource( 11 )
+text = "Attack: 15"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Header" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -48.0
+margin_top = 24.0
+margin_right = 48.0
+margin_bottom = 50.0
+custom_fonts/font = ExtResource( 12 )
+text = "Upgrade"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="ButtonUpgrade" to="." method="_on_ButtonUpgrade_pressed"]
+[connection signal="pressed" from="ButtonCancelUpgrade" to="." method="_on_ButtonCancelUpgrade_pressed"]

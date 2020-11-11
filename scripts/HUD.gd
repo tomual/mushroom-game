@@ -12,40 +12,20 @@ var player
 var main
 
 
-var inventory_slots
-var selected_slot = -1
 
 func _ready():
 	init()
 	for member in get_tree().get_nodes_in_group("main"):
 		member.set_hud(self)
 		main = member
+	$Inventory.main = main
 	cooldown = Timer.new()
 	cooldown.wait_time = 0.2
 	cooldown.one_shot = true
 	add_child(cooldown)
+	close_windows()
 	
-	# Inventory
-	$Inventory.visible = false
-	$Inventory/Control/Slots/Slot0.connect("focus_entered", self, "on_Slot_focus_entered", [0])
-	$Inventory/Control/Slots/Slot1.connect("focus_entered", self, "on_Slot_focus_entered", [1])
-	$Inventory/Control/Slots/Slot2.connect("focus_entered", self, "on_Slot_focus_entered", [2])
-	$Inventory/Control/Slots/Slot3.connect("focus_entered", self, "on_Slot_focus_entered", [3])
-	$Inventory/Control/Slots/Slot4.connect("focus_entered", self, "on_Slot_focus_entered", [4])
-	$Inventory/Control/Slots/Slot5.connect("focus_entered", self, "on_Slot_focus_entered", [5])
-	$Inventory/Control/Slots/Slot6.connect("focus_entered", self, "on_Slot_focus_entered", [6])
-	$Inventory/Control/Slots/Slot7.connect("focus_entered", self, "on_Slot_focus_entered", [7])
-	
-	inventory_slots = [
-		$Inventory/Control/Slots/Slot0,
-		$Inventory/Control/Slots/Slot1,
-		$Inventory/Control/Slots/Slot2,
-		$Inventory/Control/Slots/Slot3,
-		$Inventory/Control/Slots/Slot4,
-		$Inventory/Control/Slots/Slot5,
-		$Inventory/Control/Slots/Slot6,
-		$Inventory/Control/Slots/Slot7,
-	]
+
 
 
 func _process(delta):
@@ -75,6 +55,8 @@ func set_player(node):
 	player.connect("update_stamina", self, "update_stamina")
 	player.connect("update_spores", self, "update_spores")
 	player.connect("die", self, "death_screen")
+	$Inventory.player = player
+	$Upgrade.player = player
 
 
 func interactable_available(position, label):
@@ -177,6 +159,10 @@ func _on_Option2_pressed():
 	options_hide()
 
 
+func update_inventory():
+	$Inventory.update()
+
+
 func update_hp(hp, max_hp):
 	$PlayerFrames/PlayerFramesInner/BarHealth.max_value = max_hp
 	$PlayerFrames/PlayerFramesInner/BarHealth.value = hp
@@ -204,65 +190,11 @@ func _on_TweenFade_tween_completed(object, key):
 		$ColorRectFade.visible = false
 
 
-func update_inventory():
-	var inventory = player.inventory
-	print_debug(inventory)
-	for i in range(0, 8):
-		if inventory[i][0] > 0:
-			inventory_slots[i].get_node("AnimatedSprite").scale = Vector2(2, 2)
-			inventory_slots[i].get_node("AnimatedSprite").frame = inventory[i][0]
-			inventory_slots[i].get_node("Count").text = str(inventory[i][1])
-		else:
-			inventory_slots[i].get_node("AnimatedSprite").scale = Vector2(0, 0)
-			inventory_slots[i].get_node("Count").text = ""
-	if selected_slot > -1 and inventory[selected_slot][1] <= 0:
-		inventory_slots[selected_slot].get_node("AnimatedSprite").scale = Vector2(0, 0)
-		inventory_slots[selected_slot].get_node("Count").text = ""
-		$Inventory/Control/Detail/ButtonUse.disabled = true
-		$Inventory/Control/Detail/ButtonDrop.disabled = true
-		$Inventory/Control/Detail/Title.text = "Select an item"
-		$Inventory/Control/Detail/Description.text = ""
-
-
 func close_windows():
 	$Inventory.visible = false
-	
+
 
 func is_window_open():
-	return $Inventory.visible
+	return $Inventory.visible or $Upgrade.visible
 
 
-func on_Slot_focus_entered(slot):
-	var inventory = player.inventory
-	var dictionary_item = main.dictionary_item
-	selected_slot = slot
-	if inventory[slot][0] != -1:
-		$Inventory/Control/Detail/Title.text = dictionary_item[inventory[slot][0]].name
-		$Inventory/Control/Detail/Description.text = dictionary_item[inventory[slot][0]].description
-		$Inventory/Control/Detail/ButtonDrop.disabled = false
-		if dictionary_item[inventory[slot][0]].has('use'):
-			$Inventory/Control/Detail/ButtonUse.disabled = false
-	else:
-		$Inventory/Control/Detail/Title.text = "Select an item"
-		$Inventory/Control/Detail/Description.text = ""
-		$Inventory/Control/Detail/ButtonUse.disabled = true
-		$Inventory/Control/Detail/ButtonDrop.disabled = true
-
-
-func _on_ButtonUse_pressed():
-	player.use_item(selected_slot)
-
-
-func _on_ButtonDrop_pressed():
-	print_debug("drop!")
-
-
-func _on_ButtonUpgrade_pressed():
-	var upgrade
-	for member in get_tree().get_nodes_in_group("upgrade"):
-		upgrade = member
-	upgrade.upgrade()
-
-
-func _on_ButtonCancelUpgrade_pressed():
-	$Upgrade.visible = false

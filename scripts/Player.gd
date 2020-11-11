@@ -13,7 +13,7 @@ var hp
 var max_stamina = 200
 var stamina
 var attack = 10
-var spores = 0
+var spores = 7000
 
 var velocity
 var status = IDLE
@@ -28,7 +28,7 @@ var time_attack_post = 0.1
 
 var weapon = {
 	"name": "Doorknob",
-	"upgrade": 1,
+	"level": 1,
 	"attack": 15
 }
 
@@ -67,17 +67,12 @@ func _ready():
 	for member in get_tree().get_nodes_in_group("main"):
 		main = member
 		main.set_player(self)
-		
-	for member in get_tree().get_nodes_in_group("upgrade"):
-		main = member
-		main.player = self
 	
 	hp = max_hp
 	stamina = max_stamina
 	emit_signal("update_health", hp, max_hp)
 	emit_signal("update_stamina", stamina, max_stamina)
 	emit_signal("update_spores", spores)
-	hud.update_inventory()
 	$TimerHealStamina.start()
 
 
