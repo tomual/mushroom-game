@@ -194,6 +194,7 @@ func _on_TweenFade_tween_completed(object, key):
 
 func close_windows():
 	$Inventory.visible = false
+	$Upgrade.visible = false
 
 
 func is_window_open():

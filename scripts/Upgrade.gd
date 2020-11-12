@@ -24,12 +24,17 @@ func open():
 
 func update():
 	cost = 3000 + 3000 * player.weapon.level * 0.5
-	$Weapon.text = player.weapon.name
+	# Before
+	$Before/Label.text = player.weapon.name
 	if player.weapon.level > 0:
-		$Weapon.text =  $Weapon.text + " +" + str(player.weapon.level)
-	$AttackBefore.text = "Attack: " + str(player.weapon.attack)
-	$AttackAfter.text = "Attack: " + str(player.weapon.attack + 13)
-	$ButtonUpgrade.text = "Upgrade (" + str(cost) + ")"
+		$Before/Label.text =  $Before/Label.text + " +" + str(player.weapon.level)
+	$Before/Stats.text = str(player.weapon.attack)
+
+	# After
+	$After/Label.text = player.weapon.name
+	$After/Label.text =  $After/Label.text + " +" + str(player.weapon.level + 1)
+	$After/Stats.text = str(player.weapon.attack + 13)
+	
 	if player.spores < cost:
 		$ButtonUpgrade.disabled = true
 	else:

@@ -13,6 +13,7 @@
 [ext_resource path="res://assets/EpilepsySansBold.ttf" type="DynamicFontData" id=11]
 [ext_resource path="res://presets/font.tres" type="DynamicFont" id=12]
 [ext_resource path="res://presets/Theme.tres" type="Theme" id=13]
+[ext_resource path="res://presets/font-thin.tres" type="DynamicFont" id=14]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 5 )
@@ -54,16 +55,12 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="DynamicFont" id=10]
-size = 13
-font_data = ExtResource( 11 )
-
-[sub_resource type="DynamicFont" id=11]
+[sub_resource type="DynamicFont" id=12]
 size = 14
 font_data = ExtResource( 11 )
 
-[sub_resource type="DynamicFont" id=12]
-size = 20
+[sub_resource type="DynamicFont" id=13]
+size = 25
 outline_color = Color( 0.858824, 0.882353, 0.713726, 1 )
 font_data = ExtResource( 11 )
 
@@ -74,10 +71,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -128.0
-margin_top = -192.0
-margin_right = 129.0
-margin_bottom = 181.0
+margin_left = -159.0
+margin_top = -201.0
+margin_right = 173.0
+margin_bottom = 203.0
 texture = ExtResource( 2 )
 patch_margin_left = 5
 patch_margin_top = 5
@@ -94,9 +91,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -56.5
-margin_top = 107.5
+margin_top = 115.5
 margin_right = 56.5
-margin_bottom = 132.5
+margin_bottom = 140.5
 theme = ExtResource( 13 )
 text = "Upgrade (3000)"
 __meta__ = {
@@ -109,19 +106,14 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -56.5
-margin_top = 139.5
+margin_top = 147.5
 margin_right = 56.5
-margin_bottom = 164.5
+margin_bottom = 172.5
 theme = ExtResource( 13 )
 text = "Cancel"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 135.702, 110.377 )
-scale = Vector2( 3, 3 )
-frames = SubResource( 9 )
 
 [node name="Control" type="Control" parent="."]
 visible = false
@@ -214,88 +206,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Arrow" type="Label" parent="."]
-margin_left = 110.103
-margin_top = 228.034
-margin_right = 150.103
-margin_bottom = 254.034
-custom_fonts/font = SubResource( 10 )
-custom_colors/font_color = Color( 0.298039, 0.388235, 0.560784, 1 )
-text = "V"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Arrow2" type="Label" parent="."]
-margin_left = 110.396
-margin_top = 225.519
-margin_right = 150.396
-margin_bottom = 251.519
-custom_fonts/font = SubResource( 10 )
-custom_colors/font_color = Color( 0.298039, 0.388235, 0.560784, 1 )
-text = "I"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="AttackBefore" type="Label" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -31.5
-margin_top = 11.0
-margin_right = 31.5
-margin_bottom = 37.0
-rect_pivot_offset = Vector2( 48.1665, 13 )
-custom_fonts/font = SubResource( 11 )
-text = "Attack: 15"
-align = 2
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Weapon" type="Label" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -62.5
-margin_top = -37.0
-margin_right = 62.5
-margin_bottom = 5.0
-rect_pivot_offset = Vector2( 48.1665, 13 )
-custom_fonts/font = SubResource( 12 )
-text = "Doorknob +1"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="AttackAfter" type="Label" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -31.5
-margin_top = 67.0
-margin_right = 31.5
-margin_bottom = 93.0
-rect_pivot_offset = Vector2( 48.1665, 13 )
-custom_fonts/font = SubResource( 11 )
-text = "Attack: 15"
-align = 2
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Header" type="Label" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
@@ -305,6 +215,170 @@ margin_right = 48.0
 margin_bottom = 50.0
 custom_fonts/font = ExtResource( 12 )
 text = "Upgrade"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Before" type="Control" parent="."]
+margin_left = 39.0
+margin_top = 95.0
+margin_right = 153.0
+margin_bottom = 298.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Before"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatsLabels" type="Label" parent="Before"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -45.0
+margin_top = -90.0
+margin_right = 45.0
+margin_bottom = -13.0
+rect_pivot_offset = Vector2( 48.1665, 13 )
+custom_fonts/font = ExtResource( 14 )
+text = "Attack
+
+-
+-
+-"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stats" type="Label" parent="Before"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -45.0
+margin_top = -90.0
+margin_right = 45.0
+margin_bottom = -13.0
+rect_pivot_offset = Vector2( 48.1665, 13 )
+custom_fonts/font = ExtResource( 14 )
+text = "15"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Before"]
+margin_left = 4.75684
+margin_top = 88.5959
+margin_right = 117.757
+margin_bottom = 109.596
+rect_pivot_offset = Vector2( 48.1665, 13 )
+custom_fonts/font = SubResource( 12 )
+text = "Doorknob +1"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Before"]
+position = Vector2( 60.1268, 42.4433 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 9 )
+
+[node name="After" type="Control" parent="."]
+margin_left = 183.0
+margin_top = 95.0
+margin_right = 297.0
+margin_bottom = 298.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="After"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatsLabels" type="Label" parent="After"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -45.0
+margin_top = -90.0
+margin_right = 45.0
+margin_bottom = -13.0
+rect_pivot_offset = Vector2( 48.1665, 13 )
+custom_fonts/font = ExtResource( 14 )
+text = "Attack
+
+-
+-
+-"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stats" type="Label" parent="After"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -45.0
+margin_top = -90.0
+margin_right = 45.0
+margin_bottom = -13.0
+rect_pivot_offset = Vector2( 48.1665, 13 )
+custom_fonts/font = ExtResource( 14 )
+text = "15"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="After"]
+margin_left = 4.75684
+margin_top = 88.5959
+margin_right = 117.757
+margin_bottom = 109.596
+rect_pivot_offset = Vector2( 48.1665, 13 )
+custom_fonts/font = SubResource( 12 )
+text = "Doorknob +1"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="After"]
+position = Vector2( 60.1268, 42.4433 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 9 )
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -13.0
+margin_right = 20.0
+margin_bottom = 13.0
+custom_fonts/font = SubResource( 13 )
+custom_colors/font_color = Color( 0.568627, 0.698039, 0.568627, 1 )
+text = ">"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
