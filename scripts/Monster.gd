@@ -3,7 +3,7 @@ extends KinematicBody2D
 signal apply_damage(amount)
 signal give_spores(amount)
 
-var max_hp = 20
+var max_hp = 200
 var hp
 var max_stamina = 200
 var stamina
@@ -138,10 +138,11 @@ func _on_AreaWeapon_area_entered(area):
 
 func _on_AreaHitBox_area_entered(area):
 	if area.name == "AreaPlayerWeapon":
-		take_damage(player.attack)
+		take_damage(player.roll_damage())
 
 
 func take_damage(amount):
+	print_debug(amount)
 	hp = hp - amount
 	$Particles2D.emitting = true
 	if status != DEAD and is_dead():

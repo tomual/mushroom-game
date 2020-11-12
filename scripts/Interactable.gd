@@ -118,8 +118,6 @@ func activate():
 		player.hold(self)
 		$CollisionShape2D.disabled = true
 		$Shadow.visible = false
-	elif type == TALK:
-		emit_signal("talk", id)
 
 
 func deactivate():

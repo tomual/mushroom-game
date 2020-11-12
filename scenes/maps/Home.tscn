@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scripts/Map.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Garl.tscn" type="PackedScene" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://assets/home/patch 4.png" type="Texture" id=17]
 [ext_resource path="res://scenes/Jouro.tscn" type="PackedScene" id=18]
 [ext_resource path="res://scenes/Teleporter.tscn" type="PackedScene" id=19]
+[ext_resource path="res://scenes/NPC.tscn" type="PackedScene" id=20]
 [ext_resource path="res://scenes/Mound.tscn" type="PackedScene" id=21]
 
 [node name="Home" type="Node2D" groups=[
@@ -93,6 +94,9 @@ id = 4
 ] instance=ExtResource( 21 )]
 position = Vector2( -82.2665, 42.0118 )
 id = 1
+
+[node name="NPC" parent="YSortBackground" instance=ExtResource( 20 )]
+position = Vector2( 51.2029, 55.7663 )
 
 [node name="YSort" type="YSort" parent="."]
 

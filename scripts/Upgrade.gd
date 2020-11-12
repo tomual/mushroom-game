@@ -2,6 +2,7 @@ extends NinePatchRect
 
 var player
 var hud
+var cost
 
 func _ready():
 	for member in get_tree().get_nodes_in_group("hud"):
@@ -10,19 +11,29 @@ func _ready():
 
 func upgrade():
 	print_debug(player.weapon)
+	player.update_spores(cost * -1)
 	player.weapon.level = player.weapon.level + 1
 	player.weapon.attack = player.weapon.attack + 13
 	update()
 
 
 func open():
+	update()
 	visible = true
 
 
 func update():
-	$Weapon.text = player.weapon.name + " +" + str(player.weapon.level)
+	cost = 3000 + 3000 * player.weapon.level * 0.5
+	$Weapon.text = player.weapon.name
+	if player.weapon.level > 0:
+		$Weapon.text =  $Weapon.text + " +" + str(player.weapon.level)
 	$AttackBefore.text = "Attack: " + str(player.weapon.attack)
 	$AttackAfter.text = "Attack: " + str(player.weapon.attack + 13)
+	$ButtonUpgrade.text = "Upgrade (" + str(cost) + ")"
+	if player.spores < cost:
+		$ButtonUpgrade.disabled = true
+	else:
+		$ButtonUpgrade.disabled = false
 
 
 func _on_ButtonUpgrade_pressed():

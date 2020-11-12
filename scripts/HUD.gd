@@ -56,7 +56,9 @@ func set_player(node):
 	player.connect("update_spores", self, "update_spores")
 	player.connect("die", self, "death_screen")
 	$Inventory.player = player
+	$Inventory.update()
 	$Upgrade.player = player
+	$Upgrade.update()
 
 
 func interactable_available(position, label):
@@ -198,3 +200,6 @@ func is_window_open():
 	return $Inventory.visible or $Upgrade.visible
 
 
+func open_upgrade():
+	$Upgrade.open()
+	

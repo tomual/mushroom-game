@@ -13,7 +13,7 @@ var hp
 var max_stamina = 200
 var stamina
 var attack = 10
-var spores = 7000
+var spores = 70000
 
 var velocity
 var status = IDLE
@@ -26,9 +26,10 @@ var time_attack_pre = 0.1
 var time_attack = 0.2
 var time_attack_post = 0.1
 
+
 var weapon = {
 	"name": "Doorknob",
-	"level": 1,
+	"level": 0,
 	"attack": 15
 }
 
@@ -321,3 +322,7 @@ func _on_AreaPlayer_area_exited(area):
 	if "Mound" in area.name:
 		print_debug("Nah mound")
 		mound_in_range = null
+
+
+func roll_damage():
+	return attack + weapon.attack
