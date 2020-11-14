@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/ui/nine.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Button.tscn" type="PackedScene" id=2]
@@ -6,14 +6,15 @@
 [ext_resource path="res://scripts/HUD.gd" type="Script" id=4]
 [ext_resource path="res://assets/EpilepsySansBold.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://scenes/hud/Inventory.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/hud/Zap.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/hud/Upgrade.tscn" type="PackedScene" id=16]
 
-[sub_resource type="DynamicFont" id=15]
+[sub_resource type="DynamicFont" id=1]
 size = 14
 outline_color = Color( 0.858824, 0.882353, 0.713726, 1 )
 font_data = ExtResource( 5 )
 
-[sub_resource type="StyleBoxFlat" id=16]
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.568627, 0.698039, 0.568627, 1 )
 border_width_left = 3
 border_width_top = 3
@@ -21,7 +22,7 @@ border_width_right = 3
 border_width_bottom = 3
 border_color = Color( 0.176471, 0.203922, 0.356863, 1 )
 
-[sub_resource type="StyleBoxFlat" id=17]
+[sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.176471, 0.203922, 0.356863, 1 )
 
 [node name="HUD" type="CanvasLayer" groups=[
@@ -94,6 +95,8 @@ __meta__ = {
 
 [node name="Inventory" parent="." instance=ExtResource( 6 )]
 
+[node name="Zap" parent="." instance=ExtResource( 7 )]
+
 [node name="Upgrade" parent="." instance=ExtResource( 16 )]
 
 [node name="TweenFade" type="Tween" parent="."]
@@ -146,7 +149,7 @@ __meta__ = {
 margin_right = 87.0
 margin_bottom = 26.0
 rect_pivot_offset = Vector2( 49.7733, 13 )
-custom_fonts/font = SubResource( 15 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.176471, 0.203922, 0.356863, 1 )
 text = "Level 12    Tom"
 __meta__ = {
@@ -158,7 +161,7 @@ margin_top = 46.0
 margin_right = 87.0
 margin_bottom = 72.0
 rect_pivot_offset = Vector2( 49.7733, 13 )
-custom_fonts/font = SubResource( 15 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.176471, 0.203922, 0.356863, 1 )
 text = "* 324"
 __meta__ = {
@@ -171,8 +174,8 @@ margin_left = -0.44545
 margin_top = 17.0
 margin_right = -0.44545
 margin_bottom = 31.0
-custom_styles/fg = SubResource( 16 )
-custom_styles/bg = SubResource( 17 )
+custom_styles/fg = SubResource( 2 )
+custom_styles/bg = SubResource( 3 )
 value = 50.0
 percent_visible = false
 __meta__ = {
@@ -183,8 +186,8 @@ __meta__ = {
 anchor_right = 1.0
 margin_top = 33.0
 margin_bottom = 43.0
-custom_styles/fg = SubResource( 16 )
-custom_styles/bg = SubResource( 17 )
+custom_styles/fg = SubResource( 2 )
+custom_styles/bg = SubResource( 3 )
 value = 50.0
 percent_visible = false
 __meta__ = {

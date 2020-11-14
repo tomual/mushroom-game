@@ -55,7 +55,7 @@ func update_plant_harvest():
 
 func grow(id):
 	if self.id == id:
-		print_debug("grow me " + str(id))
+		# print_debug("grow me " + str(id))
 		var data = main.get_mound_data(id)
 		phase = data.phase
 		update_plant_sprite()

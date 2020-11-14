@@ -42,10 +42,7 @@ func update():
 
 
 func _on_ButtonUpgrade_pressed():
-	var upgrade
-	for member in get_tree().get_nodes_in_group("upgrade"):
-		upgrade = member
-	upgrade.upgrade()
+	upgrade()
 
 
 func _on_ButtonCancelUpgrade_pressed():

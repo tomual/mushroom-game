@@ -24,8 +24,6 @@ func _ready():
 	cooldown.one_shot = true
 	add_child(cooldown)
 	close_windows()
-	
-
 
 
 func _process(delta):
@@ -59,6 +57,8 @@ func set_player(node):
 	$Inventory.update()
 	$Upgrade.player = player
 	$Upgrade.update()
+	$Zap.player = player
+	$Zap.update()
 
 
 func interactable_available(position, label):
@@ -195,12 +195,17 @@ func _on_TweenFade_tween_completed(object, key):
 func close_windows():
 	$Inventory.visible = false
 	$Upgrade.visible = false
+	$Zap.visible = false
 
 
 func is_window_open():
-	return $Inventory.visible or $Upgrade.visible
+	return $Inventory.visible or $Upgrade.visible or $Zap.visible
 
 
 func open_upgrade():
 	$Upgrade.open()
-	
+
+
+func open_zap():
+	$Zap.open()
+

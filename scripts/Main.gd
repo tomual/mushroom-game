@@ -15,6 +15,7 @@ enum {
 	ATTACK_SPEED,
 	ATTACK_POWER,
 }
+
 var dictionary_item = {
 	0: {"name": "leaves", "description": "hello", "use": {"type": "buff", "buff": HEALTH_HEAL, "duration": 10, "effect": 2}},
 	1: {"name": "urn", "description": "hello"},
@@ -25,6 +26,7 @@ var dictionary_item = {
 	6: {"name": "merry seeds", "description": "hello"},
 	7: {"name": "crystal heart", "description": "hello"},
 }
+
 var dictionary_buffs = {
 	HEALTH_HEAL: "buff_health_heal",
 	STAMINA_HEAL: "buff_stamina_heal",
@@ -34,6 +36,7 @@ var dictionary_buffs = {
 	ATTACK_SPEED: "buff_attack_speed",
 	ATTACK_POWER: "buff_attack_power",
 }
+
 var mounds  = {
 	1: {"item_id": 1, "phase":1, "timer": 0},
 	2: {"item_id": 1, "phase":2, "timer": 2},

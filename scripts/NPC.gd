@@ -8,6 +8,6 @@ func _ready():
 func activate():
 	.activate()
 	print_debug("hello")
-	hud.open_upgrade()
+	hud.open_zap()
 	deactivate()
 	

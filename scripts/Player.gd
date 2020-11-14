@@ -26,14 +26,19 @@ var time_attack_pre = 0.1
 var time_attack = 0.2
 var time_attack_post = 0.1
 
+var hud
 
 var weapon = {
 	"name": "Doorknob",
 	"level": 0,
-	"attack": 15
+	"attack": 15,
+	"charges": [
+		{"type": "Strength", "value": 0.05},
+		{"type": "Strength", "value": 100},
+		{"type": null, "value": null},
+	]
 }
 
-var hud
 
 export var inventory = [
 	[-1, 0],
