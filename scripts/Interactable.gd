@@ -35,7 +35,6 @@ var label_offset_x = 60
 var label_offset_y = 70
 var type
 var timer_interact_cooldown
-var main
 var hud
 
 
@@ -50,9 +49,6 @@ func _ready():
 	cooldown.wait_time = 0.5
 	cooldown.one_shot = true
 	add_child(cooldown)
-	
-	for member in get_tree().get_nodes_in_group("main"):
-		main = member
 		
 	for member in get_tree().get_nodes_in_group("hud"):
 		hud = member

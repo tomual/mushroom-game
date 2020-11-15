@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 signal grow(id, phase)
 
@@ -38,19 +38,26 @@ var dictionary_buffs = {
 }
 
 var mounds  = {
-	1: {"item_id": 1, "phase":1, "timer": 0},
-	2: {"item_id": 1, "phase":2, "timer": 2},
-	3: {"item_id": -1, "phase":0, "timer": 0},
-	4: {"item_id": -1, "phase":0, "timer": 0},
+	1: {"item_id": 1, "phase":1, "wait_time": 0, "timer": null},
+	2: {"item_id": 1, "phase":2, "wait_time": 0, "timer": null},
+	3: {"item_id": -1, "phase":0, "wait_time": 0, "timer": null},
+	4: {"item_id": -1, "phase":0, "wait_time": 0, "timer": null},
 }
 
 func _ready():
 	print_debug("test")
-	for i in range(1, 5):
-		var timer = get_node("TimerMound" + str(i))
-		timer.connect("timeout", self, "timeout_mound", [i])
-		timer.wait_time = 3 - mounds[i].timer
+	
+	for member in get_tree().get_nodes_in_group("interactable"):
+		member.connect("move", self, "move")
+
+	var mound_id = 1
+	for member in get_tree().get_nodes_in_group("mound_timer"):
+		var timer = member
+		timer.connect("timeout", self, "timeout_mound", [mound_id])
+		timer.wait_time = 3 - mounds[mound_id].wait_time
+		mounds[mound_id].timer = timer
 		timer.start()
+		mound_id = mound_id + 1
 
 func init():
 	init_listeners()
@@ -98,7 +105,7 @@ func timeout_mound(id):
 	if mounds[id].phase < 4:
 		mounds[id].phase = mounds[id].phase + 1
 		emit_signal("grow", id)
-		var timer = get_node("TimerMound" + str(id))
+		var timer = mounds[id].timer
 		timer.wait_time = 5
 		timer.start()
 		

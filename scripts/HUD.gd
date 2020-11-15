@@ -9,16 +9,9 @@ var talking = false
 var talk_line_cursor = 0
 var talk_line = ""
 var player
-var main
-
-
 
 func _ready():
 	init()
-	for member in get_tree().get_nodes_in_group("main"):
-		member.set_hud(self)
-		main = member
-	$Inventory.main = main
 	cooldown = Timer.new()
 	cooldown.wait_time = 0.2
 	cooldown.one_shot = true

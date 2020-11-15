@@ -1,6 +1,5 @@
 extends NinePatchRect
 
-var main
 var player
 var slots
 var selected_slot = -1
@@ -49,7 +48,7 @@ func update():
 
 func on_Slot_focus_entered(slot):
 	var inventory = player.inventory
-	var dictionary_item = main.dictionary_item
+	var dictionary_item = Global.dictionary_item
 	selected_slot = slot
 	if inventory[slot][0] != -1:
 		$Control/Detail/Title.text = dictionary_item[inventory[slot][0]].name

@@ -5,21 +5,18 @@ export var item_id = 0
 export var phase = 0
 export var watered = 0
 
-var main
 var timer
 
 
 func _ready():
 	$Harvest/CollisionShape2D.disabled = true
-	for member in get_tree().get_nodes_in_group("main"):
-		main = member
 	
-	var data = main.get_mound_data(id)
+	var data = Global.get_mound_data(id)
 	phase = data.phase
 	item_id = data.item_id
 	update_plant_sprite()
 	
-	main.connect("grow", self, "grow")
+	Global.connect("grow", self, "grow")
 	
 
 func _on_Mound_area_entered(area):
@@ -56,7 +53,7 @@ func update_plant_harvest():
 func grow(id):
 	if self.id == id:
 		# print_debug("grow me " + str(id))
-		var data = main.get_mound_data(id)
+		var data = Global.get_mound_data(id)
 		phase = data.phase
 		update_plant_sprite()
 		update_plant_harvest()

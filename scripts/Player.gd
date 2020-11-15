@@ -7,7 +7,6 @@ signal die()
 
 enum { IDLE, BUSY, DODGE, DEAD, ATTACK_PRE, ATTACK, ATTACK_POST, DYING }
 
-var main
 var max_hp = 200
 var hp
 var max_stamina = 200
@@ -70,9 +69,7 @@ func _ready():
 		hud = member
 		hud.set_player(self)
 		
-	for member in get_tree().get_nodes_in_group("main"):
-		main = member
-		main.set_player(self)
+	Global.set_player(self)
 	
 	hp = max_hp
 	stamina = max_stamina
@@ -278,7 +275,7 @@ func _on_TimerHealStamina_timeout():
 
 
 func apply_buff(buff):
-	var dictionary_buffs = main.dictionary_buffs
+	var dictionary_buffs = Global.dictionary_buffs
 	callv(dictionary_buffs[buff.type], [buff])
 
 
@@ -289,7 +286,7 @@ func buff_stamina_heal(buff):
 
 func use_item(slot):
 	print_debug(slot)
-	var dictionary_item = main.dictionary_item
+	var dictionary_item = Global.dictionary_item
 	if dictionary_item[inventory[slot][0]].use.type == "buff":
 		apply_buff(dictionary_item[inventory[slot][0]].use)
 		inventory[slot][1] = inventory[slot][1] - 1

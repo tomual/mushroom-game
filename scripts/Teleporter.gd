@@ -17,4 +17,4 @@ func activate():
 
 
 func _on_TimerFadeOut_timeout():
-	main.move(to)
+	Global.move(to)
