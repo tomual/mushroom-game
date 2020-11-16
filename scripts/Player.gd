@@ -4,6 +4,7 @@ signal update_health(hp, max_hp)
 signal update_stamina(stamina, max_stamina)
 signal update_spores(spores)
 signal die()
+signal updatePlayer(position, current_animation)
 
 enum { IDLE, BUSY, DODGE, DEAD, ATTACK_PRE, ATTACK, ATTACK_POST, DYING }
 
@@ -26,6 +27,11 @@ var time_attack = 0.2
 var time_attack_post = 0.1
 
 var hud
+
+# Multiplayer
+export var peerActive = false
+export var peerid = -1
+export var skinID = 1
 
 var weapon = {
 	"name": "Doorknob",

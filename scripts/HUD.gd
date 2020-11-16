@@ -85,12 +85,12 @@ func init_listeners():
 	for member in get_tree().get_nodes_in_group("interactable"):
 		member.connect("interactable_available", self, "interactable_available")
 		member.connect("interactable_unavailable", self, "interactable_unavailable")
-		member.connect("fade_out", self, "fade_out")
-		member.connect("talk_show", self, "talk_show")
-		member.connect("talk_hide", self, "talk_hide")
-		member.connect("talk_complete_line", self, "talk_complete_line")
-		member.connect("options_show", self, "options_show")
-		member.connect("options_hide", self, "options_hide")
+#		member.connect("fade_out", self, "fade_out")
+#		member.connect("talk_show", self, "talk_show")
+#		member.connect("talk_hide", self, "talk_hide")
+#		member.connect("talk_complete_line", self, "talk_complete_line")
+#		member.connect("options_show", self, "options_show")
+#		member.connect("options_hide", self, "options_hide")
 
 
 func set_listen_interactable(node):

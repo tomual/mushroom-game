@@ -5,6 +5,8 @@ signal grow(id, phase)
 var hud
 var player
 var previous_map
+var server_ip = "127.0.0.1:8080"
+var username = "tom"
 
 enum {
 	HEALTH_HEAL,
@@ -58,6 +60,10 @@ func _ready():
 		mounds[mound_id].timer = timer
 		timer.start()
 		mound_id = mound_id + 1
+		
+	randomize()
+	username = username + str(randi())
+	
 
 func init():
 	init_listeners()
@@ -108,4 +114,11 @@ func timeout_mound(id):
 		var timer = mounds[id].timer
 		timer.wait_time = 5
 		timer.start()
-		
+
+
+func get_server_ip():
+	return server_ip
+
+
+func get_username():
+	return username
