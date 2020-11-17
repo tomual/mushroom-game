@@ -83,6 +83,8 @@ func _ready():
 	emit_signal("update_stamina", stamina, max_stamina)
 	emit_signal("update_spores", spores)
 	$TimerHealStamina.start()
+	if peerActive == true:
+		$Camera2D.current = true
 
 
 func set_listen_interactable(node):
@@ -122,34 +124,41 @@ func get_input():
 
 
 func _physics_process(delta):
-	if can_move():
-		get_input()
-	if !is_attacking() and !is_dead() and status != DODGE:
-		if velocity == Vector2.ZERO:
-			$AnimatedSprite.animation = "idle"
-			$AnimatedSpriteWeapon.animation = "idle"
-		else:
-			$AnimatedSprite.animation = "walk"
-			$AnimatedSpriteWeapon.animation = "walk"
-	if !can_move() and status != DODGE:
-		velocity = Vector2.ZERO
-	if status == DODGE:
-		speed = 200
-		$AnimatedSprite.animation = "dodge"
-		$AnimatedSpriteWeapon.animation = "dodge"
+	if peerActive == true:
+		if can_move():
+			get_input()
+		if !is_attacking() and !is_dead() and status != DODGE:
+			if velocity == Vector2.ZERO:
+				play_animation("idle")
+			else:
+				play_animation("walk")
+		if !can_move() and status != DODGE:
+			velocity = Vector2.ZERO
+		if status == DODGE:
+			speed = 200
+			play_animation("dodge")
 
-	velocity = velocity.normalized() * speed
-	velocity = move_and_slide(velocity)
-	
-	if flipped:
-		$AreaPlayerWeapon/CollisionShape2D.position.x = abs($AreaPlayerWeapon/CollisionShape2D.position.x) * -1
-	else:
-		$AreaPlayerWeapon/CollisionShape2D.position.x = abs($AreaPlayerWeapon/CollisionShape2D.position.x)
+		velocity = velocity.normalized() * speed
+		velocity = move_and_slide(velocity)
+		
+		if flipped:
+			$AreaPlayerWeapon/CollisionShape2D.position.x = abs($AreaPlayerWeapon/CollisionShape2D.position.x) * -1
+		else:
+			$AreaPlayerWeapon/CollisionShape2D.position.x = abs($AreaPlayerWeapon/CollisionShape2D.position.x)
+		
+		emit_signal("updatePlayer", self.position, $AnimatedSprite.animation, flipped)
 
 
 func can_move():
 	return (status == IDLE or status == BUSY) and status != DYING and status != DEAD and !hud.is_window_open()
 
+func client_play(animation, flip):
+	$AnimatedSprite.play(animation)
+	$AnimatedSprite.flip_h = flip
+
+func play_animation(name):
+	$AnimatedSprite.animation = name
+	$AnimatedSpriteWeapon.animation = name
 
 func _on_TimerDodgeCoolDown_timeout():
 	speed = 200

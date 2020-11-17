@@ -93,14 +93,14 @@ func _client_received():
 	elif resultJSON.result.type == 'updatePost':		
 		var nameClient = "Player_%d" % resultJSON.result.id
 		
-		for client in get_node("SpawnPlayer").get_children():
+		for client in get_tree().get_nodes_in_group("player"):
 			if client.get_name() == nameClient:
 				client.position = Vector2(resultJSON.result.position.x, resultJSON.result.position.y)
 				client.client_play(resultJSON.result.animation, resultJSON.result.flip)
 	elif resultJSON.result.type == 'removePlayer':
 		var nameClient = "Player_%d" % resultJSON.result.id
 		
-		for client in get_node("SpawnPlayer").get_children():
+		for client in get_tree().get_nodes_in_group("player"):
 			if client.get_name() == nameClient:
 				client.queue_free()
 	pass
