@@ -153,8 +153,10 @@ func can_move():
 	return (status == IDLE or status == BUSY) and status != DYING and status != DEAD and !hud.is_window_open()
 
 func client_play(animation, flip):
-	$AnimatedSprite.play(animation)
+	$AnimatedSprite.animation = name
 	$AnimatedSprite.flip_h = flip
+	$AnimatedSpriteWeapon.animation = name
+	$AnimatedSpriteWeapon.flip_h = flip
 
 func play_animation(name):
 	$AnimatedSprite.animation = name
