@@ -26,6 +26,7 @@
 "map",
 ]]
 script = ExtResource( 1 )
+online_map = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -10

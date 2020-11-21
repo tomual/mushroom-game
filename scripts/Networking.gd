@@ -12,6 +12,7 @@ func _ready():
 	self.connection()
 	pass # Replace with function body.
 func connection():
+	$Timer.start()
 	ws.connect("connection_established", self, "_connection_established")
 	ws.connect("connection_closed", self, "_connection_closed")
 	ws.connect("connection_error", self, "_connection_error")
@@ -146,3 +147,7 @@ func _on_Dialog_dialogResponse(dialogid, response, listitem, inputtext):
 			}
 		})
 	pass
+
+
+func _on_Timer_timeout():
+	print_debug("Failed!")

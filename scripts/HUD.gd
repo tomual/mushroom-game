@@ -11,12 +11,15 @@ var talk_line = ""
 var player
 
 func _ready():
-	init()
+	init(false)
 	cooldown = Timer.new()
 	cooldown.wait_time = 0.2
 	cooldown.one_shot = true
 	add_child(cooldown)
 	close_windows()
+	
+	$ColorRectFade.visible = true
+	$ColorRectFade.color = Color(0.18, 0.2, 0.36, 1)
 
 
 func _process(delta):
@@ -32,8 +35,9 @@ func _process(delta):
 		close_windows()
 
 
-func init():
-	fade_in()
+func init(online_map):
+	if online_map:
+		$LabelConnecting.visible = true
 	init_label_interactive()
 	init_listeners()
 	talk_hide()

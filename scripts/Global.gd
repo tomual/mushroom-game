@@ -5,7 +5,8 @@ signal grow(id, phase)
 var hud
 var player
 var previous_map
-var server_ip = "127.0.0.1:8080"
+#var server_ip = "mushroom-test-26.wm.r.appspot.com"
+var server_ip = "localhost:8080"
 var username = "tom"
 
 enum {
