@@ -79,6 +79,7 @@ func fade_out():
 
 
 func fade_in():
+	$LabelConnecting.visible = false
 	$ColorRectFade.visible = true
 	$TweenFade.stop_all()
 	$TweenFade.interpolate_property($ColorRectFade, "color", Color(0.18, 0.2, 0.36, 1), Color(0.18, 0.2, 0.36, 0), 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)

@@ -5,12 +5,16 @@ signal spawn_player(node)
 onready var chat = get_node("CanvasLayer/Chat")
 onready var dialog = get_node("CanvasLayer/Dialog")
 var ws = WebSocketClient.new()
+var hud
 
-const PlayerChild = preload("res://scenes/Player.tscn")
+const player = preload("res://scenes/Player.tscn")
 
 func _ready():
+	for member in get_tree().get_nodes_in_group("hud"):
+		hud = member
 	self.connection()
-	pass # Replace with function body.
+
+
 func connection():
 	$Timer.start()
 	ws.connect("connection_established", self, "_connection_established")
@@ -59,6 +63,7 @@ func _client_close_request(code, reason):
 	print_debug("Conexão fechada: %d, por: %s" % [code, reason])
 	
 func _client_received():
+	$Timer.stop()
 	var packet = ws.get_peer(1).get_packet()
 
 	var resultJSON = JSON.parse(packet.get_string_from_utf8())
@@ -82,7 +87,7 @@ func _client_received():
 		dialog._show_dialog()
 	elif resultJSON.result.type == 'spawnPlayer':
 		
-		var client = PlayerChild.instance()
+		var client = player.instance()
 		client.peerActive = resultJSON.result.active
 		client.peerid = resultJSON.result.id
 		client.skinID = resultJSON.result.skin
@@ -151,3 +156,10 @@ func _on_Dialog_dialogResponse(dialogid, response, listitem, inputtext):
 
 func _on_Timer_timeout():
 	print_debug("Failed!")
+	var client = player.instance()
+	client.peerActive = true
+	client.peerid = 1
+	client.set_name("Player_%d" % client.peerid)
+	client.connect("updatePlayer", self, "_on_Player_updatePlayer")
+	emit_signal("spawn_player", client)
+	hud.fade_in()
