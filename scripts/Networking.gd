@@ -45,6 +45,7 @@ func _client_disconnected(clean=true):
 	print_debug("[Game] Um player saio da sala - %s" %clean)
 	
 func _connection_established(protocol):
+	hud.fade_in()
 	print_debug("[Game] Conexão realizada com sucesso! - %s" %protocol)	
 	ws.get_peer(1).put_var({
 		"type": 'OnPlayerAuth',

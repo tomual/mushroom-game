@@ -49,9 +49,6 @@ var mounds  = {
 
 func _ready():
 	print_debug("test")
-	
-	for member in get_tree().get_nodes_in_group("interactable"):
-		member.connect("move", self, "move")
 
 	var mound_id = 1
 	for member in get_tree().get_nodes_in_group("mound_timer"):
@@ -64,15 +61,6 @@ func _ready():
 		
 	randomize()
 	username = username + str(randi())
-	
-
-func init():
-	init_listeners()
-
-
-func init_listeners():
-	for member in get_tree().get_nodes_in_group("interactable"):
-		member.connect("move", self, "move")
 
 
 func set_player(node):

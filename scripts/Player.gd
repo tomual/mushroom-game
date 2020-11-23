@@ -61,6 +61,9 @@ func _ready():
 	$AnimatedSprite.play()
 	$AnimatedSpriteWeapon.play()
 	
+	if !peerActive:
+		return
+
 	for member in get_tree().get_nodes_in_group("enemy"):
 		member.connect("apply_damage", self, "take_damage")
 		member.connect("give_spores", self, "update_spores")
@@ -83,8 +86,7 @@ func _ready():
 	emit_signal("update_stamina", stamina, max_stamina)
 	emit_signal("update_spores", spores)
 	$TimerHealStamina.start()
-	if peerActive == true:
-		$Camera2D.current = true
+	$Camera2D.current = true
 
 
 func set_listen_interactable(node):
@@ -153,14 +155,15 @@ func can_move():
 	return (status == IDLE or status == BUSY) and status != DYING and status != DEAD and !hud.is_window_open()
 
 func client_play(animation, flip):
-	$AnimatedSprite.animation = name
+	print_debug(animation)
+	$AnimatedSprite.animation = animation
 	$AnimatedSprite.flip_h = flip
-	$AnimatedSpriteWeapon.animation = name
+	$AnimatedSpriteWeapon.animation = animation
 	$AnimatedSpriteWeapon.flip_h = flip
 
-func play_animation(name):
-	$AnimatedSprite.animation = name
-	$AnimatedSpriteWeapon.animation = name
+func play_animation(animation):
+	$AnimatedSprite.animation = animation
+	$AnimatedSpriteWeapon.animation = animation
 
 func _on_TimerDodgeCoolDown_timeout():
 	speed = 200
