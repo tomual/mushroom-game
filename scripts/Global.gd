@@ -9,6 +9,8 @@ var previous_map
 var server_ip = "localhost:8080"
 var username = "tom"
 
+var last_map = "Home"
+
 enum {
 	HEALTH_HEAL,
 	STAMINA_HEAL,
@@ -85,7 +87,8 @@ func move(to):
 		member.destroy()
 	var scene = load("res://scenes/maps/" + to + ".tscn")
 	var map = scene.instance()
-	get_tree().root.get_node("Main").add_child(map)
+	get_tree().root.get_node("Main/Map").add_child(map)
+	hud.fade_in()
 
 
 func set_mound_data(id, item_id, phase):

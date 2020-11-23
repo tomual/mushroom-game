@@ -4,24 +4,23 @@ export var online_map = false
 var hud
 
 func _ready():
-	var scene = load("res://scenes/Player.tscn")
-#	var player = scene.instance()
-#	$YSort.add_child(player)
 	
 	for member in get_tree().get_nodes_in_group("hud"):
 		hud = member
 		hud.init(online_map)
 	
-#	var previous_map = Global.get_previous_map()
-#	for member in get_tree().get_nodes_in_group("teleporter"):
-#		if member.from == previous_map:
-#			player.position = member.position
-	
 	if online_map:
-		scene = load("res://scenes/Networking.tscn")
-		var network = scene.instance()
+		var scene_network = load("res://scenes/Networking.tscn")
+		var network = scene_network.instance()
 		network.connect("spawn_player", self, "spawn_player")
 		add_child(network)
+	else:
+		var scene_player = load("res://scenes/Player.tscn")
+		var player = scene_player.instance()
+		player.peerActive = true
+		player.peerid = 1
+		player.set_name("Player_%d" % player.peerid)
+		spawn_player(player)
 
 
 func destroy():
@@ -29,5 +28,9 @@ func destroy():
 		member.remove_from_group('player') 
 	queue_free()
 
-func spawn_player(node):
-	$YSort.add_child(node)
+func spawn_player(player):
+	$YSort.add_child(player)
+	var previous_map_name = Global.get_previous_map()
+	for member in get_tree().get_nodes_in_group("teleporter"):
+		if member.from == previous_map_name:
+			player.position = member.position
