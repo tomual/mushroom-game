@@ -5,13 +5,10 @@ signal spawn_player(node)
 onready var chat = get_node("CanvasLayer/Chat")
 onready var dialog = get_node("CanvasLayer/Dialog")
 var ws = WebSocketClient.new()
-var hud
 
 const player = preload("res://scenes/Player.tscn")
 
 func _ready():
-	for member in get_tree().get_nodes_in_group("hud"):
-		hud = member
 	self.connection()
 
 
@@ -45,7 +42,7 @@ func _client_disconnected(clean=true):
 	print_debug("[Game] Um player saio da sala - %s" %clean)
 	
 func _connection_established(protocol):
-	hud.fade_in()
+	HUD.fade_in()
 	print_debug("[Game] Conexão realizada com sucesso! - %s" %protocol)	
 	ws.get_peer(1).put_var({
 		"type": 'OnPlayerAuth',
@@ -163,4 +160,4 @@ func _on_Timer_timeout():
 	client.set_name("Player_%d" % client.peerid)
 	client.connect("updatePlayer", self, "_on_Player_updatePlayer")
 	emit_signal("spawn_player", client)
-	hud.fade_in()
+	HUD.fade_in()

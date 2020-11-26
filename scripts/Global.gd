@@ -2,7 +2,6 @@ extends Node
 
 signal grow(id, phase)
 
-var hud
 var player
 var previous_map
 #var server_ip = "mushroom-test-26.wm.r.appspot.com"
@@ -69,10 +68,6 @@ func set_player(node):
 	player = node
 
 
-func set_hud(node):
-	hud = node
-
-
 func set_previous_map(name):
 	previous_map = name
 
@@ -88,7 +83,6 @@ func move(to):
 	var scene = load("res://scenes/maps/" + to + ".tscn")
 	var map = scene.instance()
 	get_tree().root.get_node("Main/Map").add_child(map)
-	hud.fade_in()
 
 
 func set_mound_data(id, item_id, phase):

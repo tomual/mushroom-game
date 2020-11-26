@@ -17,7 +17,6 @@ func _ready():
 	cooldown.one_shot = true
 	add_child(cooldown)
 	close_windows()
-	Global.set_hud(self)
 	
 	$ColorRectFade.visible = true
 	$ColorRectFade.color = Color(0.18, 0.2, 0.36, 1)

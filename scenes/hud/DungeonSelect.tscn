@@ -1,6 +1,6 @@
 [gd_scene load_steps=26 format=2]
 
-[ext_resource path="res://scripts/Upgrade.gd" type="Script" id=1]
+[ext_resource path="res://scripts/DungeonSelect.gd" type="Script" id=1]
 [ext_resource path="res://assets/ui/nine.png" type="Texture" id=2]
 [ext_resource path="res://assets/items/7.png" type="Texture" id=3]
 [ext_resource path="res://assets/items/8.png" type="Texture" id=4]
@@ -59,20 +59,17 @@ animations = [ {
 size = 14
 font_data = ExtResource( 11 )
 
-[sub_resource type="DynamicFont" id=11]
-size = 25
-outline_color = Color( 0.858824, 0.882353, 0.713726, 1 )
-font_data = ExtResource( 11 )
+[sub_resource type="ButtonGroup" id=11]
 
-[node name="Upgrade" type="NinePatchRect"]
+[node name="DungeonSelect" type="NinePatchRect"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -145.0
-margin_top = -172.0
-margin_right = 116.0
-margin_bottom = 153.0
+margin_left = -197.0
+margin_top = -161.0
+margin_right = 179.0
+margin_bottom = 164.0
 texture = ExtResource( 2 )
 patch_margin_left = 5
 patch_margin_top = 5
@@ -83,30 +80,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ButtonUpgrade" type="Button" parent="."]
+[node name="ButtonEnter" type="Button" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -56.5
+margin_left = 64.5594
 margin_top = 92.5
-margin_right = 56.5
+margin_right = 177.559
 margin_bottom = 117.5
 theme = ExtResource( 13 )
-text = "Upgrade (3000)"
+text = "Enter"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ButtonCancelUpgrade" type="Button" parent="."]
+[node name="ButtonCancelEnter" type="Button" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -56.5
-margin_top = 124.5
-margin_right = 56.5
-margin_bottom = 149.5
+margin_left = 64.5
+margin_top = 122.5
+margin_right = 177.5
+margin_bottom = 147.5
 theme = ExtResource( 13 )
 text = "Cancel"
 __meta__ = {
@@ -205,32 +202,32 @@ __meta__ = {
 }
 
 [node name="Header" type="Label" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -48.0
-margin_top = 8.0
-margin_right = 48.0
-margin_bottom = 34.0
+anchor_right = 1.0
+margin_top = 3.0
+margin_bottom = 37.0
 custom_fonts/font = ExtResource( 12 )
-text = "Upgrade"
+text = "Enter Dungeon"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Before" type="Control" parent="."]
+[node name="Dungeon1" type="Control" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -121.0
-margin_top = -117.5
-margin_right = -7.0
-margin_bottom = 85.5
+margin_left = -177.0
+margin_top = -119.5
+margin_right = -63.0
+margin_bottom = 83.5
+rect_pivot_offset = Vector2( -397.095, 49.3496 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel" type="Panel" parent="Before"]
+[node name="Panel" type="Panel" parent="Dungeon1"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 13 )
@@ -238,76 +235,80 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="StatsLabels" type="Label" parent="Before"]
+[node name="StatsLabels" type="Label" parent="Dungeon1"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -45.0
-margin_top = -90.0
+margin_top = -49.0
 margin_right = 45.0
-margin_bottom = -13.0
+margin_bottom = -36.0
 rect_pivot_offset = Vector2( 48.1665, 13 )
 custom_fonts/font = ExtResource( 14 )
-text = "Attack
-
--
--
--"
+text = "Rec. Level"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Stats" type="Label" parent="Before"]
+[node name="Stats" type="Label" parent="Dungeon1"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -45.0
-margin_top = -90.0
+margin_top = -49.0
 margin_right = 45.0
-margin_bottom = -13.0
+margin_bottom = -20.0
 rect_pivot_offset = Vector2( 48.1665, 13 )
 custom_fonts/font = ExtResource( 14 )
-text = "15"
+text = "15
+"
 align = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Before"]
-margin_left = 4.75684
-margin_top = 88.5959
-margin_right = 117.757
-margin_bottom = 109.596
+[node name="Label" type="Label" parent="Dungeon1"]
+anchor_right = 1.0
+margin_top = 136.0
+margin_bottom = 151.0
 rect_pivot_offset = Vector2( 48.1665, 13 )
 custom_fonts/font = SubResource( 10 )
-text = "Doorknob +1"
+text = "Forest Missed"
 align = 1
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Before"]
-position = Vector2( 60.1268, 42.4433 )
-scale = Vector2( 3, 3 )
-frames = SubResource( 9 )
+[node name="CheckBox" type="CheckBox" parent="Dungeon1"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -12.6674
+margin_top = -32.0
+margin_right = 11.3326
+margin_bottom = -8.0
+theme = ExtResource( 13 )
+group = SubResource( 11 )
 
-[node name="After" type="Control" parent="."]
+[node name="Dungeon2" type="Control" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 7.0
-margin_top = -117.5
-margin_right = 121.0
-margin_bottom = 85.5
+margin_left = -57.0
+margin_top = -119.5
+margin_right = 57.0
+margin_bottom = 83.5
+rect_pivot_offset = Vector2( -397.095, 49.3496 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel" type="Panel" parent="After"]
+[node name="Panel" type="Panel" parent="Dungeon2"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 13 )
@@ -315,78 +316,177 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="StatsLabels" type="Label" parent="After"]
+[node name="StatsLabels" type="Label" parent="Dungeon2"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -45.0
-margin_top = -90.0
+margin_top = -49.0
 margin_right = 45.0
-margin_bottom = -13.0
+margin_bottom = -36.0
 rect_pivot_offset = Vector2( 48.1665, 13 )
 custom_fonts/font = ExtResource( 14 )
-text = "Attack
-
--
--
--"
+text = "Rec. Level"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Stats" type="Label" parent="After"]
+[node name="Stats" type="Label" parent="Dungeon2"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -45.0
-margin_top = -90.0
+margin_top = -49.0
 margin_right = 45.0
-margin_bottom = -13.0
+margin_bottom = -20.0
 rect_pivot_offset = Vector2( 48.1665, 13 )
 custom_fonts/font = ExtResource( 14 )
-text = "15"
+text = "15
+"
 align = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="After"]
-margin_left = 4.75684
-margin_top = 88.5959
-margin_right = 117.757
-margin_bottom = 109.596
+[node name="Label" type="Label" parent="Dungeon2"]
+anchor_right = 1.0
+margin_top = 136.0
+margin_bottom = 151.0
 rect_pivot_offset = Vector2( 48.1665, 13 )
 custom_fonts/font = SubResource( 10 )
-text = "Doorknob +1"
+text = "Forest Missed"
 align = 1
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="After"]
-position = Vector2( 61.716, 42.4433 )
-scale = Vector2( 3, 3 )
-frames = SubResource( 9 )
+[node name="CheckBox" type="CheckBox" parent="Dungeon2"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -12.0
+margin_top = -32.0
+margin_right = 12.0
+margin_bottom = -8.0
+theme = ExtResource( 13 )
+group = SubResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dungeon3" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 63.0
+margin_top = -119.5
+margin_right = 177.0
+margin_bottom = 83.5
+rect_pivot_offset = Vector2( -397.095, 49.3496 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Dungeon3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatsLabels" type="Label" parent="Dungeon3"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -45.0
+margin_top = -49.0
+margin_right = 45.0
+margin_bottom = -36.0
+rect_pivot_offset = Vector2( 48.1665, 13 )
+custom_fonts/font = ExtResource( 14 )
+text = "Rec. Level"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stats" type="Label" parent="Dungeon3"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -45.0
+margin_top = -49.0
+margin_right = 45.0
+margin_bottom = -20.0
+rect_pivot_offset = Vector2( 48.1665, 13 )
+custom_fonts/font = ExtResource( 14 )
+text = "15
+"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Dungeon3"]
+anchor_right = 1.0
+margin_top = 136.0
+margin_bottom = 151.0
+rect_pivot_offset = Vector2( 48.1665, 13 )
+custom_fonts/font = SubResource( 10 )
+text = "Forest Missed"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckBox" type="CheckBox" parent="Dungeon3"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -12.0
+margin_top = -32.0
+margin_right = 12.0
+margin_bottom = -8.0
+theme = ExtResource( 13 )
+group = SubResource( 11 )
 
 [node name="Label" type="Label" parent="."]
+margin_left = 16.683
+margin_top = 273.47
+margin_right = 80.683
+margin_bottom = 294.47
+theme = ExtResource( 13 )
+text = "Difficulty:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionButton" type="OptionButton" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -19.0
-margin_top = -13.0
-margin_right = 21.0
-margin_bottom = 13.0
-custom_fonts/font = SubResource( 11 )
-custom_colors/font_color = Color( 0.568627, 0.698039, 0.568627, 1 )
-text = ">"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-[connection signal="pressed" from="ButtonUpgrade" to="." method="_on_ButtonUpgrade_pressed"]
-[connection signal="pressed" from="ButtonCancelUpgrade" to="." method="_on_ButtonCancelUpgrade_pressed"]
+margin_left = -106.775
+margin_top = 108.592
+margin_right = 4.22461
+margin_bottom = 133.592
+theme = ExtResource( 13 )
+text = "Easy"
+
+[node name="TimerFadeOut" type="Timer" parent="."]
+one_shot = true
+[connection signal="pressed" from="ButtonEnter" to="." method="_on_ButtonEnter_pressed"]
+[connection signal="pressed" from="ButtonCancelEnter" to="." method="_on_ButtonCancelEnter_pressed"]
+[connection signal="toggled" from="Dungeon1/CheckBox" to="." method="_on_CheckBox_toggled" binds= [ 1 ]]
+[connection signal="toggled" from="Dungeon2/CheckBox" to="." method="_on_CheckBox_toggled" binds= [ 2 ]]
+[connection signal="toggled" from="Dungeon3/CheckBox" to="." method="_on_CheckBox_toggled" binds= [ 3 ]]
+[connection signal="timeout" from="TimerFadeOut" to="." method="_on_TimerFadeOut_timeout"]

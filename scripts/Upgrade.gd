@@ -1,13 +1,7 @@
 extends NinePatchRect
 
 var player
-var hud
 var cost
-
-func _ready():
-	for member in get_tree().get_nodes_in_group("hud"):
-		hud = member
-
 
 func upgrade():
 	print_debug(player.weapon)

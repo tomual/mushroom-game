@@ -1,13 +1,9 @@
 extends Node2D
 
 export var online_map = false
-var hud
 
 func _ready():
-	
-	for member in get_tree().get_nodes_in_group("hud"):
-		hud = member
-		hud.init(online_map)
+	HUD.init(online_map)
 	
 	if online_map:
 		var scene_network = load("res://scenes/Networking.tscn")

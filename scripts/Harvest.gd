@@ -9,7 +9,7 @@ func _ready():
 
 
 func init():
-	hud.set_listen_interactable(self)
+	HUD.set_listen_interactable(self)
 	for member in get_tree().get_nodes_in_group("player"):
 		player = member
 		player.set_listen_interactable(self)

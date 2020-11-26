@@ -26,8 +26,6 @@ var time_attack_pre = 0.1
 var time_attack = 0.2
 var time_attack_post = 0.1
 
-var hud
-
 # Multiplayer
 export var peerActive = false
 export var peerid = -1
@@ -74,10 +72,7 @@ func _ready():
 		member.connect("interactable_in_range", self, "set_is_in_range_interactable")
 		member.set_player(self)
 		
-	for member in get_tree().get_nodes_in_group("hud"):
-		hud = member
-		hud.set_player(self)
-		
+	HUD.set_player(self)
 	Global.set_player(self)
 	
 	hp = max_hp
@@ -152,7 +147,7 @@ func _physics_process(delta):
 
 
 func can_move():
-	return (status == IDLE or status == BUSY) and status != DYING and status != DEAD and !hud.is_window_open()
+	return (status == IDLE or status == BUSY) and status != DYING and status != DEAD and !HUD.is_window_open()
 
 func client_play(animation, flip):
 	print_debug(animation)
@@ -218,7 +213,7 @@ func pickup(item_id, item_quantity):
 		if inventory[i][0] == item_id:
 			if inventory[i][1] + item_quantity < 100:
 				inventory[i] = [item_id, inventory[i][1] + item_quantity]
-				hud.update_inventory()
+				HUD.update_inventory()
 				return true	
 			else:
 				# Too many items
@@ -227,7 +222,7 @@ func pickup(item_id, item_quantity):
 	for i in range(inventory.size()):
 		if inventory[i][0] == -1:
 			inventory[i] = [item_id, item_quantity]
-			hud.update_inventory()
+			HUD.update_inventory()
 			return true	
 	return false
 
@@ -315,7 +310,7 @@ func use_item(slot):
 			inventory[slot][1] = inventory[slot][1] - 1
 	if inventory[slot][1] <= 0:
 		inventory[slot] = [-1, 0]
-	hud.update_inventory()
+	HUD.update_inventory()
 
 
 func plant(item_id):
