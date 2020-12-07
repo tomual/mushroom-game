@@ -3,6 +3,7 @@ extends Node2D
 export var online_map = false
 
 func _ready():
+	print_debug("Scene ready")
 	HUD.init(online_map)
 	
 	if online_map:
@@ -17,6 +18,7 @@ func _ready():
 		player.peerid = 1
 		player.set_name("Player_%d" % player.peerid)
 		spawn_player(player)
+		HUD.fade_in()
 
 
 func destroy():
