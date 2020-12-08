@@ -33,7 +33,7 @@ func _ready():
 
 func _process(delta):
 	if status != DEAD:
-		if status == FOLLOWING:
+		if status == FOLLOWING and player:
 			if !player_in_attack_range:
 				$AnimatedSprite.flip_h = position.x > player.position.x
 				flipped = $AnimatedSprite.flip_h
