@@ -26,7 +26,6 @@
 [node name="Home" type="Node2D" groups=[
 "map",
 ]]
-position = Vector2( -162.757, 3.36737 )
 script = ExtResource( 1 )
 online_map = true
 
@@ -149,7 +148,7 @@ position = Vector2( 397.696, 53.1757 )
 position = Vector2( 3.15555, 118.303 )
 
 [node name="Monster2" parent="YSort" instance=ExtResource( 22 )]
-position = Vector2( 216.947, -9.38709 )
+position = Vector2( -153.399, -49.1419 )
 
 [node name="Teleporter" parent="." instance=ExtResource( 19 )]
 position = Vector2( 137.299, -12.2414 )

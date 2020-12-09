@@ -108,3 +108,28 @@ func get_server_ip():
 
 func get_username():
 	return username
+
+
+func spawn_puffs(position):
+	var scene = load("res://scenes/Miniboss-Puff.tscn")
+	print_debug(position)
+	var degrees = 0
+	var count = 16
+	for i in count:
+		degrees = 360 / count * i
+		var x_oncircle = position.x + 1000 * cos(degrees * PI / 180)
+		var y_oncircle = position.y + 1000 * sin(degrees * PI / 180)
+		var pos = Vector2(x_oncircle, y_oncircle)
+		var sprinkle = scene.instance()
+		add_child(sprinkle)
+		sprinkle.target = pos
+		sprinkle.position = position
+
+
+func spawn_minions(position):
+	var scene = load("res://scenes/Miniboss-Minion.tscn")
+	var fork = scene.instance()
+	add_child(fork)
+	fork.position = position
+	fork.playerPosition = player.position
+	fork.start()

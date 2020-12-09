@@ -19,7 +19,32 @@ var time_attack_pre = 0.6
 var time_attack = 0.2
 var time_attack_post = 0.4
 
-enum { IDLE, FOLLOWING, BUSY, DODGE, DEAD, ATTACK_PRE, ATTACK, ATTACK_POST }
+enum { 
+	IDLE, FOLLOWING, BUSY, DODGE, DEAD, ATTACK_PRE, ATTACK, ATTACK_POST, 
+	DIE,
+	#DEAD,
+	#IDLE,
+	WALK,
+	SUMMON,
+	SUMMON_2,
+	SUMMON_3,
+	SUMMON_4,
+	SUMMON_5,
+	BITE_START,
+	BITE,
+	BITE_END,
+	FORKS_START,
+	FORKS,
+	FORKS_END,
+	SPRINKLES,
+	
+	UP,
+	DOWN
+	
+	ATTACK_BITE, 
+	ATTACK_FORKS,
+	ATTACK_SPRINKLES,
+}
 
 var status = IDLE
 var flipped = false

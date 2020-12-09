@@ -98,8 +98,13 @@ scale = Vector2( -1, 1 )
 z_index = 10
 z_as_relative = false
 lifetime = 0.6
+
+[node name="TimerForks" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
 [connection signal="area_entered" from="AreaAttack" to="." method="_on_AreaAttack_area_entered"]
 [connection signal="area_exited" from="AreaAttack" to="." method="_on_AreaAttack_area_exited"]
 [connection signal="area_entered" from="AreaWeapon" to="." method="_on_AreaWeapon_area_entered"]
 [connection signal="area_entered" from="AreaHitBox" to="." method="_on_AreaHitBox_area_entered"]
 [connection signal="timeout" from="TimerAttack" to="." method="_on_TimerAttack_timeout"]
+[connection signal="timeout" from="TimerForks" to="." method="_on_TimerForks_timeout"]
