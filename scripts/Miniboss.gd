@@ -1,47 +1,97 @@
 extends "Monster.gd"
 
-export var mode = SUMMON
+export var attacks = [ATTACK_PUFFS, ATTACK_MINIONS]
 
-
-var forks_postions
-var forks_index = 0
+var minions_postions
+var minions_index = 0
 
 
 func _ready():
-	status = IDLE
-	player_in_aggro_range = true
-	Global.spawn_puffs(position)
-	mode = FORKS_START
-	do_forks()
+	do_spawn()
+	
+func _process(delta):
+	if status == FOLLOWING:
+		do_idle()
 
 
-func do_forks():
-	if mode == FORKS_START and $TimerForks.is_stopped():
-		print("do_forks")
+func do_idle():
+	if $TimerIdle.is_stopped():
 		$AnimatedSprite.animation = "idle"
-		$TimerForks.start()
+		$TimerIdle.start()
+
+func do_minions():
+	if status == MINIONS_START and $TimerMinions.is_stopped():
+		print("do_minions")
+		$AnimatedSprite.animation = "puff"
+		$TimerMinions.start()
 		print(position)
-		forks_postions = [position, position, position]
+		minions_postions = [position, position, position]
+
+func do_spawn():
+	status = SPAWNING
+	$AnimatedSprite.animation = "spawn"
+	$TimerSpawn.start()
+
+func _on_TimerMinions_timeout():
+	print("_on_TimerMinions_timeout")
+	if status == MINIONS_START:
+		print("MINIONS_START")
+		$AnimatedSprite.animation = "puff"
+		$TimerMinions.wait_time = 0.5
+		$TimerMinions.start()
+		Global.spawn_minions(minions_postions[minions_index])
+		minions_index += 1
+		if minions_index >= 3:
+			minions_index = 0
+			status = MINIONS
+	elif status == MINIONS:
+		print("MINIONS")
+		$AnimatedSprite.animation = "idle"
+		status = MINIONS_END
+		$TimerMinions.wait_time = 1
+		$TimerMinions.start()
+	elif status == MINIONS_END:
+		print("MINIONS_END")
+		status = FOLLOWING
 
 
-func _on_TimerForks_timeout():
-	print("_on_TimerForks_timeout")
-	if mode == FORKS_START:
-		print("FORKS_START")
+func do_puffs():
+	if status == PUFF_START and $TimerPuffs.is_stopped():
+		print("do_puffs")
+		$AnimatedSprite.animation = "puff"
+		$TimerPuffs.start()
+		print(position)
+		minions_postions = [position, position, position]
+
+
+func _on_TimerPuffs_timeout():
+	print("_on_TimerPuffs_timeout")
+	if status == PUFF_START:
+		print("PUFF_START")
+		$TimerPuffs.wait_time = 1
+		$TimerPuffs.start()
+		status = PUFF
+	elif status == PUFF:
+		Global.spawn_puffs(position)
 		$AnimatedSprite.animation = "idle"
-		$TimerForks.wait_time = 0.5
-		$TimerForks.start()
-		Global.spawn_minions(forks_postions[forks_index])
-		forks_index += 1
-		if forks_index >= 3:
-			forks_index = 0
-			mode = FORKS
-	elif mode == FORKS:
-		print("FORKS")
-		$AnimatedSprite.animation = "idle"
-		mode = FORKS_END
-		$TimerForks.wait_time = 1
-		$TimerForks.start()
-	elif mode == FORKS_END:
-		print("FORKS_END")
-		mode = IDLE
+		status = FOLLOWING
+
+
+func _on_TimerIdle_timeout():
+	print("_on_TimerIdle_timeout")
+	if status == FOLLOWING:
+		randomize()
+		var rand_index = randi() % attacks.size()
+		print_debug(attacks[rand_index])
+		var selected = attacks[rand_index]
+		if selected == ATTACK_PUFFS:
+			status = PUFF_START
+			do_puffs()
+		elif selected == ATTACK_MINIONS:
+			status = MINIONS_START
+			do_minions()
+
+
+func _on_TimerSpawn_timeout():
+	status = FOLLOWING
+	player_in_aggro_range = true

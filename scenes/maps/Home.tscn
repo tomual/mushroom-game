@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scripts/Map.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Garl.tscn" type="PackedScene" id=2]
@@ -21,7 +21,6 @@
 [ext_resource path="res://scenes/Teleporter.tscn" type="PackedScene" id=19]
 [ext_resource path="res://scenes/NPC.tscn" type="PackedScene" id=20]
 [ext_resource path="res://scenes/Mound.tscn" type="PackedScene" id=21]
-[ext_resource path="res://scenes/Johann.tscn" type="PackedScene" id=22]
 
 [node name="Home" type="Node2D" groups=[
 "map",
@@ -146,9 +145,6 @@ position = Vector2( 397.696, 53.1757 )
 
 [node name="tree 4" parent="YSort" instance=ExtResource( 15 )]
 position = Vector2( 3.15555, 118.303 )
-
-[node name="Monster2" parent="YSort" instance=ExtResource( 22 )]
-position = Vector2( -153.399, -49.1419 )
 
 [node name="Teleporter" parent="." instance=ExtResource( 19 )]
 position = Vector2( 137.299, -12.2414 )

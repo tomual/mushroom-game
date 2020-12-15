@@ -1,11 +1,13 @@
 extends Area2D
 
+
 enum {SPIN, MOVE}
 export var speed = 400
 export(Vector2) var playerPosition
 var target_angle = 0
 var turn_speed = deg2rad(30)
 var mode
+
 
 func _process(delta):
 	if mode == SPIN:
@@ -20,11 +22,12 @@ func _process(delta):
 		var position_difference = Vector2(-100, target_y) - position
 		var smoothed_velocity = position_difference * 2 * delta
 		position += smoothed_velocity
-	
-	
+
+
 func extrapolate(points, x):
 	var y = points[0].y + (x - points[0].x) / (points[1].x - points[0].x) * (points[1].y - points[0].y)
 	return y
+
 
 func start():
 	print_debug("start!")

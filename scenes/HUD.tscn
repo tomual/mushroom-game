@@ -64,6 +64,7 @@ margin_right = 169.0
 margin_bottom = 95.0
 
 [node name="DungeonSelect" parent="." instance=ExtResource( 8 )]
+visible = false
 
 [node name="Dialogue" type="NinePatchRect" parent="."]
 anchor_top = 1.0
