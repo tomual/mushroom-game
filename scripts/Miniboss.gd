@@ -30,6 +30,8 @@ func do_minions():
 func do_spawn():
 	status = SPAWNING
 	$AnimatedSprite.animation = "spawn"
+	$Tween.interpolate_property($AnimatedSprite, "position", Vector2(0, -300), Vector2(0, 0), 0.7, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	$Tween.start()
 	$TimerSpawn.start()
 
 func _on_TimerMinions_timeout():
@@ -68,7 +70,7 @@ func _on_TimerPuffs_timeout():
 	print("_on_TimerPuffs_timeout")
 	if status == PUFF_START:
 		print("PUFF_START")
-		$TimerPuffs.wait_time = 1
+		$TimerPuffs.wait_time = 0.5
 		$TimerPuffs.start()
 		status = PUFF
 	elif status == PUFF:
@@ -93,5 +95,6 @@ func _on_TimerIdle_timeout():
 
 
 func _on_TimerSpawn_timeout():
+	
 	status = FOLLOWING
 	player_in_aggro_range = true

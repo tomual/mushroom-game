@@ -50,5 +50,5 @@ func summon_miniboss():
 	var scene = load("res://scenes/Miniboss.tscn")
 	var miniboss = scene.instance()
 	miniboss.player = player
-	miniboss.position = position
+	miniboss.position = Vector2(100, 100)
 	$YSort.add_child(miniboss)
