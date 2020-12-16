@@ -1,6 +1,6 @@
 extends "Monster.gd"
 
-export var attacks = [ATTACK_PUFFS, ATTACK_MINIONS]
+export var attacks = [ATTACK_MINIONS]
 
 var minions_postions
 var minions_index = 0
@@ -22,7 +22,7 @@ func do_idle():
 func do_minions():
 	if status == MINIONS_START and $TimerMinions.is_stopped():
 		print("do_minions")
-		$AnimatedSprite.animation = "puff"
+		$AnimatedSprite.animation = "minions"
 		$TimerMinions.start()
 		print(position)
 		minions_postions = [position, position, position]
@@ -38,7 +38,7 @@ func _on_TimerMinions_timeout():
 	print("_on_TimerMinions_timeout")
 	if status == MINIONS_START:
 		print("MINIONS_START")
-		$AnimatedSprite.animation = "puff"
+		$AnimatedSprite.animation = "idle"
 		$TimerMinions.wait_time = 0.5
 		$TimerMinions.start()
 		Global.spawn_minions(minions_postions[minions_index])
@@ -49,11 +49,6 @@ func _on_TimerMinions_timeout():
 	elif status == MINIONS:
 		print("MINIONS")
 		$AnimatedSprite.animation = "idle"
-		status = MINIONS_END
-		$TimerMinions.wait_time = 1
-		$TimerMinions.start()
-	elif status == MINIONS_END:
-		print("MINIONS_END")
 		status = FOLLOWING
 
 

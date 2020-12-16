@@ -7,6 +7,7 @@ export(Vector2) var playerPosition
 var target_angle = 0
 var turn_speed = deg2rad(30)
 var mode
+var target_position
 
 
 func _process(delta):
@@ -18,8 +19,7 @@ func _process(delta):
 			if dir>0: rotation += turn_speed #clockwise
 			if dir<0: rotation -= turn_speed #anit - clockwise
 	elif mode == MOVE:
-		var target_y = extrapolate([playerPosition, position], -100)
-		var position_difference = Vector2(-100, target_y) - position
+		var position_difference = target_position - position
 		var smoothed_velocity = position_difference * 2 * delta
 		position += smoothed_velocity
 
@@ -34,6 +34,12 @@ func start():
 	print_debug(playerPosition)
 	mode = SPIN
 	$Timer.start()
+	var distance_to_player = position - playerPosition
+	print("distance_to_player")
+	print(distance_to_player.x)
+	var target_x =  playerPosition.x
+	var target_y = extrapolate([playerPosition, position], target_x)
+	target_position = Vector2(target_x, target_y)
 
 
 func _on_Timer_timeout():

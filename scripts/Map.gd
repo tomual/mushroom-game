@@ -23,7 +23,7 @@ func _ready():
 		HUD.fade_in()
 	
 	timer_miniboss = Timer.new()
-	timer_miniboss.wait_time = 3
+	timer_miniboss.wait_time = 1
 	timer_miniboss.one_shot = true
 	timer_miniboss.connect("timeout", self, "summon_miniboss")
 	add_child(timer_miniboss)
