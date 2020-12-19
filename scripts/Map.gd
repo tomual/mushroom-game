@@ -27,7 +27,7 @@ func _ready():
 	timer_miniboss.one_shot = true
 	timer_miniboss.connect("timeout", self, "summon_miniboss")
 	add_child(timer_miniboss)
-	timer_miniboss.start()
+#	timer_miniboss.start()
 
 
 func destroy():
