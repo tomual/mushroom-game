@@ -9,6 +9,7 @@ var talking = false
 var talk_line_cursor = 0
 var talk_line = ""
 var player
+var talk_target
 
 func _ready():
 	init(false)
@@ -40,7 +41,6 @@ func init(online_map):
 		$LabelConnecting.visible = true
 	init_label_interactive()
 	init_listeners()
-	talk_hide()
 	options_hide()
 
 
@@ -113,6 +113,7 @@ func init_label_interactive():
 
 func talk_show(line):
 	print_debug("talk_show")
+	player.set_busy()
 	$Dialogue/LabelDialogue.text = ""
 	$Dialogue.show()
 	talking = true
@@ -121,6 +122,7 @@ func talk_show(line):
 
 
 func talk_hide():
+	player.set_idle()
 	$Dialogue.hide()
 	talking = false
 	talk_line_cursor = 0
@@ -207,3 +209,13 @@ func open_upgrade():
 func open_zap():
 	$Zap.open()
 
+
+func _on_ButtonOption1_pressed():
+	emit_signal("option_1_pressed")
+	talk_hide()
+	options_hide()
+
+
+func _on_ButtonOption2_pressed():
+	emit_signal("option_2_pressed")
+	options_hide()

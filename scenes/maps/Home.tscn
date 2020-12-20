@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scripts/Map.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Garl.tscn" type="PackedScene" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://scenes/Teleporter.tscn" type="PackedScene" id=19]
 [ext_resource path="res://scenes/NPC.tscn" type="PackedScene" id=20]
 [ext_resource path="res://scenes/Mound.tscn" type="PackedScene" id=21]
+[ext_resource path="res://scenes/Papa.tscn" type="PackedScene" id=22]
 
 [node name="Home" type="Node2D" groups=[
 "map",
@@ -297,7 +298,7 @@ position = Vector2( -82.2665, 42.0118 )
 id = 1
 
 [node name="NPC" parent="YSortBackground" instance=ExtResource( 20 )]
-position = Vector2( 51.2029, 55.7663 )
+position = Vector2( 86.5982, 85.9703 )
 
 [node name="patch 18" type="Sprite" parent="YSortBackground"]
 position = Vector2( -121.318, 456.421 )
@@ -837,6 +838,9 @@ position = Vector2( -235.463, 227.866 )
 
 [node name="Node2D6" parent="YSort" instance=ExtResource( 10 )]
 position = Vector2( -212.154, 212.117 )
+
+[node name="NPC" parent="YSort" instance=ExtResource( 22 )]
+position = Vector2( 106.22, 43.7827 )
 
 [node name="Teleporter" parent="." instance=ExtResource( 19 )]
 position = Vector2( 137.299, -12.2414 )

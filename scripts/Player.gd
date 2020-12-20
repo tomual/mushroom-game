@@ -234,6 +234,7 @@ func drop(node):
 
 func set_busy():
 	status = BUSY
+	print("set_busy")
 
 
 func set_idle():
