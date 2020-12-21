@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/Map.gd" type="Script" id=1]
 [ext_resource path="res://scenes/objects/map/dungeon/oak.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://scenes/Teleporter.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/objects/map/dungeon/oak2.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/objects/map/dungeon/lake.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/Boss.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/objects/map/home/tree 1.tscn" type="PackedScene" id=12]
 [ext_resource path="res://assets/home/patch 4.png" type="Texture" id=15]
 [ext_resource path="res://assets/home/patch 1.png" type="Texture" id=16]
@@ -29,6 +30,7 @@ __meta__ = {
 }
 
 [node name="YSortBackground" type="YSort" parent="."]
+position = Vector2( -301.674, -97.4433 )
 
 [node name="patch 55" type="Sprite" parent="YSortBackground"]
 position = Vector2( 1025.05, 212.399 )
@@ -80,6 +82,7 @@ texture = ExtResource( 16 )
 offset = Vector2( -141.153, -40.4148 )
 
 [node name="YSort" type="YSort" parent="."]
+position = Vector2( -301.674, -97.4433 )
 
 [node name="tree 14" parent="YSort" instance=ExtResource( 12 )]
 position = Vector2( -120.205, -39.1838 )
@@ -506,6 +509,9 @@ position = Vector2( -259.362, 248.214 )
 
 [node name="Node2D139" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( -113.773, 105.236 )
+
+[node name="Boss" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 462.257, 95.4043 )
 
 [node name="Node2D140" parent="YSort" instance=ExtResource( 6 )]
 position = Vector2( 561.294, -6.50974 )

@@ -147,7 +147,7 @@ func _physics_process(delta):
 
 
 func can_move():
-	return (status == IDLE or status == BUSY) and status != DYING and status != DEAD and !HUD.is_window_open()
+	return (status == IDLE or status != BUSY) and status != DYING and status != DEAD and !HUD.is_window_open()
 
 func client_play(animation, flip):
 	print_debug(animation)
