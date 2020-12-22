@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://scripts/Map.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Garl.tscn" type="PackedScene" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://scenes/NPC.tscn" type="PackedScene" id=20]
 [ext_resource path="res://scenes/Mound.tscn" type="PackedScene" id=21]
 [ext_resource path="res://scenes/Papa.tscn" type="PackedScene" id=22]
+[ext_resource path="res://scenes/Bumpy.tscn" type="PackedScene" id=23]
 
 [node name="Home" type="Node2D" groups=[
 "map",
@@ -841,6 +842,9 @@ position = Vector2( -212.154, 212.117 )
 
 [node name="NPC" parent="YSort" instance=ExtResource( 22 )]
 position = Vector2( 106.22, 43.7827 )
+
+[node name="NPC" parent="YSort/NPC" instance=ExtResource( 23 )]
+position = Vector2( -57.013, 16.1847 )
 
 [node name="Teleporter" parent="." instance=ExtResource( 19 )]
 position = Vector2( 137.299, -12.2414 )

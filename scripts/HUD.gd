@@ -198,10 +198,15 @@ func close_windows():
 	$Inventory.visible = false
 	$Upgrade.visible = false
 	$Zap.visible = false
+	$Stats.visible = false
 
 
 func is_window_open():
 	return $Inventory.visible or $Upgrade.visible or $Zap.visible or $Stats.visible or $DungeonSelect.visible
+
+
+func open_stats():
+	$Stats.open()
 
 
 func open_upgrade():

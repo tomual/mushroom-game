@@ -105,6 +105,8 @@ func next_page():
 
 
 func option_1_pressed():
+	if !talking:
+		return
 	end()
 	if current_options[0].has("callback"):
 		call(current_options[0].callback)
@@ -113,6 +115,8 @@ func option_1_pressed():
 
 
 func option_2_pressed():
+	if !talking:
+		return
 	end()
 	if current_options[1].has("callback"):
 		call(current_options[1].callback)
@@ -136,6 +140,7 @@ func hud_line_complete():
 
 
 func callback_first_option():
+	HUD.open_stats()
 	print_debug("callback_first_option")
 	deactivate()
 
