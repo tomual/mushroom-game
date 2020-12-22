@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/ui/nine.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Button.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://scenes/hud/Zap.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/hud/DungeonSelect.tscn" type="PackedScene" id=8]
 [ext_resource path="res://presets/Theme.tres" type="Theme" id=9]
+[ext_resource path="res://scenes/hud/Stats.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/hud/Upgrade.tscn" type="PackedScene" id=16]
 
 [sub_resource type="DynamicFont" id=1]
@@ -147,6 +148,8 @@ visible = false
 visible = false
 
 [node name="Upgrade" parent="." instance=ExtResource( 16 )]
+
+[node name="Stats" parent="." instance=ExtResource( 10 )]
 
 [node name="TweenFade" type="Tween" parent="."]
 

@@ -199,7 +199,7 @@ func close_windows():
 
 
 func is_window_open():
-	return $Inventory.visible or $Upgrade.visible or $Zap.visible
+	return $Inventory.visible or $Upgrade.visible or $Zap.visible or $Stats.visible or $DungeonSelect.visible
 
 
 func open_upgrade():
