@@ -13,7 +13,7 @@ var hp
 var max_stamina = 200
 var stamina
 var attack = 10
-var spores = 70000
+var spores = 2900
 
 var velocity
 var status = IDLE
@@ -40,6 +40,17 @@ var weapon = {
 		{"type": "Strength", "value": 100},
 		{"type": null, "value": null},
 	]
+}
+
+var stats = {
+	"str": 12,
+	"dex": 12,
+	"int": 12,
+	"luk": 12,
+	"emp": 12,
+	"for": 12,
+	"avo": 12,
+	"han": 12
 }
 
 
