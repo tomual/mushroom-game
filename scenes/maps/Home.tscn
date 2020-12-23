@@ -1,7 +1,6 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scripts/Map.gd" type="Script" id=1]
-[ext_resource path="res://scenes/Garl.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/home/patch 2.png" type="Texture" id=3]
 [ext_resource path="res://scenes/objects/map/home/mushy 1.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/home/patch 3.png" type="Texture" id=5]
@@ -17,12 +16,7 @@
 [ext_resource path="res://scenes/objects/map/home/tree 3.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/objects/map/home/tree 2.tscn" type="PackedScene" id=16]
 [ext_resource path="res://assets/home/patch 4.png" type="Texture" id=17]
-[ext_resource path="res://scenes/Jouro.tscn" type="PackedScene" id=18]
 [ext_resource path="res://scenes/Teleporter.tscn" type="PackedScene" id=19]
-[ext_resource path="res://scenes/NPC.tscn" type="PackedScene" id=20]
-[ext_resource path="res://scenes/Mound.tscn" type="PackedScene" id=21]
-[ext_resource path="res://scenes/Papa.tscn" type="PackedScene" id=22]
-[ext_resource path="res://scenes/Bumpy.tscn" type="PackedScene" id=23]
 
 [node name="Home" type="Node2D" groups=[
 "map",
@@ -274,33 +268,6 @@ position = Vector2( 512.477, 263.702 )
 scale = Vector2( 3.58329, 3.58329 )
 texture = ExtResource( 5 )
 
-[node name="Mound2" parent="YSortBackground" groups=[
-"mound",
-] instance=ExtResource( 21 )]
-position = Vector2( -131.943, 30.5195 )
-id = 2
-
-[node name="Mound3" parent="YSortBackground" groups=[
-"mound",
-] instance=ExtResource( 21 )]
-position = Vector2( -174.015, 58.2799 )
-id = 3
-
-[node name="Mound4" parent="YSortBackground" groups=[
-"mound",
-] instance=ExtResource( 21 )]
-position = Vector2( -219.82, 28.6838 )
-id = 4
-
-[node name="Mound1" parent="YSortBackground" groups=[
-"mound",
-] instance=ExtResource( 21 )]
-position = Vector2( -82.2665, 42.0118 )
-id = 1
-
-[node name="NPC" parent="YSortBackground" instance=ExtResource( 20 )]
-position = Vector2( 86.5982, 85.9703 )
-
 [node name="patch 18" type="Sprite" parent="YSortBackground"]
 position = Vector2( -121.318, 456.421 )
 scale = Vector2( 2.76271, 2.76271 )
@@ -348,8 +315,10 @@ texture = ExtResource( 14 )
 
 [node name="YSort" type="YSort" parent="."]
 
-[node name="Monster" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 396.2, 100.199 )
+[node name="Walls" type="KinematicBody2D" parent="YSort"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Walls"]
+polygon = PoolVector2Array( -176.854, -397.179, 728.124, -388.189, 1081.72, -16.6093, 985.833, 348.978, 578.293, 483.825, -149.884, 456.856, -551.43, 280.056, -536.447, -154.453, -146.887, -454.115, -440.556, -532.027, -1153.75, 396.924, 128.801, 834.429, 1528.22, 519.785, 1414.35, -463.105, 545.331, -786.739, -347.661, -579.973 )
 
 [node name="lil mushes 1" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 189.259, 88.9127 )
@@ -669,9 +638,6 @@ position = Vector2( 724.034, -492.729 )
 [node name="tree 136" parent="YSort" instance=ExtResource( 16 )]
 position = Vector2( 745.884, -408.669 )
 
-[node name="Jouro" parent="YSort" instance=ExtResource( 18 )]
-position = Vector2( 226.376, 55.0287 )
-
 [node name="tree 3" parent="YSort" instance=ExtResource( 15 )]
 position = Vector2( 397.696, 53.1757 )
 
@@ -840,15 +806,9 @@ position = Vector2( -235.463, 227.866 )
 [node name="Node2D6" parent="YSort" instance=ExtResource( 10 )]
 position = Vector2( -212.154, 212.117 )
 
-[node name="NPC" parent="YSort" instance=ExtResource( 22 )]
-position = Vector2( 106.22, 43.7827 )
-
-[node name="NPC" parent="YSort/NPC" instance=ExtResource( 23 )]
-position = Vector2( -57.013, 16.1847 )
-
 [node name="Teleporter" parent="." instance=ExtResource( 19 )]
 position = Vector2( 137.299, -12.2414 )
 
 [node name="Teleporter2" parent="." instance=ExtResource( 19 )]
-position = Vector2( -78.4152, -28.4044 )
+position = Vector2( 357.229, 72.8906 )
 to = "Town"

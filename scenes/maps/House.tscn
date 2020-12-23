@@ -1,10 +1,15 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/Map.gd" type="Script" id=1]
 [ext_resource path="res://scenes/objects/map/house/bed.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/objects/map/house/walls.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Teleporter.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/objects/map/house/doormat.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/objects/map/house/chest.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/objects/map/house/table.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/objects/map/house/oven.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/objects/map/house/chair.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/objects/map/house/pantry.tscn" type="PackedScene" id=10]
 
 [node name="House" type="Node2D" groups=[
 "map",
@@ -30,6 +35,25 @@ __meta__ = {
 
 [node name="Doormat" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 46.2088, 118.921 )
+
+[node name="Pantry" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( -28.8108, 95.4104 )
+
+[node name="Chest" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( 70.7986, 104.538 )
+
+[node name="Table" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( -8.57144, 144.62 )
+
+[node name="Table2" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 9.28683, 130.73 )
+
+[node name="Oven" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( -53.4155, 117.634 )
+
+[node name="Table3" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( -23.6517, 134.699 )
+scale = Vector2( -1, 1 )
 
 [node name="Bed" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 23.2879, 84.6037 )

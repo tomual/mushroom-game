@@ -140,7 +140,7 @@ func hud_line_complete():
 
 
 func callback_first_option():
-	HUD.open_stats()
+	HUD.open_upgrade()
 	print_debug("callback_first_option")
 	deactivate()
 

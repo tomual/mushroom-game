@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/house/cooking.png" type="Texture" id=1]
+
+[node name="Oven" type="KinematicBody2D"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( -32.1378, -9.9687 )
+polygon = PoolVector2Array( 17.6379, 10.2072, 37.1887, 6.6334, 49.8022, -3.24713, 37.1887, -10.1845, 5.65512, 3.69026 )
+
+[node name="bed" type="Sprite" parent="."]
+position = Vector2( -4.73611, -39.5988 )
+texture = ExtResource( 1 )

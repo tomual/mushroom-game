@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://scripts/Map.gd" type="Script" id=1]
 [ext_resource path="res://scenes/objects/map/town/edge1.tscn" type="PackedScene" id=2]
@@ -11,13 +11,24 @@
 [ext_resource path="res://scenes/objects/map/home/tree 1.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/objects/map/town/mother tree.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/objects/map/town/edge3.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/home/patch 2.png" type="Texture" id=12]
+[ext_resource path="res://scenes/objects/map/home/tree 3.tscn" type="PackedScene" id=13]
 [ext_resource path="res://assets/home/patch 1.png" type="Texture" id=14]
+[ext_resource path="res://scenes/objects/map/home/mushy 2.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/objects/map/home/tree 2.tscn" type="PackedScene" id=16]
 [ext_resource path="res://assets/home/patch 4.png" type="Texture" id=17]
+[ext_resource path="res://scenes/objects/map/home/lil mushes 1.tscn" type="PackedScene" id=18]
 [ext_resource path="res://scenes/Teleporter.tscn" type="PackedScene" id=19]
+[ext_resource path="res://scenes/objects/map/home/mush 1.tscn" type="PackedScene" id=20]
+[ext_resource path="res://scenes/objects/map/home/lil mushes 2.tscn" type="PackedScene" id=21]
 [ext_resource path="res://scenes/objects/map/town/papa house.tscn" type="PackedScene" id=22]
+[ext_resource path="res://scenes/objects/map/home/mush 3.tscn" type="PackedScene" id=23]
+[ext_resource path="res://scenes/objects/map/home/mushy 1.tscn" type="PackedScene" id=24]
+[ext_resource path="res://scenes/objects/map/home/mush 2.tscn" type="PackedScene" id=25]
+[ext_resource path="res://scenes/Bumpy.tscn" type="PackedScene" id=26]
+[ext_resource path="res://scenes/Papa.tscn" type="PackedScene" id=27]
 
-[node name="Home" type="Node2D" groups=[
+[node name="Town" type="Node2D" groups=[
 "map",
 ]]
 script = ExtResource( 1 )
@@ -38,7 +49,22 @@ __meta__ = {
 [node name="YSortBackground" type="YSort" parent="."]
 
 [node name="patch 55" type="Sprite" parent="YSortBackground"]
-position = Vector2( 1025.05, 212.399 )
+position = Vector2( 1023.55, 212.399 )
+scale = Vector2( 2.76271, 2.76271 )
+texture = ExtResource( 17 )
+
+[node name="patch 60" type="Sprite" parent="YSortBackground"]
+position = Vector2( 160.734, 143.45 )
+scale = Vector2( 2.76271, 2.76271 )
+texture = ExtResource( 17 )
+
+[node name="patch 61" type="Sprite" parent="YSortBackground"]
+position = Vector2( 214.795, 118.088 )
+scale = Vector2( 2.76271, 2.76271 )
+texture = ExtResource( 17 )
+
+[node name="patch 62" type="Sprite" parent="YSortBackground"]
+position = Vector2( 402.178, -62.9315 )
 scale = Vector2( 2.76271, 2.76271 )
 texture = ExtResource( 17 )
 
@@ -223,8 +249,28 @@ scale = Vector2( 3.58329, 3.58329 )
 texture = ExtResource( 5 )
 
 [node name="patch 29" type="Sprite" parent="YSortBackground"]
-position = Vector2( 512.477, 263.702 )
+position = Vector2( 563.554, 194.328 )
+scale = Vector2( 3.03236, 3.03236 )
+texture = ExtResource( 5 )
+
+[node name="patch 59" type="Sprite" parent="YSortBackground"]
+position = Vector2( 332.308, 122.011 )
+scale = Vector2( 3.03236, 3.03236 )
+texture = ExtResource( 5 )
+
+[node name="patch 56" type="Sprite" parent="YSortBackground"]
+position = Vector2( -5.51514, 30.7737 )
 scale = Vector2( 3.58329, 3.58329 )
+texture = ExtResource( 5 )
+
+[node name="patch 57" type="Sprite" parent="YSortBackground"]
+position = Vector2( 324.116, -97.0425 )
+scale = Vector2( 3.58329, 3.58329 )
+texture = ExtResource( 5 )
+
+[node name="patch 58" type="Sprite" parent="YSortBackground"]
+position = Vector2( 208.493, 79.1253 )
+scale = Vector2( 2.74239, 2.74239 )
 texture = ExtResource( 5 )
 
 [node name="patch 18" type="Sprite" parent="YSortBackground"]
@@ -271,6 +317,45 @@ texture = ExtResource( 14 )
 position = Vector2( 586.716, 416.058 )
 scale = Vector2( 2.76271, 2.76271 )
 texture = ExtResource( 14 )
+
+[node name="patch 1" type="Sprite" parent="YSortBackground"]
+position = Vector2( 353.128, 94.9317 )
+scale = Vector2( 1.71724, 1.71724 )
+texture = ExtResource( 14 )
+
+[node name="patch 5" type="Sprite" parent="YSortBackground"]
+position = Vector2( 443.104, -81.6566 )
+scale = Vector2( 1.71724, 1.71724 )
+texture = ExtResource( 14 )
+
+[node name="patch 6" type="Sprite" parent="YSortBackground"]
+position = Vector2( 119.359, 119.318 )
+scale = Vector2( 1.71724, 1.71724 )
+texture = ExtResource( 14 )
+
+[node name="patch 2" type="Sprite" parent="YSortBackground"]
+position = Vector2( 675.064, 2.36416 )
+scale = Vector2( 2.39183, 2.39183 )
+texture = ExtResource( 12 )
+
+[node name="patch 7" type="Sprite" parent="YSortBackground"]
+position = Vector2( 379.909, 272.292 )
+scale = Vector2( 2.39183, 2.39183 )
+texture = ExtResource( 12 )
+
+[node name="patch 27" type="Sprite" parent="YSortBackground"]
+position = Vector2( 712.064, 22.5457 )
+scale = Vector2( 2.39183, 2.39183 )
+texture = ExtResource( 12 )
+
+[node name="patch 3" type="Sprite" parent="YSortBackground"]
+position = Vector2( 491.161, -23.4188 )
+scale = Vector2( 1.49294, 1.49294 )
+texture = ExtResource( 5 )
+
+[node name="patch 4" type="Sprite" parent="YSortBackground"]
+position = Vector2( 392.34, 147.454 )
+texture = ExtResource( 17 )
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -790,6 +875,18 @@ position = Vector2( 567.224, -16.0329 )
 [node name="Node2D9" parent="YSort" instance=ExtResource( 6 )]
 position = Vector2( 574.64, 15.7511 )
 
+[node name="NPC2" parent="YSort" instance=ExtResource( 27 )]
+position = Vector2( 295.996, 164.816 )
+
+[node name="NPC" parent="YSort" instance=ExtResource( 26 )]
+position = Vector2( 522.91, 7.82014 )
+scale = Vector2( -1, 1 )
+
+[node name="Walls" type="KinematicBody2D" parent="YSort"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Walls"]
+polygon = PoolVector2Array( 48.0088, -283.238, 681.077, -319.157, 921.284, -72.2154, 1038.02, 116.358, 930.264, 322.891, 638.232, 402.939, -177.262, 412.684, -403.221, 161.257, 119.846, -276.503, -30.5635, -399.974, -672.612, 260.033, -515.467, 536.159, 779.854, 576.568, 1055.98, 401.464, 1235.57, 53.5004, 1174.96, -224.87, 797.813, -444.873, 23.3146, -408.954 )
+
 [node name="Teleporter" parent="." instance=ExtResource( 19 )]
 position = Vector2( 67.4876, -10.9616 )
 
@@ -797,3 +894,48 @@ position = Vector2( 67.4876, -10.9616 )
 position = Vector2( 642.055, 146.275 )
 to = "Crossroads"
 from = "Town"
+
+[node name="Node2D" parent="." instance=ExtResource( 18 )]
+position = Vector2( 253.592, 98.5238 )
+
+[node name="Node2D11" parent="." instance=ExtResource( 18 )]
+position = Vector2( -43.2449, 22.8431 )
+
+[node name="Node2D2" parent="." instance=ExtResource( 21 )]
+position = Vector2( 630.202, 6.57086 )
+
+[node name="Node2D10" parent="." instance=ExtResource( 21 )]
+position = Vector2( 225.73, -65.7462 )
+
+[node name="Node2D3" parent="." instance=ExtResource( 20 )]
+position = Vector2( 198.093, -80.4728 )
+
+[node name="Node2D4" parent="." instance=ExtResource( 25 )]
+position = Vector2( 202.025, -121.29 )
+
+[node name="Node2D5" parent="." instance=ExtResource( 23 )]
+position = Vector2( 22.8, -40.7003 )
+
+[node name="Node2D12" parent="." instance=ExtResource( 23 )]
+position = Vector2( 152.298, 242.682 )
+
+[node name="KinematicBody2D" parent="." instance=ExtResource( 24 )]
+position = Vector2( 703.931, 37.0913 )
+
+[node name="KinematicBody2D2" parent="." instance=ExtResource( 15 )]
+position = Vector2( 246.074, -149.315 )
+
+[node name="KinematicBody2D3" parent="." instance=ExtResource( 16 )]
+position = Vector2( 311.885, -83.7939 )
+
+[node name="Node2D6" parent="." instance=ExtResource( 13 )]
+position = Vector2( 401, 284 )
+
+[node name="Node2D7" parent="." instance=ExtResource( 4 )]
+position = Vector2( 365, 269 )
+
+[node name="Node2D8" parent="." instance=ExtResource( 6 )]
+position = Vector2( 385, 276 )
+
+[node name="Node2D9" parent="." instance=ExtResource( 8 )]
+position = Vector2( 524, 228 )

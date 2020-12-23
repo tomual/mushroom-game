@@ -645,6 +645,11 @@ scale = Vector2( -1, 1 )
 [node name="Node2D37" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 602.51, -85.4162 )
 
+[node name="Walls" type="KinematicBody2D" parent="YSort"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Walls"]
+polygon = PoolVector2Array( -164.497, -177.419, 398.903, -200.964, 785.716, -14.2854, 852.987, 239.665, 720.126, 463.344, -38.3629, 470.071, -394.903, 372.527, -472.265, 224.529, -341.086, 24.3958, -152.725, -214.419, -293.995, -345.599, -596.718, 226.211, -431.902, 527.252, 42.3632, 539.024, 795.806, 540.706, 982.485, 283.392, 980.804, -64.7392, 525.038, -397.734, -235.133, -359.053 )
+
 [node name="Teleporter" parent="." instance=ExtResource( 4 )]
 position = Vector2( 54.5987, 10.828 )
 to = "Town"
