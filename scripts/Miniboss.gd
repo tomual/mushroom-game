@@ -1,6 +1,6 @@
 extends "Monster.gd"
 
-export var attacks = [ATTACK_MINIONS]
+export var attacks = [ATTACK_MINIONS, ATTACK_MINIONS]
 
 var minions_postions
 var minions_index = 0
@@ -8,7 +8,8 @@ var minions_index = 0
 
 func _ready():
 	do_spawn()
-	
+
+
 func _process(delta):
 	if status == FOLLOWING:
 		do_idle()
@@ -19,6 +20,7 @@ func do_idle():
 		$AnimatedSprite.animation = "idle"
 		$TimerIdle.start()
 
+
 func do_minions():
 	if status == MINIONS_START and $TimerMinions.is_stopped():
 		print("do_minions")
@@ -27,12 +29,14 @@ func do_minions():
 		print(position)
 		minions_postions = [position, position, position]
 
+
 func do_spawn():
 	status = SPAWNING
 	$AnimatedSprite.animation = "spawn"
 	$Tween.interpolate_property($AnimatedSprite, "position", Vector2(0, -300), Vector2(0, 0), 0.7, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$Tween.start()
 	$TimerSpawn.start()
+
 
 func _on_TimerMinions_timeout():
 	print("_on_TimerMinions_timeout")
@@ -90,6 +94,5 @@ func _on_TimerIdle_timeout():
 
 
 func _on_TimerSpawn_timeout():
-	
 	status = FOLLOWING
 	player_in_aggro_range = true

@@ -3,6 +3,7 @@ extends Node2D
 export var online_map = false
 var player
 var timer_miniboss
+var timer_boss
 
 func _ready():
 	print_debug("Scene ready")
@@ -28,6 +29,13 @@ func _ready():
 	timer_miniboss.connect("timeout", self, "summon_miniboss")
 	add_child(timer_miniboss)
 #	timer_miniboss.start()
+	
+	timer_boss = Timer.new()
+	timer_boss.wait_time = 3
+	timer_boss.one_shot = true
+	timer_boss.connect("timeout", self, "summon_boss")
+	add_child(timer_boss)
+#	timer_boss.start()
 
 
 func destroy():
@@ -52,3 +60,11 @@ func summon_miniboss():
 	miniboss.player = player
 	miniboss.position = Vector2(100, 100)
 	$YSort.add_child(miniboss)
+	
+func summon_boss():
+	print("summon_boss")
+	var scene = load("res://scenes/Boss.tscn")
+	var boss = scene.instance()
+	boss.player = player
+	boss.position = Vector2(462, 95)
+	$YSort.add_child(boss)
