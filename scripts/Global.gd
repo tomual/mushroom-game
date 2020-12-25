@@ -93,6 +93,7 @@ func set_mound_data(id, item_id, phase):
 func get_mound_data(id):
 	return mounds[id]
 
+
 func timeout_mound(id):
 	if mounds[id].phase < 4:
 		mounds[id].phase = mounds[id].phase + 1

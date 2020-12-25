@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://presets/Theme.tres" type="Theme" id=1]
+
+[node name="Menu" type="Node2D" groups=[
+"map",
+]]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -10
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_right = 2.0
+color = Color( 0.145098, 0.145098, 0.278431, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 39.2438
+margin_top = 33.2978
+margin_right = 417.244
+margin_bottom = 92.2978
+theme = ExtResource( 1 )
+text = "mushroom game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
