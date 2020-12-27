@@ -3,7 +3,7 @@
 [ext_resource path="res://scripts/Map.gd" type="Script" id=1]
 [ext_resource path="res://scenes/objects/map/dungeon/oak.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/objects/map/dungeon/oak3.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/Teleporter.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/objects/map/dungeon/log.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/objects/map/dungeon/oak2.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/objects/map/dungeon/lake.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/objects/map/home/tree 1.tscn" type="PackedScene" id=12]
@@ -506,18 +506,8 @@ position = Vector2( -258.277, 328.125 )
 [node name="Node2D138" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( -259.362, 248.214 )
 
-[node name="Node2D139" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( -113.773, 105.236 )
-
 [node name="Node2D140" parent="YSort" instance=ExtResource( 6 )]
 position = Vector2( 561.294, -6.50974 )
 
-[node name="KinematicBody2D" type="KinematicBody2D" parent="YSort"]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/KinematicBody2D"]
-polygon = PoolVector2Array( -286.003, 34.6958, 125.592, -255.737, 432.061, -186.247, 683.294, -15.1945, 670.822, 373.237, 446.315, 469.454, 227.154, 351.856, 75.7014, 426.691, -104.26, 237.821, -389.348, 177.24, -312.73, 79.2408, -261.066, -44.3562, -521.209, -88.9012, -556.837, 243.166, -20.5156, 562.108, 544.314, 574.58, 1012.93, 448.073, 873.947, -309.191, 221.809, -426.79, -469.529, -125.666 )
-
-[node name="Teleporter" parent="." instance=ExtResource( 4 )]
-position = Vector2( 49.8419, 34.6121 )
-to = ""
-from = "Crossroads"
+[node name="Node2D139" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 138.658, -19.3187 )

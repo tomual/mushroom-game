@@ -211,6 +211,10 @@ func open_stats():
 
 func open_upgrade():
 	$Upgrade.open()
+	
+	
+func open_dungeon():
+	$DungeonSelect.open()
 
 
 func open_zap():

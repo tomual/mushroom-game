@@ -1,6 +1,7 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scripts/Map.gd" type="Script" id=1]
+[ext_resource path="res://scenes/objects/map/directions.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/home/patch 2.png" type="Texture" id=3]
 [ext_resource path="res://scenes/objects/map/home/mushy 1.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/home/patch 3.png" type="Texture" id=5]
@@ -806,9 +807,12 @@ position = Vector2( -235.463, 227.866 )
 [node name="Node2D6" parent="YSort" instance=ExtResource( 10 )]
 position = Vector2( -212.154, 212.117 )
 
-[node name="Teleporter" parent="." instance=ExtResource( 19 )]
+[node name="Teleporter" parent="YSort" instance=ExtResource( 19 )]
 position = Vector2( 137.299, -12.2414 )
 
-[node name="Teleporter2" parent="." instance=ExtResource( 19 )]
-position = Vector2( 357.229, 72.8906 )
+[node name="Node2D7" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( 502.406, 108.99 )
+
+[node name="Teleporter2" parent="YSort" instance=ExtResource( 19 )]
+position = Vector2( 500.256, 121.626 )
 to = "Town"

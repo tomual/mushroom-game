@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scripts/Map.gd" type="Script" id=1]
 [ext_resource path="res://scenes/objects/map/dungeon/oak.tscn" type="PackedScene" id=2]
@@ -10,11 +10,13 @@
 [ext_resource path="res://scenes/objects/map/dungeon/fence1.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/objects/map/town/edge2.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/objects/map/dungeon/fence2.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/objects/map/dungeon/entrance.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/objects/map/home/tree 1.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/objects/map/home/tree 2.tscn" type="PackedScene" id=13]
 [ext_resource path="res://assets/home/patch 3.png" type="Texture" id=14]
 [ext_resource path="res://assets/home/patch 4.png" type="Texture" id=15]
 [ext_resource path="res://assets/home/patch 1.png" type="Texture" id=16]
+[ext_resource path="res://scenes/objects/map/directions.tscn" type="PackedScene" id=17]
 
 [node name="Home" type="Node2D" groups=[
 "map",
@@ -650,12 +652,19 @@ position = Vector2( 602.51, -85.4162 )
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/Walls"]
 polygon = PoolVector2Array( -164.497, -177.419, 398.903, -200.964, 785.716, -14.2854, 852.987, 239.665, 720.126, 463.344, -38.3629, 470.071, -394.903, 372.527, -472.265, 224.529, -341.086, 24.3958, -152.725, -214.419, -293.995, -345.599, -596.718, 226.211, -431.902, 527.252, 42.3632, 539.024, 795.806, 540.706, 982.485, 283.392, 980.804, -64.7392, 525.038, -397.734, -235.133, -359.053 )
 
-[node name="Teleporter" parent="." instance=ExtResource( 4 )]
-position = Vector2( 54.5987, 10.828 )
+[node name="Node2D79" parent="YSort" instance=ExtResource( 11 )]
+position = Vector2( 527.478, -36.2103 )
+
+[node name="Node2D80" parent="YSort" instance=ExtResource( 17 )]
+position = Vector2( 10.4921, -30.0594 )
+
+[node name="Teleporter" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 13.2796, -16.7181 )
 to = "Town"
 from = "Crossroads"
 
-[node name="Teleporter2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 436.868, 31.5932 )
+[node name="Teleporter2" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 525.464, -28.4617 )
 to = "Dungeon"
 from = "Crossroads"
+dungeon = true

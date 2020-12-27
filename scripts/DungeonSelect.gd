@@ -17,6 +17,10 @@ func enter_dungeon():
 	HUD.fade_out()
 
 
+func open():
+	visible = true
+	
+
 func _on_ButtonEnter_pressed():
 	enter_dungeon()
 
