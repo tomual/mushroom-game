@@ -9,8 +9,6 @@ var current_map
 var server_ip = "localhost:8080"
 var username = "tom"
 
-var last_map = "Home"
-
 enum {
 	HEALTH_HEAL,
 	STAMINA_HEAL,
@@ -49,6 +47,7 @@ var mounds  = {
 	4: {"item_id": -1, "phase":0, "wait_time": 0, "timer": null},
 }
 
+
 func _ready():
 	print_debug("test")
 
@@ -79,7 +78,8 @@ func get_previous_map():
 
 func move(to):
 	for member in get_tree().get_nodes_in_group("map"):
-		previous_map = member.name
+		if member.name != "Menu":
+			previous_map = member.name
 		member.destroy()
 	var scene = load("res://scenes/maps/" + to + ".tscn")
 	var map = scene.instance()
@@ -143,8 +143,10 @@ func save_game():
 	var save_game = File.new()
 	save_game.open("user://savegame.save", File.WRITE)
 	var data = {
-		"map": current_map
+		"current_map": current_map,
+		"previous_map": previous_map
 	}
+	print(data)
 	save_game.store_line(to_json(data))
 	save_game.close()
 
@@ -154,6 +156,10 @@ func load_game():
 	var save_game = File.new()
 	if not save_game.file_exists("user://savegame.save"):
 		print('Cannot find save file')
+		return null
 	save_game.open("user://savegame.save", File.READ)
 	var data = parse_json(save_game.get_line())
+	print(data)
+	if data.has('previous_map'):
+		previous_map = data.previous_map
 	return data

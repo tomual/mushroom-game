@@ -6,13 +6,13 @@ export var to = "House"
 export var from = "Home"
 export var dungeon = false
 
+
 func _ready():
 	type = MOVE
 
 
 func activate():
 	.activate()
-	print_debug('teley activate')
 	if dungeon:
 		HUD.open_dungeon()
 	else:

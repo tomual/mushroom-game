@@ -49,9 +49,18 @@ func spawn_player(player):
 	self.player = player
 	$YSort.add_child(player)
 	var previous_map_name = Global.get_previous_map()
+	var position_set = false
+	var last_teleport
 	for member in get_tree().get_nodes_in_group("teleporter"):
-		if member.from == previous_map_name:
+		last_teleport = member
+		print(member.to)
+		print(previous_map_name)
+		if member.to == previous_map_name:
 			player.position = member.position
+			position_set = true
+	if !position_set:
+		player.position = last_teleport.position
+	
 
 
 func summon_miniboss():

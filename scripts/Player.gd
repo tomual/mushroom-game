@@ -31,16 +31,7 @@ export var peerActive = false
 export var peerid = -1
 export var skinID = 1
 
-var weapon = {
-	"name": "Doorknob",
-	"level": 0,
-	"attack": 15,
-	"charges": [
-		{"type": "Strength", "value": 0.05},
-		{"type": "Strength", "value": 100},
-		{"type": null, "value": null},
-	]
-}
+var weapon
 
 var stats = {
 	"str": 12,
@@ -67,6 +58,8 @@ export var inventory = [
 
 func _ready():
 	disable_weapon()
+	if !weapon:
+		hide_weapon()
 	$AnimatedSprite.play()
 	$AnimatedSpriteWeapon.play()
 	
@@ -102,7 +95,7 @@ func set_listen_interactable(node):
 
 func get_input():
 	# Attack
-	if status != BUSY and Input.is_action_pressed("fire") and stamina > 40:
+	if weapon and status != BUSY and Input.is_action_pressed("fire") and stamina > 40:
 		attack_start()
 
 	# Move
@@ -211,6 +204,9 @@ func enable_weapon():
 
 func disable_weapon():
 	$AreaPlayerWeapon/CollisionShape2D.disabled = true 
+
+func hide_weapon():
+	$AnimatedSpriteWeapon.hide()
 
 
 func set_is_in_range_interactable(is_in_range):
@@ -355,3 +351,19 @@ func _on_AreaPlayer_area_exited(area):
 
 func roll_damage():
 	return attack + weapon.attack
+
+
+func set_weapon():
+	var knob = {
+		"name": "Doorknob",
+		"level": 0,
+		"attack": 15,
+		"charges": [
+			{"type": "Strength", "value": 0.05},
+			{"type": "Strength", "value": 100},
+			{"type": null, "value": null},
+		]
+	}
+	weapon = knob
+	Global.save_game()
+	$AnimatedSpriteWeapon.show()

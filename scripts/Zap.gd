@@ -35,6 +35,8 @@ func open():
 
 
 func update():
+	if !player.weapon:
+		return
 	cost = 3000 + 3000 * player.weapon.level * 0.5
 	$StatPanel/Label.text = player.weapon.name
 	if player.weapon.level > 0:

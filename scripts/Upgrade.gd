@@ -17,6 +17,8 @@ func open():
 
 
 func update():
+	if !player.weapon:
+		return
 	cost = 3000 + 3000 * player.weapon.level * 0.5
 	# Before
 	$Before/Label.text = player.weapon.name
