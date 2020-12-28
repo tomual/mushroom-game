@@ -58,6 +58,7 @@ func set_player(node):
 	$Zap.update()
 	$Stats.player = player
 	$Stats.load_player()
+	$PlayerFrames.show()
 
 
 func interactable_available(position, label):

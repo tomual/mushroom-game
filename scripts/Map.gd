@@ -45,6 +45,7 @@ func destroy():
 
 
 func spawn_player(player):
+	Global.save_game()
 	self.player = player
 	$YSort.add_child(player)
 	var previous_map_name = Global.get_previous_map()

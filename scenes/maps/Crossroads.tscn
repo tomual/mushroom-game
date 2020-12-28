@@ -412,7 +412,7 @@ position = Vector2( 504.291, 462.397 )
 position = Vector2( 607.272, -82.2415 )
 
 [node name="Node2D2" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 561.237, -37.7943 )
+position = Vector2( 574.145, -18.7124 )
 
 [node name="Node2D3" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 688.229, -61.6052 )
@@ -556,7 +556,13 @@ position = Vector2( 543.776, -153.674 )
 position = Vector2( 521.552, -106.052 )
 
 [node name="Node2D36" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 475.517, -61.6053 )
+position = Vector2( 469.343, -48.1358 )
+
+[node name="Node2D81" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 558.579, -61.0441 )
+
+[node name="Node2D82" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 644.448, -52.0644 )
 
 [node name="Node2D38" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 141.711, -52.7773 )
@@ -645,7 +651,7 @@ position = Vector2( 8.40738, 49.5154 )
 scale = Vector2( -1, 1 )
 
 [node name="Node2D37" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 602.51, -85.4162 )
+position = Vector2( 514.397, -58.4771 )
 
 [node name="Walls" type="KinematicBody2D" parent="YSort"]
 

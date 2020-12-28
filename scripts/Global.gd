@@ -4,6 +4,7 @@ signal grow(id, phase)
 
 var player
 var previous_map
+var current_map
 #var server_ip = "mushroom-test-26.wm.r.appspot.com"
 var server_ip = "localhost:8080"
 var username = "tom"
@@ -82,6 +83,7 @@ func move(to):
 		member.destroy()
 	var scene = load("res://scenes/maps/" + to + ".tscn")
 	var map = scene.instance()
+	current_map = to
 	get_tree().root.get_node("Main/Map").add_child(map)
 
 
@@ -134,3 +136,24 @@ func spawn_minions(position):
 	fork.position = position
 	fork.playerPosition = player.position
 	fork.start()
+
+
+func save_game():
+	print("save_game")
+	var save_game = File.new()
+	save_game.open("user://savegame.save", File.WRITE)
+	var data = {
+		"map": current_map
+	}
+	save_game.store_line(to_json(data))
+	save_game.close()
+
+
+func load_game():
+	print("load_game")
+	var save_game = File.new()
+	if not save_game.file_exists("user://savegame.save"):
+		print('Cannot find save file')
+	save_game.open("user://savegame.save", File.READ)
+	var data = parse_json(save_game.get_line())
+	return data

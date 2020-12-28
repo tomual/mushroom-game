@@ -30,4 +30,5 @@ func _on_ButtonCancelEnter_pressed():
 
 
 func _on_TimerFadeOut_timeout():
-		Global.move("Dungeon" + str(selected_dungeon_id))
+	hide()
+	Global.move("Dungeon")
