@@ -63,3 +63,4 @@ position = Vector2( 23.2879, 84.6037 )
 [node name="Teleporter" parent="." instance=ExtResource( 4 )]
 position = Vector2( 45.5, 114.5 )
 to = "Home"
+from = "House"

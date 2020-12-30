@@ -8,6 +8,7 @@ var current_map
 #var server_ip = "mushroom-test-26.wm.r.appspot.com"
 var server_ip = "localhost:8080"
 var username = "tom"
+var save_path = "user://file3.save"
 
 enum {
 	HEALTH_HEAL,
@@ -77,13 +78,18 @@ func get_previous_map():
 
 
 func move(to):
+	var from_menu = false
 	for member in get_tree().get_nodes_in_group("map"):
 		if member.name != "Menu":
 			previous_map = member.name
+		else:
+			from_menu = true
 		member.destroy()
 	var scene = load("res://scenes/maps/" + to + ".tscn")
 	var map = scene.instance()
 	current_map = to
+	if !from_menu:
+		save_game()
 	get_tree().root.get_node("Main/Map").add_child(map)
 
 
@@ -141,10 +147,11 @@ func spawn_minions(position):
 func save_game():
 	print("save_game")
 	var save_game = File.new()
-	save_game.open("user://savegame.save", File.WRITE)
+	save_game.open(save_path, File.WRITE)
 	var data = {
 		"current_map": current_map,
-		"previous_map": previous_map
+		"previous_map": previous_map,
+		"weapon": player.weapon,
 	}
 	print(data)
 	save_game.store_line(to_json(data))
@@ -154,12 +161,12 @@ func save_game():
 func load_game():
 	print("load_game")
 	var save_game = File.new()
-	if not save_game.file_exists("user://savegame.save"):
+	if not save_game.file_exists(save_path):
 		print('Cannot find save file')
 		return null
-	save_game.open("user://savegame.save", File.READ)
+	save_game.open(save_path, File.READ)
 	var data = parse_json(save_game.get_line())
 	print(data)
-	if data.has('previous_map'):
+	if data and data.has('previous_map'):
 		previous_map = data.previous_map
 	return data

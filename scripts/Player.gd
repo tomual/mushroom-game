@@ -57,6 +57,10 @@ export var inventory = [
 ]
 
 func _ready():
+	var data = Global.load_game()
+	if data and data.weapon:
+		set_weapon()
+
 	disable_weapon()
 	if !weapon:
 		hide_weapon()
@@ -78,6 +82,7 @@ func _ready():
 		
 	HUD.set_player(self)
 	Global.set_player(self)
+	
 	
 	hp = max_hp
 	stamina = max_stamina
@@ -365,5 +370,6 @@ func set_weapon():
 		]
 	}
 	weapon = knob
+	Global.set_player(self)
 	Global.save_game()
 	$AnimatedSpriteWeapon.show()

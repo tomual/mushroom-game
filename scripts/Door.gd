@@ -5,6 +5,7 @@ signal talk_hide()
 signal talk_complete_line()
 signal options_show(options)
 signal options_hide()
+signal show_house_teleport()
 
 var talking = false
 var lines_index = 0
@@ -49,6 +50,7 @@ func receive_signal(target_id):
 func callback_give_knob():
 	print_debug("callback_give_knob")
 	player.set_weapon()
+	emit_signal("show_house_teleport")
 
 
 func activate():
@@ -90,26 +92,6 @@ func next_page():
 			call(current_lines[lines_index].callback)
 
 	lines_index += 1
-
-
-func option_1_pressed():
-	if !talking:
-		return
-	end()
-	if current_options[0].has("callback"):
-		call(current_options[0].callback)
-	if current_options[0].has("lines"):
-		start(current_options[0].lines)
-
-
-func option_2_pressed():
-	if !talking:
-		return
-	end()
-	if current_options[1].has("callback"):
-		call(current_options[1].callback)
-	if current_options[1].has("lines"):
-		start(current_options[1].lines)
 
 
 func end():

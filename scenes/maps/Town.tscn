@@ -955,6 +955,8 @@ position = Vector2( -26.258, -100.258 )
 
 [node name="Teleporter" parent="YSort" instance=ExtResource( 19 )]
 position = Vector2( -26.238, -90.0952 )
+to = "Home"
+from = "Town"
 
 [node name="Node2D24" parent="YSort" instance=ExtResource( 28 )]
 position = Vector2( 696.513, 158.55 )
