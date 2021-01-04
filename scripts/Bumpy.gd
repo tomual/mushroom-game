@@ -13,22 +13,35 @@ var waiting_option = false
 var current_options
 var current_lines
 
-var lines_second_picked = [
-	{"line": "So you picked the second option."},
-	{"line": "Good job."},
+var lines_other = [
+	{"line": "Perish."}
 ]
 
 var options_test = [
-	{"label": "First option", "callback": "callback_first_option"},
-	{"label": "Second option", "lines": lines_second_picked},
+	{"label": "Stats", "callback": "callback_first_option"},
+	{"label": "Talk", "lines": lines_other},
 ]
 
 var lines = [
-	{"line": "Line 1"},
-	{"line": "Line 2", "callback": "callback_test", "param": [5]},
-	{"line": "Line 3", "options": options_test},
+	{"line": "Hey dipshit.", "callback": "callback_test", "param": [5]},
+	{"line": "I'll beat the shit out of you with a mackerel.", "options": options_test},
 ]
 
+var lines_0 = [
+	{"line": "Hey, who the hell are you."},
+	{"line": "And what is that, a fucking door knob?"},
+	{"line": "... Not much I can do for you. Maybe you can try swinging that thing around in the forest ahead if you felt like dying."},
+]
+
+var lines_1 = [
+	{"line": "Hey, you made it out of there."},
+	{"line": "You weren't as much of a worthless piece of trash than I thought."},
+	{"line": "If you had some spores I can make your existence a little less miserable."},
+]
+
+var lines_no_weapon = [
+	{"line": "Holy shit, a talking mushroom."},
+	{"line": "- and I guess that's all there is to you. You're going to need something to defend yourself with if you want to last long here."},]
 
 func _ready():
 	type = TALK
@@ -65,7 +78,15 @@ func callback_test(number):
 
 func activate():
 	.activate()
-	start(lines)
+	var data = Global.load_game()
+	if !player.weapon:
+		start(lines_no_weapon)
+	elif data.npc_bumpy == 0:
+		start(lines_0)
+	elif data.npc_bumpy == 1:
+		start(lines_1)
+	else:
+		start(lines)
 
 
 func start(lines):
@@ -128,6 +149,8 @@ func end():
 	talking = false
 	waiting_option = false
 	HUD.talk_hide()
+	Global.npc_bumpy = Global.npc_bumpy + 1
+	Global.save_game()
 
 
 func finish_page():

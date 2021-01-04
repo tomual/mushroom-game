@@ -10,6 +10,9 @@ var server_ip = "localhost:8080"
 var username = "tom"
 var save_path = "user://file3.save"
 
+var npc_bumpy = 0
+var npc_papa = 0
+
 enum {
 	HEALTH_HEAL,
 	STAMINA_HEAL,
@@ -152,6 +155,8 @@ func save_game():
 		"current_map": current_map,
 		"previous_map": previous_map,
 		"weapon": player.weapon,
+		"npc_bumpy": npc_bumpy,
+		"npc_papa": npc_papa,
 	}
 	print(data)
 	save_game.store_line(to_json(data))
