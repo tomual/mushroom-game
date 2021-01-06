@@ -100,7 +100,7 @@ func set_listen_interactable(node):
 
 func get_input():
 	# Attack
-	if weapon and status != BUSY and Input.is_action_pressed("fire") and stamina > 40:
+	if weapon and !is_attacking() and Input.is_action_pressed("fire") and stamina > 40:
 		attack_start()
 
 	# Move
@@ -138,7 +138,7 @@ func _physics_process(delta):
 				play_animation("idle")
 			else:
 				play_animation("walk")
-		if !can_move() and status != DODGE:
+		if (!can_move() and status != DODGE) or is_attacking():
 			velocity = Vector2.ZERO
 		if status == DODGE:
 			speed = 200
