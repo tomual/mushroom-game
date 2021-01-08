@@ -8,10 +8,7 @@ var current_map
 #var server_ip = "mushroom-test-26.wm.r.appspot.com"
 var server_ip = "localhost:8080"
 var username = "tom"
-var save_path = "user://file3.save"
-
-var npc_bumpy = 0
-var npc_papa = 0
+var save_path = "user://savefile2.save"
 
 enum {
 	HEALTH_HEAL,
@@ -133,7 +130,8 @@ func spawn_puffs(position):
 		var y_oncircle = position.y + 1000 * sin(degrees * PI / 180)
 		var pos = Vector2(x_oncircle, y_oncircle)
 		var sprinkle = scene.instance()
-		add_child(sprinkle)
+		for member in get_tree().get_nodes_in_group("ysort_layer"):
+			member.add_child(sprinkle)
 		sprinkle.target = pos
 		sprinkle.position = position
 
@@ -141,7 +139,8 @@ func spawn_puffs(position):
 func spawn_minions(position):
 	var scene = load("res://scenes/Miniboss-Minion.tscn")
 	var fork = scene.instance()
-	add_child(fork)
+	for member in get_tree().get_nodes_in_group("ysort_layer"):
+		member.add_child(fork)
 	fork.position = position
 	fork.playerPosition = player.position
 	fork.start()
@@ -155,8 +154,6 @@ func save_game():
 		"current_map": current_map,
 		"previous_map": previous_map,
 		"weapon": player.weapon,
-		"npc_bumpy": npc_bumpy,
-		"npc_papa": npc_papa,
 	}
 	print(data)
 	save_game.store_line(to_json(data))

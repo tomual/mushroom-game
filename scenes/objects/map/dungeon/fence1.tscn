@@ -7,6 +7,7 @@ radius = 3.58772
 height = 37.5395
 
 [node name="Node2D" type="KinematicBody2D"]
+position = Vector2( 1.85406, -3.44325 )
 
 [node name="tree 1" type="Sprite" parent="."]
 position = Vector2( 13.202, -8.58474 )

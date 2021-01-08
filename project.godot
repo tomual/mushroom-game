@@ -27,6 +27,7 @@ HUD="*res://scenes/HUD.tscn"
 [display]
 
 window/size/width=600
+window/size/resizable=false
 
 [importer_defaults]
 

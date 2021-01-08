@@ -23,25 +23,8 @@ var options_test = [
 ]
 
 var lines = [
-	{"line": "Hey dipshit.", "callback": "callback_test", "param": [5]},
 	{"line": "I'll beat the shit out of you with a mackerel.", "options": options_test},
 ]
-
-var lines_0 = [
-	{"line": "Hey, who the hell are you."},
-	{"line": "And what is that, a fucking door knob?"},
-	{"line": "... Not much I can do for you. Maybe you can try swinging that thing around in the forest ahead if you felt like dying."},
-]
-
-var lines_1 = [
-	{"line": "Hey, you made it out of there."},
-	{"line": "You weren't as much of a worthless piece of trash than I thought."},
-	{"line": "If you had some spores I can make your existence a little less miserable."},
-]
-
-var lines_no_weapon = [
-	{"line": "Holy shit, a talking mushroom."},
-	{"line": "- and I guess that's all there is to you. You're going to need something to defend yourself with if you want to last long here."},]
 
 func _ready():
 	type = TALK
@@ -79,14 +62,7 @@ func callback_test(number):
 func activate():
 	.activate()
 	var data = Global.load_game()
-	if !player.weapon:
-		start(lines_no_weapon)
-	elif data.npc_bumpy == 0:
-		start(lines_0)
-	elif data.npc_bumpy == 1:
-		start(lines_1)
-	else:
-		start(lines)
+	start(lines)
 
 
 func start(lines):
@@ -149,8 +125,6 @@ func end():
 	talking = false
 	waiting_option = false
 	HUD.talk_hide()
-	Global.npc_bumpy = Global.npc_bumpy + 1
-	Global.save_game()
 
 
 func finish_page():

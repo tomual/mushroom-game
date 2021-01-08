@@ -2,7 +2,7 @@ extends Area2D
 
 
 enum {SPIN, MOVE}
-export var speed = 400
+export var speed = 1
 export(Vector2) var playerPosition
 var target_angle = 0
 var turn_speed = deg2rad(30)
@@ -37,10 +37,17 @@ func start():
 	var distance_to_player = position - playerPosition
 	print("distance_to_player")
 	print(distance_to_player.x)
+	var offset = -distance_to_player.x * 2
+	if position.x < playerPosition.x:
+		offset = -distance_to_player.x * 2
 	var target_x =  playerPosition.x
-	var target_y = extrapolate([playerPosition, position], target_x)
-	target_position = Vector2(target_x, target_y)
+	var target_y = extrapolate([playerPosition, position], target_x + offset)
+	target_position = Vector2(target_x + offset, target_y)
 
 
 func _on_Timer_timeout():
 	mode = MOVE
+
+
+func _on_TimerExpire_timeout():
+	queue_free()

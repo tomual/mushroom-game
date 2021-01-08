@@ -1,12 +1,13 @@
 extends "Monster.gd"
 
-export var attacks = [ATTACK_MINIONS, ATTACK_MINIONS]
+export var attacks = [ATTACK_MINIONS, ATTACK_PUFFS]
 
 var minions_postions
 var minions_index = 0
 
 
 func _ready():
+	max_hp = 200
 	do_spawn()
 
 

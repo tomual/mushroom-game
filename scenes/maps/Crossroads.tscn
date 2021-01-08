@@ -1,6 +1,6 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
-[ext_resource path="res://scripts/Map.gd" type="Script" id=1]
+[ext_resource path="res://scripts/Crossroads.gd" type="Script" id=1]
 [ext_resource path="res://scenes/objects/map/dungeon/oak.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/objects/map/dungeon/oak3.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Teleporter.tscn" type="PackedScene" id=4]
@@ -17,12 +17,12 @@
 [ext_resource path="res://assets/home/patch 4.png" type="Texture" id=15]
 [ext_resource path="res://assets/home/patch 1.png" type="Texture" id=16]
 [ext_resource path="res://scenes/objects/map/directions.tscn" type="PackedScene" id=17]
+[ext_resource path="res://scenes/Garl.tscn" type="PackedScene" id=19]
 
-[node name="Home" type="Node2D" groups=[
+[node name="Crossroads" type="Node2D" groups=[
 "map",
 ]]
 script = ExtResource( 1 )
-online_map = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -10
@@ -74,7 +74,7 @@ texture = ExtResource( 16 )
 offset = Vector2( -0.414963, -11.6175 )
 
 [node name="patch 14" type="Sprite" parent="YSortBackground"]
-position = Vector2( 309.004, 22.9121 )
+position = Vector2( 310.126, 22.9121 )
 scale = Vector2( 2.13513, 2.10907 )
 texture = ExtResource( 16 )
 offset = Vector2( -0.414963, -11.6175 )
@@ -208,7 +208,9 @@ position = Vector2( 586.716, 416.058 )
 scale = Vector2( 2.76271, 2.76271 )
 texture = ExtResource( 16 )
 
-[node name="YSort" type="YSort" parent="."]
+[node name="YSort" type="YSort" parent="." groups=[
+"ysort_layer",
+]]
 
 [node name="tree 14" parent="YSort" instance=ExtResource( 12 )]
 position = Vector2( -120.205, -39.1838 )
@@ -619,10 +621,10 @@ position = Vector2( 102.026, -121.036 )
 position = Vector2( 55.9915, -76.5883 )
 
 [node name="Node2D18" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 300.301, 89.1581 )
+position = Vector2( 303.837, 101.886 )
 
 [node name="Node2D71" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 439.05, 68.3929 )
+position = Vector2( 449.657, 81.8279 )
 
 [node name="Node2D72" parent="YSort" instance=ExtResource( 10 )]
 position = Vector2( 350.326, 61.7858 )
@@ -661,8 +663,14 @@ polygon = PoolVector2Array( -164.497, -177.419, 398.903, -200.964, 785.716, -14.
 [node name="Node2D79" parent="YSort" instance=ExtResource( 11 )]
 position = Vector2( 527.478, -36.2103 )
 
+[node name="Monster2" parent="YSort" instance=ExtResource( 19 )]
+position = Vector2( -89.9461, 185.173 )
+
+[node name="Monster3" parent="YSort" instance=ExtResource( 19 )]
+position = Vector2( 40.2595, 248.031 )
+
 [node name="Node2D80" parent="YSort" instance=ExtResource( 17 )]
-position = Vector2( 10.4921, -30.0594 )
+position = Vector2( 9.36963, -30.0594 )
 
 [node name="Teleporter" parent="YSort" instance=ExtResource( 4 )]
 position = Vector2( 13.2796, -16.7181 )
@@ -674,3 +682,8 @@ position = Vector2( 525.464, -28.4617 )
 to = "Dungeon"
 from = "Crossroads"
 dungeon = true
+
+[node name="TimerCheck" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+[connection signal="timeout" from="TimerCheck" to="." method="_on_TimerCheck_timeout"]

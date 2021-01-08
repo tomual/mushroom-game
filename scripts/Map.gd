@@ -58,22 +58,9 @@ func spawn_player(player):
 			player.position = member.position
 			position_set = true
 	if !position_set:
-		player.position = last_teleport.position
-	
+		print(previous_map_name)
+		if !previous_map_name:
+			player.position = Vector2(-249, 204)
+		elif last_teleport:
+			player.position = last_teleport.position
 
-
-func summon_miniboss():
-	print("summon_miniboss")
-	var scene = load("res://scenes/Miniboss.tscn")
-	var miniboss = scene.instance()
-	miniboss.player = player
-	miniboss.position = Vector2(100, 100)
-	$YSort.add_child(miniboss)
-	
-func summon_boss():
-	print("summon_boss")
-	var scene = load("res://scenes/Boss.tscn")
-	var boss = scene.instance()
-	boss.player = player
-	boss.position = Vector2(462, 95)
-	$YSort.add_child(boss)

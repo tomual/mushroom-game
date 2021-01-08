@@ -22,7 +22,8 @@ func open():
 	
 
 func _on_ButtonEnter_pressed():
-	enter_dungeon()
+	#enter_dungeon()
+	pass
 
 
 func _on_ButtonCancelEnter_pressed():

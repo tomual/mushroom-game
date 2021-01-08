@@ -3,7 +3,7 @@ extends KinematicBody2D
 signal apply_damage(amount)
 signal give_spores(amount)
 
-var max_hp = 200
+var max_hp = 100
 var hp
 var max_stamina = 200
 var stamina
@@ -75,6 +75,7 @@ func _process(delta):
 					$Particles2D.scale.x = 1
 				var target_x = player.position.x + offset_x
 				var target_y = player.position.y + offset_y
+				
 				if abs(target_x - position.x) > precision or abs(target_y - position.y ) > precision:
 					velocity.x = target_x - position.x
 					velocity.y = target_y - position.y 

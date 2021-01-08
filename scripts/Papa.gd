@@ -14,19 +14,16 @@ var current_options
 var current_lines
 
 var lines_second_picked = [
-	{"line": "So you picked the second option."},
-	{"line": "Good job."},
+	{"line": "I am slowly disappearing off the face of the earth."},
 ]
 
 var options_test = [
-	{"label": "First option", "callback": "callback_first_option"},
-	{"label": "Second option", "lines": lines_second_picked},
+	{"label": "Weapon Upgrade", "callback": "callback_first_option"},
+	{"label": "Talk", "lines": lines_second_picked},
 ]
 
 var lines = [
-	{"line": "Line 1"},
-	{"line": "Line 2", "callback": "callback_test", "param": [5]},
-	{"line": "Line 3", "options": options_test},
+	{"line": "Hey cutie.", "options": options_test},
 ]
 
 

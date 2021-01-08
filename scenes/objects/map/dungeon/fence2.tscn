@@ -9,10 +9,10 @@ height = 52.9094
 [node name="Node2D" type="KinematicBody2D"]
 
 [node name="tree 1" type="Sprite" parent="."]
-position = Vector2( 23.5318, -17.855 )
+position = Vector2( 17.9696, -1.69819 )
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 23.0848, -18.029 )
+position = Vector2( 17.5226, -1.87219 )
 rotation = -2.06123
 shape = SubResource( 1 )
