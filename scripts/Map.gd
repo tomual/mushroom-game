@@ -6,7 +6,6 @@ var timer_miniboss
 var timer_boss
 
 func _ready():
-	print_debug("Scene ready")
 	HUD.init(online_map)
 	
 	if online_map:
@@ -45,6 +44,7 @@ func destroy():
 
 
 func spawn_player(player):
+	print("spawn_player")
 	self.player = player
 	$YSort.add_child(player)
 	var previous_map_name = Global.get_previous_map()
@@ -52,15 +52,13 @@ func spawn_player(player):
 	var last_teleport
 	for member in get_tree().get_nodes_in_group("teleporter"):
 		last_teleport = member
-		print(member.to)
-		print(previous_map_name)
 		if member.to == previous_map_name:
 			player.position = member.position
 			position_set = true
 	if !position_set:
-		print(previous_map_name)
 		if !previous_map_name:
 			player.position = Vector2(-249, 204)
 		elif last_teleport:
 			player.position = last_teleport.position
+	HUD.fade_in()
 

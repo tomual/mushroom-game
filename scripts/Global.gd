@@ -8,7 +8,7 @@ var current_map
 #var server_ip = "mushroom-test-26.wm.r.appspot.com"
 var server_ip = "localhost:8080"
 var username = "tom"
-var save_path = "user://savefile2.save"
+var save_path = "user://savefile.save"
 
 enum {
 	HEALTH_HEAL,
